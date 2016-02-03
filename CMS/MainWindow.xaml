@@ -1,0 +1,62 @@
+﻿<Window x:Class="CMS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CMS"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="703.14" Width="612.2" Background="Gainsboro">
+    <Grid Margin="0,0,-6.6,-0.2">
+        <Label x:Name="LabelTitleRu" Content="Название по русски" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxTitleRu" HorizontalAlignment="Left" Height="23" Margin="140,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="312" />
+
+        <Label x:Name="LabelTitleEn" Content="Название по английски" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxTitleEn" HorizontalAlignment="Left" Height="23" Margin="140,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="312" />
+
+        <Label x:Name="LabelCatalogName" Content="Каталог с игрой" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxCatalogName" HorizontalAlignment="Left" Height="23" Margin="140,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="312" />
+
+        <Label x:Name="LabelYearPublishing" Content="Год издания" HorizontalAlignment="Left" Margin="18,123,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxYearPublishing" HorizontalAlignment="Left" Height="23" Margin="24,147,0,0" TextWrapping="Wrap" Text="&#x9;" VerticalAlignment="Top" Width="66" TextAlignment="Center" MaxLength="4" LostFocus="TextBoxYearPublishing_LostFocus"/>
+
+        <Label x:Name="LabelRating" Content="Рейтинг" HorizontalAlignment="Left" Margin="111,123,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxRating" HorizontalAlignment="Left" Height="23" Margin="105,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58" TextAlignment="Center" LostFocus="TextBoxRating_LostFocus"/>
+
+        <Label x:Name="LabelLang" Content="Язык" HorizontalAlignment="Left" Margin="182,123,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="СomboBoxLang" HorizontalAlignment="Left" Margin="179,148,0,0" VerticalAlignment="Top" Width="46" SelectedIndex="0">
+            <ComboBoxItem Content="RU"/>
+            <ComboBoxItem Content="EN"/>
+        </ComboBox>
+
+        <Label x:Name="LabelNumOfPlayers" Content="Кол-во игроков" HorizontalAlignment="Left" Margin="229,123,0,0" VerticalAlignment="Top" />
+        <TextBox x:Name="TextBoxNumOfPlayers" HorizontalAlignment="Left" Height="23" Margin="242,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58" TextAlignment="Center"/>
+
+        <Label x:Name="LabelNumOfSuggested" Content="Рек. игроков" HorizontalAlignment="Left" Margin="320,123,0,0" VerticalAlignment="Top" />
+        <TextBox x:Name="TextBoxNumOfSuggested" HorizontalAlignment="Left" Height="23" Margin="327,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58" TextAlignment="Center"/>
+
+        <Label x:Name="LabelNumSuggestedAges" Content="Возраст" HorizontalAlignment="Left" Margin="402,123,0,0" VerticalAlignment="Top" />
+        <TextBox x:Name="TextBoxSuggestedAges" HorizontalAlignment="Left" Height="23" Margin="399,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58" TextAlignment="Center"/>
+
+        <Label x:Name="LabelAcquaintance" Content="t освоения" HorizontalAlignment="Left" Margin="462,123,0,0" VerticalAlignment="Top" />
+        <TextBox x:Name="TextBoxAcquaintance" HorizontalAlignment="Left" Height="23" Margin="467,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58" TextAlignment="Center"/>
+
+        <Label x:Name="LabelPlayingTime" Content="t партии" HorizontalAlignment="Left" Margin="542,123,0,0" VerticalAlignment="Top" />
+        <TextBox x:Name="TextBoxPlayingTime" HorizontalAlignment="Left" Height="23" Margin="539,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58" TextAlignment="Center"/>
+
+        <TextBox x:Name="TextBoxDescript" HorizontalAlignment="Left" Height="159" Margin="24,198,0,0" Text="Описание игры" VerticalAlignment="Top" Width="535" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" IsHitTestVisible="True" HorizontalScrollBarVisibility="Visible"/>
+        <Button x:Name="ButtonTagP" Content="p" HorizontalAlignment="Left" Margin="564,198,0,0" VerticalAlignment="Top" Width="23" RenderTransformOrigin="-1.048,0.5" Click="ButtonTagP_Click"/>
+
+        <TextBox x:Name="TextBoxComponents" HorizontalAlignment="Left" Height="223" Margin="24,372,0,0" Text="Состав коробки" VerticalAlignment="Top" Width="318" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" IsHitTestVisible="True" HorizontalScrollBarVisibility="Visible"/>
+        <Button x:Name="ButtonTagLi" Content="li" HorizontalAlignment="Left" Margin="347,372,0,0" VerticalAlignment="Top" Width="26" Click="ButtonTagLi_Click"/>
+
+        <Label x:Name="LabelImageGameplay" Content="Кол-во картинок с процессом игры" HorizontalAlignment="Left" Margin="378,415,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxImageGameplay" HorizontalAlignment="Left" Height="23" Margin="435,439,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="68" TextAlignment="Center" LostFocus="TextBoxImageGameplay_LostFocus"/>
+
+        <Label x:Name="LabelImageScans" Content="Кол-во картинок примеры сканов" HorizontalAlignment="Left" Margin="378,492,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxImageScans" HorizontalAlignment="Left" Height="23" Margin="435,521,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="68" TextAlignment="Center" LostFocus="TextBoxImageScans_LostFocus"/>
+
+        <Button x:Name="ButtonStep2" Content="Далее >" HorizontalAlignment="Left" Margin="26,636,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="TextBoxLogWindow" HorizontalAlignment="Left" Height="59" Margin="119,609,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="477" AllowDrop="False" IsHitTestVisible="True" IsReadOnly="True"/>
+
+    </Grid>
+</Window>

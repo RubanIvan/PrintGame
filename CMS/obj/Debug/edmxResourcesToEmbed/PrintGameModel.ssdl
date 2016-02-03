@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище PrintGameDataModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Game">
+    <Key>
+      <PropertyRef Name="GameID" />
+    </Key>
+    <Property Name="GameID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleRu" Type="nvarchar" MaxLength="1024" Nullable="false" />
+    <Property Name="TitleEn" Type="nvarchar" MaxLength="1024" Nullable="false" />
+    <Property Name="CatalogName" Type="nvarchar" MaxLength="1024" Nullable="false" />
+    <Property Name="YearPublishing" Type="int" Nullable="false" />
+    <Property Name="Rating" Type="real" Nullable="false" />
+    <Property Name="Lang" Type="nvarchar" MaxLength="10" />
+    <Property Name="Descript" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NumOfPlayers" Type="nvarchar" MaxLength="512" />
+    <Property Name="NumOfSuggested" Type="nvarchar" MaxLength="512" />
+    <Property Name="SuggestedAges" Type="nvarchar" MaxLength="512" />
+    <Property Name="Acquaintance" Type="nvarchar" MaxLength="512" />
+    <Property Name="PlayingTime" Type="nvarchar" MaxLength="512" />
+    <Property Name="Components" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImageGameplay" Type="int" Nullable="false" />
+    <Property Name="ImageScans" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="Хранилище PrintGameDataModelContainer">
+    <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
