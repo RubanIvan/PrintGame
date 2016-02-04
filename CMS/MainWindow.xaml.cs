@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,9 @@ namespace CMS
     /// <summary>Логика взаимодействия для MainWindow.xaml</summary>
     public partial class MainWindow : Window
     {
+
+        string CatalogPath= @"D:\Content\GameData\";
+
         public MainWindow()
         {
             InitializeComponent();
@@ -100,12 +104,12 @@ namespace CMS
             float ratio;
             if (float.TryParse(TextBoxRating.Text, out ratio) == false)
             {
-                TextBoxRating.Text += "Неверно введен рейтинг\n";
+                TextBoxLogWindow.Text += "Неверно введен рейтинг\n";
                 return;
             }
             if (ratio < 0 || ratio > 10)
             {
-                TextBoxRating.Text += "Неверно введен рейтинг выход за диапазон\n";
+                TextBoxLogWindow.Text += "Неверно введен рейтинг выход за диапазон\n";
                 return;
             }
             TextBoxRating.Text = ratio.ToString("#.##");
@@ -117,12 +121,12 @@ namespace CMS
             float ratio;
             if (float.TryParse(TextBoxRating.Text, out ratio) == false)
             {
-                TextBoxRating.Text += "Неверно введен рейтинг\n";
+                TextBoxLogWindow.Text += "Неверно введен рейтинг\n";
                 return false;
             }
             if (ratio < 0 || ratio > 10)
             {
-                TextBoxRating.Text += "Неверно введен рейтинг выход за диапазон\n";
+                TextBoxLogWindow.Text += "Неверно введен рейтинг выход за диапазон\n";
                 return false;
             }
 
@@ -145,14 +149,14 @@ namespace CMS
             {
                 //перевод не удался стираем неверное значение
                 TextBoxImageGameplay.Text = "";
-                TextBoxRating.Text += "Неверно введено кол-во картинок геймплея\n";
+                TextBoxLogWindow.Text += "Неверно введено кол-во картинок геймплея\n";
                 return false;
             }
 
             if (image < 0 || image > 6)
             {
                 TextBoxImageGameplay.Text = "";
-                TextBoxRating.Text += "Неверно введено кол-во картинок геймплея выход за диапозон (0-5) \n";
+                TextBoxLogWindow.Text += "Неверно введено кол-во картинок геймплея выход за диапозон (0-5) \n";
                 return false;
             }
             return true;
@@ -172,19 +176,38 @@ namespace CMS
             {
                 //перевод не удался стираем неверное значение
                 TextBoxImageScans.Text = "";
-                TextBoxRating.Text += "Неверно введено кол-во картинок геймплея\n";
+                TextBoxLogWindow.Text += "Неверно введено кол-во картинок геймплея\n";
                 return false;
             }
 
             if (image <= 0 || image > 10)
             {
                 TextBoxImageScans.Text = "";
-                TextBoxRating.Text += "Неверно введено кол-во картинок геймплея выход за диапозон (1-10) \n";
+                TextBoxLogWindow.Text += "Неверно введено кол-во картинок геймплея выход за диапозон (1-10) \n";
                 return false;
             }
             return true;
         }
 
+        private void ButtonCreateFolder_Click(object sender, RoutedEventArgs e)
+        {
+            if (TextBoxCatalogName.Text == "")
+            {
+                TextBoxLogWindow.Text += "Неверно указано имя дериктории\n";
+                return;
+            }
 
+            try
+            {
+                Directory.CreateDirectory(CatalogPath + "\\" + TextBoxCatalogName.Text);
+            }
+            catch (Exception ee)
+            {
+                TextBoxLogWindow.Text += "Ошибка создания дериктории\n"+ee.Message+"\n";
+                return;
+            }
+
+            TextBoxLogWindow.Text += "Директория создана\n" + TextBoxCatalogName.Text + "\n";
+        }
     }
 }

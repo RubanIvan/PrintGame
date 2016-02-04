@@ -1,5 +1,5 @@
 --CREATE DATABASE PrintGameData;
---DROP TABLE Game
+--DROP TABLE Game;
 CREATE TABLE Game(
 	GameID			int IDENTITY NOT NULL PRIMARY KEY,	--идентификатор игры
 	TitleRu			nvarchar(1024) NOT NULL UNIQUE,		--Название по русски
