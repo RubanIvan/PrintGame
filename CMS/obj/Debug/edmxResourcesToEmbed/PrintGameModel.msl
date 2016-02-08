@@ -4,23 +4,21 @@
     <EntitySetMapping Name="Game">
       <EntityTypeMapping TypeName="PrintGameDataModel.Game">
         <MappingFragment StoreEntitySet="Game">
-          <ScalarProperty Name="GameID" ColumnName="GameID" />
-          <ScalarProperty Name="TitleRu" ColumnName="TitleRu" />
-          <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
-          <ScalarProperty Name="CatalogName" ColumnName="CatalogName" />
-          <ScalarProperty Name="YearPublishing" ColumnName="YearPublishing" />
-          <ScalarProperty Name="Rating" ColumnName="Rating" />
-          <ScalarProperty Name="Lang" ColumnName="Lang" />
-          <ScalarProperty Name="Descript" ColumnName="Descript" />
-          <ScalarProperty Name="NumOfPlayers" ColumnName="NumOfPlayers" />
-          <ScalarProperty Name="NumOfSuggested" ColumnName="NumOfSuggested" />
-          <ScalarProperty Name="SuggestedAges" ColumnName="SuggestedAges" />
-          <ScalarProperty Name="Acquaintance" ColumnName="Acquaintance" />
-          <ScalarProperty Name="PlayingTime" ColumnName="PlayingTime" />
-          <ScalarProperty Name="Components" ColumnName="Components" />
-          <ScalarProperty Name="ImageGameplay" ColumnName="ImageGameplay" />
-          <ScalarProperty Name="ImageScans" ColumnName="ImageScans" />
           <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Components" ColumnName="Components" />
+          <ScalarProperty Name="PlayingTime" ColumnName="PlayingTime" />
+          <ScalarProperty Name="Acquaintance" ColumnName="Acquaintance" />
+          <ScalarProperty Name="SuggestedAges" ColumnName="SuggestedAges" />
+          <ScalarProperty Name="NumOfSuggested" ColumnName="NumOfSuggested" />
+          <ScalarProperty Name="NumOfPlayers" ColumnName="NumOfPlayers" />
+          <ScalarProperty Name="Descript" ColumnName="Descript" />
+          <ScalarProperty Name="Lang" ColumnName="Lang" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="YearPublishing" ColumnName="YearPublishing" />
+          <ScalarProperty Name="CatalogName" ColumnName="CatalogName" />
+          <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+          <ScalarProperty Name="TitleRu" ColumnName="TitleRu" />
+          <ScalarProperty Name="GameID" ColumnName="GameID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

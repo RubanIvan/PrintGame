@@ -15,7 +15,20 @@ CREATE TABLE Game(
 	Acquaintance	nvarchar(512),						--Время освоения игры
 	PlayingTime		nvarchar(512),						--Время партии
 	Components		nvarchar(MAX) NOT NULL,				--Состав коробки
-	ImageGameplay	int NOT NULL,						--Кол-во картинок с процессом игры
-	ImageScans		int NOT NULL,						--Кол-во картинок примеры сканов
 	CreateTime		SmallDateTime NOT NULL				--Время добавления 
 )
+
+CREATE TABLE GameImage(
+	GameImageID		int IDENTITY NOT NULL PRIMARY KEY,	--идентификатор картинки
+	GameID			int,								--идентификатор игры
+	DescriptImage	nvarchar(MAX) NOT NULL,				--Описание картинки
+	SmallImagePath  nvarchar(1024),						--путь к превью картинки
+	FulllImagePath  nvarchar(1024),						--путь к картинки
+)
+
+ALTER TABLE GameImage WITH CHECK ADD  CONSTRAINT [FK_GameID_Game] FOREIGN KEY (GameID)
+REFERENCES Game(GameID)
+
+
+--DELETE FROM Game;
+SELECT * FROM Game

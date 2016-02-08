@@ -28,8 +28,6 @@ namespace CMS
         public string Acquaintance { get; set; }
         public string PlayingTime { get; set; }
         public string Components { get; set; }
-        public int ImageGameplay { get; set; }
-        public int ImageScans { get; set; }
         public System.DateTime CreateTime { get; set; }
     }
 }

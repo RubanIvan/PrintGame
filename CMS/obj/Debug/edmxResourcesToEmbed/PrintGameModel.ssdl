@@ -18,8 +18,6 @@
     <Property Name="Acquaintance" Type="nvarchar" MaxLength="512" />
     <Property Name="PlayingTime" Type="nvarchar" MaxLength="512" />
     <Property Name="Components" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ImageGameplay" Type="int" Nullable="false" />
-    <Property Name="ImageScans" Type="int" Nullable="false" />
     <Property Name="CreateTime" Type="smalldatetime" Nullable="false" />
   </EntityType>
   <EntityContainer Name="Хранилище PrintGameDataModelContainer">
