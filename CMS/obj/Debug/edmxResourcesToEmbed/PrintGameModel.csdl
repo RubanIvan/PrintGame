@@ -2,6 +2,21 @@
 <Schema Namespace="PrintGameDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="PrintGameDataEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Game" EntityType="PrintGameDataModel.Game" />
+    <EntitySet Name="GameImage" EntityType="PrintGameDataModel.GameImage" />
+    <AssociationSet Name="FK_GameID_Game" Association="PrintGameDataModel.FK_GameID_Game">
+      <End Role="Game" EntitySet="Game" />
+      <End Role="GameImage" EntitySet="GameImage" />
+    </AssociationSet>
+    <EntitySet Name="Tag" EntityType="PrintGameDataModel.Tag" />
+    <EntitySet Name="GameTag" EntityType="PrintGameDataModel.GameTag" />
+    <AssociationSet Name="FK_GameTag_GameID" Association="PrintGameDataModel.FK_GameTag_GameID">
+      <End Role="Game" EntitySet="Game" />
+      <End Role="GameTag" EntitySet="GameTag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameTag_TagID" Association="PrintGameDataModel.FK_GameTag_TagID">
+      <End Role="Tag" EntitySet="Tag" />
+      <End Role="GameTag" EntitySet="GameTag" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Game">
     <Key>
@@ -22,5 +37,72 @@
     <Property Name="PlayingTime" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
     <Property Name="Components" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="GameImage" Relationship="PrintGameDataModel.FK_GameID_Game" FromRole="Game" ToRole="GameImage" />
+    <NavigationProperty Name="GameTag" Relationship="PrintGameDataModel.FK_GameTag_GameID" FromRole="Game" ToRole="GameTag" />
   </EntityType>
+  <EntityType Name="GameImage">
+    <Key>
+      <PropertyRef Name="GameImageID" />
+    </Key>
+    <Property Name="GameImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GameID" Type="Int32" />
+    <Property Name="DescriptImage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SmallImagePath" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="FulllImagePath" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Game" Relationship="PrintGameDataModel.FK_GameID_Game" FromRole="GameImage" ToRole="Game" />
+  </EntityType>
+  <Association Name="FK_GameID_Game">
+    <End Type="PrintGameDataModel.Game" Role="Game" Multiplicity="0..1" />
+    <End Type="PrintGameDataModel.GameImage" Role="GameImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="GameID" />
+      </Principal>
+      <Dependent Role="GameImage">
+        <PropertyRef Name="GameID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="TagID" />
+    </Key>
+    <Property Name="TagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TagName" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="GameTag" Relationship="PrintGameDataModel.FK_GameTag_TagID" FromRole="Tag" ToRole="GameTag" />
+  </EntityType>
+  <EntityType Name="GameTag">
+    <Key>
+      <PropertyRef Name="GameTagID" />
+    </Key>
+    <Property Name="GameTagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GameID" Type="Int32" Nullable="false" />
+    <Property Name="TagID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Game" Relationship="PrintGameDataModel.FK_GameTag_GameID" FromRole="GameTag" ToRole="Game" />
+    <NavigationProperty Name="Tag" Relationship="PrintGameDataModel.FK_GameTag_TagID" FromRole="GameTag" ToRole="Tag" />
+  </EntityType>
+  <Association Name="FK_GameTag_GameID">
+    <End Type="PrintGameDataModel.Game" Role="Game" Multiplicity="1" />
+    <End Type="PrintGameDataModel.GameTag" Role="GameTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="GameID" />
+      </Principal>
+      <Dependent Role="GameTag">
+        <PropertyRef Name="GameID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameTag_TagID">
+    <End Type="PrintGameDataModel.Tag" Role="Tag" Multiplicity="1" />
+    <End Type="PrintGameDataModel.GameTag" Role="GameTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="TagID" />
+      </Principal>
+      <Dependent Role="GameTag">
+        <PropertyRef Name="TagID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

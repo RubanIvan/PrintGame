@@ -30,5 +30,39 @@ ALTER TABLE GameImage WITH CHECK ADD  CONSTRAINT [FK_GameID_Game] FOREIGN KEY (G
 REFERENCES Game(GameID)
 
 
+--DROP TABLE Tag
+
+-- таблица содержит список кэгов
+CREATE TABLE Tag(
+		TagID			int IDENTITY NOT NULL PRIMARY KEY,	--идентификатор  Тэга
+		TagName			nvarchar(512) NOT NULL UNIQUE,		--Тэг
+)
+
+--DROP TABLE GameTag
+
+-- таблица отношения многих ко многим
+CREATE TABLE GameTag(
+		GameTagID			int IDENTITY NOT NULL PRIMARY KEY,	--идентификатор  Тэга
+		GameID				int NOT NULL,
+		TagID				int NOT NULL
+)
+
+ALTER TABLE GameTag WITH CHECK ADD  CONSTRAINT [FK_GameTag_GameID] FOREIGN KEY (GameID)
+REFERENCES Game(GameID)
+
+ALTER TABLE GameTag WITH CHECK ADD  CONSTRAINT [FK_GameTag_TagID] FOREIGN KEY (TagID)
+REFERENCES Tag(TagID)
+
+
 --DELETE FROM Game;
 SELECT * FROM Game
+
+SELECT * FROM GameImage
+
+SELECT * FROM GameTag
+
+--DELETE FROM GameImage;
+
+--DELETE FROM GameTag
+
+--DELETE FROM Game WHERE GameID=7

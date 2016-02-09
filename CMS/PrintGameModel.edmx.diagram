@@ -6,6 +6,12 @@
     <edmx:Diagrams>
       <Diagram DiagramId="e85b9717a2b54a1999f765b7bc90f684" Name="Diagram1">
         <EntityTypeShape EntityType="PrintGameDataModel.Game" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PrintGameDataModel.GameImage" Width="1.5" PointX="3.375" PointY="0.625" />
+        <AssociationConnector Association="PrintGameDataModel.FK_GameID_Game" />
+        <EntityTypeShape EntityType="PrintGameDataModel.Tag" Width="1.5" PointX="6.125" PointY="3.375" />
+        <EntityTypeShape EntityType="PrintGameDataModel.GameTag" Width="1.5" PointX="3.375" PointY="3.75" />
+        <AssociationConnector Association="PrintGameDataModel.FK_GameTag_GameID" />
+        <AssociationConnector Association="PrintGameDataModel.FK_GameTag_TagID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

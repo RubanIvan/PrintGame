@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CMS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="777.14" Width="623.2" Background="Gainsboro">
+        Title="MainWindow" Height="777.14" Width="720" Background="Gainsboro">
     <Grid>
         <Grid>
             <Button x:Name="ButtonSetDir" Content="Директория" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,10,0,0" Click="ButtonSetDir_Click"/>
@@ -26,7 +26,7 @@
             <TextBox x:Name="TextBoxCatalogName" HorizontalAlignment="Left" Height="23" Margin="140,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="312" TabIndex="30" />
 
             <Button x:Name="ButtonCopyGameName" Content="Скоп. назв" HorizontalAlignment="Left" Margin="464,45,0,0" VerticalAlignment="Top" Width="68" Height="23" TabIndex="35" Click="ButtonCopyGameName_Click"/>
-            
+
             <Button x:Name="ButtonCreateFolder" Content="Создать дирикторию" HorizontalAlignment="Left" Margin="467,85,0,0" VerticalAlignment="Top" Width="134" Height="23" Click="ButtonCreateFolder_Click" TabIndex="35"/>
 
 
@@ -57,21 +57,73 @@
             <Label x:Name="LabelPlayingTime" Content="t партии" HorizontalAlignment="Left" Margin="542,123,0,0" VerticalAlignment="Top" />
             <TextBox x:Name="TextBoxPlayingTime" HorizontalAlignment="Left" Height="23" Margin="539,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58" TextAlignment="Center" TabIndex="100"/>
 
-            <TextBox x:Name="TextBoxDescript" HorizontalAlignment="Left" Height="159" Margin="24,198,0,0" Text="Описание игры" VerticalAlignment="Top" Width="535" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" IsHitTestVisible="True" HorizontalScrollBarVisibility="Visible" TabIndex="110"/>
+            <TextBox x:Name="TextBoxDescript" HorizontalAlignment="Left" Height="159" Margin="24,198,0,0" Text="" VerticalAlignment="Top" Width="535" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" IsHitTestVisible="True" HorizontalScrollBarVisibility="Visible" TabIndex="110"/>
             <Button x:Name="ButtonTagP" Content="p" HorizontalAlignment="Left" Margin="564,198,0,0" VerticalAlignment="Top" Width="23" RenderTransformOrigin="-1.048,0.5" Click="ButtonTagP_Click" TabIndex="120"/>
 
-            <TextBox x:Name="TextBoxComponents" HorizontalAlignment="Left" Height="223" Margin="24,372,0,0" Text="Состав коробки" VerticalAlignment="Top" Width="318" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" IsHitTestVisible="True" HorizontalScrollBarVisibility="Visible" TabIndex="130"/>
+            <TextBox x:Name="TextBoxComponents" HorizontalAlignment="Left" Height="223" Margin="24,372,0,0" Text="" VerticalAlignment="Top" Width="318" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" IsHitTestVisible="True" HorizontalScrollBarVisibility="Visible" TabIndex="130"/>
             <Button x:Name="ButtonTagLi" Content="li" HorizontalAlignment="Left" Margin="347,372,0,0" VerticalAlignment="Top" Width="26" Click="ButtonTagLi_Click" TabIndex="140"/>
+
+            <Button x:Name="ButtonStep" Content="Далее >" HorizontalAlignment="Left" Margin="24,630,0,0" VerticalAlignment="Top" Width="75" Click="ButtonStep_Click" TabIndex="150"/>
         </Grid>
 
-        <Grid Name="GridGameImage" Visibility="Hidden" Margin="0,45,0,0">
+        <Grid Name="GridGameImage" Visibility="Hidden" Margin="0,75,0,0">
             <Button x:Name="ButtonScanImage" Content="Скан" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" TabIndex="10" Click="ButtonScanImage_Click"/>
-            <Image x:Name="ImageBox" HorizontalAlignment="Left" Height="160" Margin="110,10,0,0" VerticalAlignment="Top" Width="160"/>
+            <Button x:Name="ButtonCreateSmallImage" Content="PNG" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Width="75" TabIndex="10" Click="ButtonCreateSmallImage_Click" />
+            <Button x:Name="ButtonToSql" Content="Запись в базу" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top" Width="75" TabIndex="10" Click="ButtonToSql_Click"  />
+            <Button x:Name="ButtonTag" Content="Тэги" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" Width="75" TabIndex="10" Click="ButtonTag_Click" />
+
+            <Image x:Name="Image0" HorizontalAlignment="Left" Height="160" Width="160" Margin="110,10,0,0" VerticalAlignment="Top" Source="Resources/test.jpg" />
+            <TextBox x:Name="TextBoxImage0" HorizontalAlignment="Left" Height="23" Margin="110,170,0,0" TextWrapping="Wrap" Text="Коробка" VerticalAlignment="Top" Width="120"/>
+
+            <Image x:Name="Image1" HorizontalAlignment="Left" Height="160" Width="160" Margin="289,10,0,0" VerticalAlignment="Top" Source="Resources/test.jpg" />
+            <TextBox x:Name="TextBoxImage1" HorizontalAlignment="Left" Height="23" Margin="289,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+            <Image x:Name="Image2" HorizontalAlignment="Left" Height="160" Width="160" Margin="470,10,0,0" VerticalAlignment="Top" Source="Resources/test.jpg"/>
+            <TextBox x:Name="TextBoxImage2" HorizontalAlignment="Left" Height="23" Margin="470,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+            <Image x:Name="Image3" HorizontalAlignment="Left" Height="160" Width="160" Margin="10,206,0,0" VerticalAlignment="Top" Source="Resources/test.jpg"/>
+            <TextBox x:Name="TextBoxImage3" HorizontalAlignment="Left" Height="23" Margin="10,366,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+            <Image x:Name="Image4" HorizontalAlignment="Left" Height="160" Width="160" Margin="185,206,0,0" VerticalAlignment="Top" Source="Resources/test.jpg"/>
+            <TextBox x:Name="TextBoxImage4" HorizontalAlignment="Left" Height="23" Margin="185,366,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+            <Image x:Name="Image5" HorizontalAlignment="Left" Height="160" Width="160" Margin="359,206,0,0" VerticalAlignment="Top"  Source="Resources/test.jpg"/>
+            <TextBox x:Name="TextBoxImage5" HorizontalAlignment="Left" Height="23" Margin="359,366,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+            <Image x:Name="Image6" HorizontalAlignment="Left" Height="160" Width="160" Margin="527,206,0,0" VerticalAlignment="Top" Source="Resources/test.jpg"/>
+            <TextBox x:Name="TextBoxImage6" HorizontalAlignment="Left" Height="23" Margin="527,366,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+            <Image x:Name="Image7" HorizontalAlignment="Left" Height="160" Width="160" Margin="10,406,0,0" VerticalAlignment="Top" Source="Resources/test.jpg"/>
+            <TextBox x:Name="TextBoxImage7" HorizontalAlignment="Left" Height="23" Margin="10,566,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+            <Image x:Name="Image8" HorizontalAlignment="Left" Height="160" Width="160" Margin="185,406,0,0" VerticalAlignment="Top" Source="Resources/test.jpg"/>
+            <TextBox x:Name="TextBoxImage8" HorizontalAlignment="Left" Height="23" Margin="185,566,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+            <Image x:Name="Image9" HorizontalAlignment="Left" Height="160" Width="160" Margin="359,406,0,0" VerticalAlignment="Top" Source="Resources/test.jpg"/>
+            <TextBox x:Name="TextBoxImage9" HorizontalAlignment="Left" Height="23" Margin="359,566,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+        </Grid>
+
+        <Grid Name="GridTag" Visibility="Hidden" Margin="0,75,0,0">
+            <ListBox x:Name="ListBoxTag" HorizontalAlignment="Left" Height="490" Margin="35,52,0,0" VerticalAlignment="Top" Width="253"/>
+            <ListBox x:Name="ListBoxGameTag" HorizontalAlignment="Left" Height="490" Margin="426,52,0,0" VerticalAlignment="Top" Width="253"/>
+            
+            <TextBox x:Name="TextBoxFindTag" HorizontalAlignment="Left" Height="23" Margin="35,24,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="221"/>
+            <Button x:Name="ButtonFindTagClear" Content="X" HorizontalAlignment="Left" Margin="261,27,0,0" VerticalAlignment="Top" Width="20" Click="ButtonFindTagClear_Click"/>
+            
+            <TextBox x:Name="TextBoxAddTag" HorizontalAlignment="Left" Height="23" Margin="35,547,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180"/>
+            <Button x:Name="ButtonAddTag" Content="Добавить" HorizontalAlignment="Left" Margin="220,550,0,0" VerticalAlignment="Top" Width="68" Click="ButtonAddTag_Click"/>
+            <Button x:Name="ButtonAdd" Content="--&gt;" HorizontalAlignment="Left" Margin="323,212,0,0" VerticalAlignment="Top" Width="75" Click="ButtonAdd_Click"/>
+            <Button x:Name="ButtonRemove" Content=" Х " HorizontalAlignment="Left" Margin="323,317,0,0" VerticalAlignment="Top" Width="75" Click="ButtonRemove_Click"/>
+            <Button x:Name="ButtonSaveTagToGame" Content="Записать" HorizontalAlignment="Left" Margin="604,550,0,0" VerticalAlignment="Top" Width="75" Click="ButtonSaveTagToGame_Click"/>
+            <Button x:Name="ButtonNextGame" Content="NextGame" HorizontalAlignment="Left" Margin="627,641,0,0" VerticalAlignment="Top" Width="75" Click="ButtonNextGame_Click"/>
+
         </Grid>
 
         <Grid>
-            <Button x:Name="ButtonStep" Content="Далее >" HorizontalAlignment="Left" Margin="26,694,0,0" VerticalAlignment="Top" Width="75" Click="ButtonStep_Click" TabIndex="150"/>
-            <TextBox x:Name="TextBoxLogWindow" HorizontalAlignment="Left" Height="59" Margin="128,676,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="477" AllowDrop="False" IsHitTestVisible="True" IsReadOnly="True" VerticalScrollBarVisibility="Visible"/>
+
+            <TextBox x:Name="TextBoxLogWindow" HorizontalAlignment="Left" Height="59" Margin="128,676,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="477" AllowDrop="False" IsHitTestVisible="True" IsReadOnly="True" VerticalScrollBarVisibility="Visible"/>
+            
 
         </Grid>
 

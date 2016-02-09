@@ -46,6 +46,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
@@ -66,6 +67,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GameTag.cs">
+      <DependentUpon>PrintGameModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tag.cs">
+      <DependentUpon>PrintGameModel.tt</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -75,6 +82,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Game.cs">
+      <DependentUpon>PrintGameModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GameImage.cs">
       <DependentUpon>PrintGameModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
@@ -146,6 +156,8 @@
       <DependentUpon>PrintGameModel.edmx</DependentUpon>
       <LastGenOutput>PrintGameModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\test.jpg" />
+    <None Include="test.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -26,5 +26,8 @@ namespace CMS
         }
     
         public virtual DbSet<Game> Game { get; set; }
+        public virtual DbSet<GameImage> GameImage { get; set; }
+        public virtual DbSet<Tag> Tag { get; set; }
+        public virtual DbSet<GameTag> GameTag { get; set; }
     }
 }
