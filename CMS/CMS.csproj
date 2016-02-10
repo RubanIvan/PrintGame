@@ -67,6 +67,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FileShare.cs">
+      <DependentUpon>PrintGameModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GameTag.cs">
       <DependentUpon>PrintGameModel.tt</DependentUpon>
     </Compile>

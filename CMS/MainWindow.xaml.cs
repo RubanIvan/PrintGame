@@ -23,8 +23,11 @@ namespace CMS
 
         string DstGameDirPath = @"D:\Content\GameData\";   //каталог куда будут скопированы файлы
         string SrcGameDirPath = @"D:\Game_Base";            //каталог от куда будут копировать
-        private string GameCatalogName;                            //каталог c игрой
-        int GameID ; //ID вставленной записи
+        private string GameCatalogName = "";//"Fairy Tale";                            //каталог c игрой
+
+        private string FileShareFolder = @"D:\Content\FileShare\";  //каталог с архивами
+
+        int GameID;                                         //ID вставленной записи
         List<string> GameList = new List<string>();
         private int GameListIndex = 0;
 
@@ -32,7 +35,7 @@ namespace CMS
         List<string> ImageListPng = new List<string>();        //изображения загруженные из каталога
         List<Image> WinImage = new List<Image>();           //изображения на окне
 
-        List<Tag> TagList=new List<Tag>();                  //список тэгов 
+        List<Tag> TagList = new List<Tag>();                  //список тэгов 
 
         public MainWindow()
         {
@@ -355,7 +358,7 @@ namespace CMS
             ImageListJpg = Directory.GetFiles(GameList[GameListIndex], "*.jpg").ToList();
             foreach (string image in ImageListJpg)
             {
-                File.Move(image, DstGameDirPath + "\\" + GameCatalogName + "\\" + GameCatalogName + " " + Path.GetFileName(image));
+                File.Copy(image, DstGameDirPath + "\\" + GameCatalogName + "\\" + GameCatalogName + " " + Path.GetFileName(image));
                 TextBoxLogWindow.Text += $"Перемещен файл {image} \n";
             }
             TextBoxLogWindow.Text += $"/n Всего перемещено файлов {ImageListJpg.Count} \n";
@@ -366,7 +369,7 @@ namespace CMS
 
             TextBoxImage0.Text = "Коробка";
             //TextBoxImage1.Text =TextBoxImage2.Text =TextBoxImage3.Text =TextBoxImage4.Text =TextBoxImage5.Text =TextBoxImage6.Text =TextBoxImage7.Text = TextBoxImage8.Text = TextBoxImage9.Text = TextBoxTitleEn.Text;
-            TextBoxImage1.Text = TextBoxImage2.Text = TextBoxImage3.Text = TextBoxImage4.Text = TextBoxImage5.Text = TextBoxImage6.Text = TextBoxImage7.Text = TextBoxImage8.Text = TextBoxImage9.Text = "Fairy Tale";
+            TextBoxImage1.Text = TextBoxImage2.Text = TextBoxImage3.Text = TextBoxImage4.Text = TextBoxImage5.Text = TextBoxImage6.Text = TextBoxImage7.Text = TextBoxImage8.Text = TextBoxImage9.Text = GameCatalogName;
 
             WinImage.Add(Image0); WinImage.Add(Image1); WinImage.Add(Image2); WinImage.Add(Image3);
             WinImage.Add(Image4); WinImage.Add(Image5); WinImage.Add(Image6); WinImage.Add(Image7);
@@ -391,7 +394,7 @@ namespace CMS
 
         }
 
-        
+
         // конвертация изображений
         private void ButtonCreateSmallImage_Click(object sender, RoutedEventArgs e)
         {
@@ -491,11 +494,11 @@ namespace CMS
         {
             PrintGameDataEntities GameEntities = new PrintGameDataEntities();
 
-            GameEntities.Tag.Add(new Tag() {TagName = TextBoxAddTag.Text});
+            GameEntities.Tag.Add(new Tag() { TagName = TextBoxAddTag.Text });
             try
             {
                 GameEntities.SaveChanges();
-                TextBoxLogWindow.Text +=$"Тэг {TextBoxAddTag.Text} добавлен \n";
+                TextBoxLogWindow.Text += $"Тэг {TextBoxAddTag.Text} добавлен \n";
             }
             catch (Exception sql)
             {
@@ -508,19 +511,19 @@ namespace CMS
         //Добавит тэг к игре
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            if(ListBoxTag.SelectedIndex <0)return;
-            Tag t=(Tag)((ListBoxItem) (ListBoxTag.Items[ListBoxTag.SelectedIndex])).Tag;
+            if (ListBoxTag.SelectedIndex < 0) return;
+            Tag t = (Tag)((ListBoxItem)(ListBoxTag.Items[ListBoxTag.SelectedIndex])).Tag;
             ListBoxGameTag.Items.Add(new ListBoxItem() { Tag = t, Content = t.TagName });
         }
 
         //удалить тег у игры
         private void ButtonRemove_Click(object sender, RoutedEventArgs e)
         {
-            if(ListBoxGameTag.SelectedIndex<0)return;
+            if (ListBoxGameTag.SelectedIndex < 0) return;
             ListBoxGameTag.Items.RemoveAt(ListBoxGameTag.SelectedIndex);
         }
 
-        
+
         // очистить фильтр тегов
         private void ButtonFindTagClear_Click(object sender, RoutedEventArgs e)
         {
@@ -531,12 +534,12 @@ namespace CMS
         private void TagRefresh()
         {
             PrintGameDataEntities GameEntities = new PrintGameDataEntities();
-            TagList=GameEntities.Tag.ToList();
+            TagList = GameEntities.Tag.ToList();
 
             ListBoxTag.Items.Clear();
             foreach (Tag tag in TagList)
             {
-                ListBoxTag.Items.Add(new ListBoxItem() {Tag = tag, Content = tag.TagName});
+                ListBoxTag.Items.Add(new ListBoxItem() { Tag = tag, Content = tag.TagName });
             }
 
         }
@@ -547,28 +550,116 @@ namespace CMS
 
             foreach (ListBoxItem item in ListBoxGameTag.Items)
             {
-                GameEntities.GameTag.Add(new GameTag() {GameID = this.GameID, TagID = ((Tag) (item.Tag)).TagID});
+                GameEntities.GameTag.Add(new GameTag() { GameID = this.GameID, TagID = ((Tag)(item.Tag)).TagID });
             }
             try
             {
                 GameEntities.SaveChanges();
-                TextBoxLogWindow.Text += $"Тэги добавлены"; 
+                TextBoxLogWindow.Text += $"Тэги добавлены";
             }
             catch (Exception sql)
             {
                 MessageBox.Show(sql.Message, "Error", MessageBoxButton.OK);
                 return;
             }
-            
+
 
         }
 
         #endregion
 
 
-        private void ButtonNextGame_Click(object sender, RoutedEventArgs e)
+        private void ButtonFileShare_Click(object sender, RoutedEventArgs e)
+        {
+            GridTag.Visibility=Visibility.Hidden;
+            GridFileShare.Visibility=Visibility.Visible;
+
+        }
+
+        #region FileShare
+
+        List<Label> LabelList = new List<Label>();
+        List<TextBox> TextBoxList = new List<TextBox>();
+
+        List<string> ListFileShare = new List<string>();
+        List<string> ArcName = new List<string>();
+
+        private void ButtonFileShareScan_Click(object sender, RoutedEventArgs e)
         {
 
+            LabelList.Add(LabelFailName1); LabelList.Add(LabelFailName2); LabelList.Add(LabelFailName3);
+            LabelList.Add(LabelFailName4); LabelList.Add(LabelFailName5); LabelList.Add(LabelFailName6);
+
+            foreach (Label label in LabelList) label.Content = "";
+
+            TextBoxList.Add(TextBoxFailNameDesc1); TextBoxList.Add(TextBoxFailNameDesc2); TextBoxList.Add(TextBoxFailNameDesc3);
+            TextBoxList.Add(TextBoxFailNameDesc4); TextBoxList.Add(TextBoxFailNameDesc5); TextBoxList.Add(TextBoxFailNameDesc6);
+
+            foreach (TextBox textBox in TextBoxList) textBox.Text = "";
+
+
+
+            //сканируем директории ищем подкаталоги
+            //каждый подкаталог надо зделать архивом
+            ListFileShare = Directory.GetDirectories(Path.Combine(SrcGameDirPath, GameCatalogName)).ToList();
+
+            for (int i = 0; i < ListFileShare.Count; i++)
+            {
+                ListFileShare[i] += "\\";
+                LabelList[i].Content = ListFileShare[i];
+                ArcName.Add(Path.Combine(FileShareFolder, GameCatalogName) + $"{i}.zip");
+                TextBoxList[i].Text = GameCatalogName;
+                //Process.Start("cmd.exe", " /K " + rarcmd + "\"" + ArcName[i] + "\" " + "\"" + LabelList[i].Content + "\"");
+            }
+
+
+
+
+        }
+
+        #endregion
+
+        private void ButtonZip_Click(object sender, RoutedEventArgs e)
+        {
+            string rarcmd = " C:\\Progra~1\\WinRAR\\rar.exe a -r -m3 -ep1 -zD:\\Content\\zipdesc.txt -ms*.rar;*.zip;*.jpg ";
+            for (int i = 0; i < ListFileShare.Count; i++)
+            {
+                Process.Start("cmd.exe", " /K " + rarcmd + "\"" + ArcName[i] + "\" " + "\"" + LabelList[i].Content + "\"");
+            }
+        }
+
+        private void ButtonArcToSql_Click(object sender, RoutedEventArgs e)
+        {
+            PrintGameDataEntities GameEntities = new PrintGameDataEntities();
+
+
+
+            for (int i = 0; i < ArcName.Count; i++)
+            {
+                FileShare fs = new FileShare();
+                fs.GameID = GameID;
+                fs.FileShareName = ArcName[i].Substring(FileShareFolder.Length);
+                fs.FileShareDesc = TextBoxList[i].Text;
+
+                FileInfo file = new System.IO.FileInfo(ArcName[i]);
+                long size = file.Length;
+                //(Math.Floor(Math.Log(bytes, 1024)))
+                double f = size / (1024.0 * 1024.0);
+                fs.FileShareSize = f.ToString("F") + "MB";
+
+                GameEntities.FileShare.Add(fs);
+            }
+
+            try
+            {
+                GameEntities.SaveChanges();
+                TextBoxLogWindow.Text += $"В базу добавленно {ArcName.Count} записи о файлах) " + "\n";
+            }
+            catch (Exception sql)
+            {
+                MessageBox.Show(sql.Message, "Error", MessageBoxButton.OK);
+                return;
+            }
         }
     }
 }

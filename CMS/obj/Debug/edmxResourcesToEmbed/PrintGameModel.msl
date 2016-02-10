@@ -50,5 +50,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="FileShare">
+      <EntityTypeMapping TypeName="PrintGameDataModel.FileShare">
+        <MappingFragment StoreEntitySet="FileShare">
+          <ScalarProperty Name="FileShareDesc" ColumnName="FileShareDesc" />
+          <ScalarProperty Name="FileShareSize" ColumnName="FileShareSize" />
+          <ScalarProperty Name="FileShareUrl4" ColumnName="FileShareUrl4" />
+          <ScalarProperty Name="FileShareUrl3" ColumnName="FileShareUrl3" />
+          <ScalarProperty Name="FileShareUrl2" ColumnName="FileShareUrl2" />
+          <ScalarProperty Name="FileShareUrl1" ColumnName="FileShareUrl1" />
+          <ScalarProperty Name="FileShareName" ColumnName="FileShareName" />
+          <ScalarProperty Name="GameID" ColumnName="GameID" />
+          <ScalarProperty Name="FileShareID" ColumnName="FileShareID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

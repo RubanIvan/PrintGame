@@ -1,5 +1,6 @@
 --CREATE DATABASE PrintGameData;
 --DROP TABLE Game;
+--основная таблица с игрой
 CREATE TABLE Game(
 	GameID			int IDENTITY NOT NULL PRIMARY KEY,	--идентификатор игры
 	TitleRu			nvarchar(1024) NOT NULL UNIQUE,		--Название по русски
@@ -18,6 +19,7 @@ CREATE TABLE Game(
 	CreateTime		SmallDateTime NOT NULL				--Время добавления 
 )
 
+--таблица для хранения изображений
 CREATE TABLE GameImage(
 	GameImageID		int IDENTITY NOT NULL PRIMARY KEY,	--идентификатор картинки
 	GameID			int,								--идентификатор игры
@@ -54,15 +56,45 @@ ALTER TABLE GameTag WITH CHECK ADD  CONSTRAINT [FK_GameTag_TagID] FOREIGN KEY (T
 REFERENCES Tag(TagID)
 
 
+--DROP TABLE FileShare
+--таблица для хранения внешних ссылок на файл
+CREATE TABLE FileShare(
+		FileShareID			int IDENTITY NOT NULL PRIMARY KEY,	--идентификатор	
+		GameID				int NOT NULL,						--идентификатор игры	
+		FileShareName		nvarchar(1024) NOT NULL,			--имя архива
+		FileShareUrl1		nvarchar(1024),						--URL файла на 1 файлообменнике
+		FileShareUrl2		nvarchar(1024),						--URL файла на 2 файлообменнике
+		FileShareUrl3		nvarchar(1024),						--URL файла на 3 файлообменнике
+		FileShareUrl4		nvarchar(1024),						--URL файла на 4 файлообменнике
+		FileShareSize		nvarchar(512) NOT NULL,				--размер файла
+		FileShareDesc		nvarchar(2048) NOT NULL,			--описание файла
+)
+
+ALTER TABLE FileShare WITH CHECK ADD  CONSTRAINT [FK_FileShare_GameID] FOREIGN KEY (GameID)
+REFERENCES Game(GameID)
+GO
+
+-- удалить данные об игре по индексу
+CREATE PROC DeleteGameByID
+@ID int
+AS
+
+DELETE FROM GameTag WHERE GameID=@ID
+DELETE FROM GameImage WHERE GameID=@ID
+DELETE FROM Game WHERE GameID=@ID
+GO
+
+EXEC DeleteGameByID 
+
 --DELETE FROM Game;
 SELECT * FROM Game
-
 SELECT * FROM GameImage
-
 SELECT * FROM GameTag
+SELECT * FROM FileShare;
 
 --DELETE FROM GameImage;
 
 --DELETE FROM GameTag
 
 --DELETE FROM Game WHERE GameID=7
+
