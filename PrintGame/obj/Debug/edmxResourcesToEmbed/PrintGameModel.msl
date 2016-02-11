@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище PrintGameDataModelContainer" CdmEntityContainer="PrintGameDataEntities">
+    <EntitySetMapping Name="FileShare">
+      <EntityTypeMapping TypeName="PrintGameDataModel.FileShare">
+        <MappingFragment StoreEntitySet="FileShare">
+          <ScalarProperty Name="FileShareID" ColumnName="FileShareID" />
+          <ScalarProperty Name="GameID" ColumnName="GameID" />
+          <ScalarProperty Name="FileShareName" ColumnName="FileShareName" />
+          <ScalarProperty Name="FileShareUrl1" ColumnName="FileShareUrl1" />
+          <ScalarProperty Name="FileShareUrl2" ColumnName="FileShareUrl2" />
+          <ScalarProperty Name="FileShareUrl3" ColumnName="FileShareUrl3" />
+          <ScalarProperty Name="FileShareUrl4" ColumnName="FileShareUrl4" />
+          <ScalarProperty Name="FileShareSize" ColumnName="FileShareSize" />
+          <ScalarProperty Name="FileShareDesc" ColumnName="FileShareDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Game">
+      <EntityTypeMapping TypeName="PrintGameDataModel.Game">
+        <MappingFragment StoreEntitySet="Game">
+          <ScalarProperty Name="GameID" ColumnName="GameID" />
+          <ScalarProperty Name="TitleRu" ColumnName="TitleRu" />
+          <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+          <ScalarProperty Name="CatalogName" ColumnName="CatalogName" />
+          <ScalarProperty Name="YearPublishing" ColumnName="YearPublishing" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Lang" ColumnName="Lang" />
+          <ScalarProperty Name="Descript" ColumnName="Descript" />
+          <ScalarProperty Name="NumOfPlayers" ColumnName="NumOfPlayers" />
+          <ScalarProperty Name="NumOfSuggested" ColumnName="NumOfSuggested" />
+          <ScalarProperty Name="SuggestedAges" ColumnName="SuggestedAges" />
+          <ScalarProperty Name="Acquaintance" ColumnName="Acquaintance" />
+          <ScalarProperty Name="PlayingTime" ColumnName="PlayingTime" />
+          <ScalarProperty Name="Components" ColumnName="Components" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GameImage">
+      <EntityTypeMapping TypeName="PrintGameDataModel.GameImage">
+        <MappingFragment StoreEntitySet="GameImage">
+          <ScalarProperty Name="GameImageID" ColumnName="GameImageID" />
+          <ScalarProperty Name="GameID" ColumnName="GameID" />
+          <ScalarProperty Name="DescriptImage" ColumnName="DescriptImage" />
+          <ScalarProperty Name="SmallImagePath" ColumnName="SmallImagePath" />
+          <ScalarProperty Name="FulllImagePath" ColumnName="FulllImagePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GameTag">
+      <EntityTypeMapping TypeName="PrintGameDataModel.GameTag">
+        <MappingFragment StoreEntitySet="GameTag">
+          <ScalarProperty Name="GameTagID" ColumnName="GameTagID" />
+          <ScalarProperty Name="GameID" ColumnName="GameID" />
+          <ScalarProperty Name="TagID" ColumnName="TagID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tag">
+      <EntityTypeMapping TypeName="PrintGameDataModel.Tag">
+        <MappingFragment StoreEntitySet="Tag">
+          <ScalarProperty Name="TagID" ColumnName="TagID" />
+          <ScalarProperty Name="TagName" ColumnName="TagName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
