@@ -1,4 +1,4 @@
-@import "init";
+//@import "init";
 
 @base_color: #666;
 
@@ -13,7 +13,15 @@ body {
     line-height: 1.2;
 }
 
+h1,h2,h3,h4{
+    margin-top:0;
+}
 
+header{
+    height:150px;
+
+    background: url('bg-header8.jpg') 0 0  repeat;
+}
 
 footer{
     border-top:2px solid @base_color + #777 ;
@@ -24,11 +32,74 @@ footer{
     a:hover{
         color:mix(@base_color,#ff0000,10%)
     }
+    
 }
 
+.row{
+    margin-top:10px;
+}
+
+.topic{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    color: #fff;
+    padding: 20px 20px 21px 37px;
+    background: url('bg-topic.png') 0 0 repeat;
+    
+    margin-bottom:5px;
+
+    a{
+        //color:mix(@base_color,#0094ff,10%);
+        color:white;
+    }
+}
+
+
 #main_wrapper {
-    min-width: 960px;
-    min-height: 100%;
     background: url('bg-main.gif') 0 0 repeat;
+}
+
+#column_left{
+    padding-left:0;
+    ul{
+        list-style:none;
+        padding:0;
+    }
+    li{
+        padding: 8px 20px;
+        font-size: 14px;
+        border-bottom: 1px solid #fff;
+        background-color:lighten(@base_color,45%);
+        
+    }
+    a{
+        color:black;
+    }
+}
+
+#column_main{
+    padding-right:0;
+    article{
+        margin-bottom:15px;
+        border: 1px solid #c6d9ec
+    }
+}
+
+.post{
+
+    .post_image{
+        height:300px;
+        width:300px;
+        float:left;
+        margin-right:10px;
+    }
+    .post_data{
+        margin-right:10px;
+        font-size: 14px;
+        line-height: 18px;
+        text-align:justify;
+        text-indent: 20px;
+    }
 }
 

@@ -15,9 +15,9 @@ namespace PrintGame
 
             routes.MapRoute(
                name: "Page",
-               url: "page/{id}",
-               defaults: new { controller = "Page", action = "Index", id = UrlParameter.Optional },
-               constraints: new { id = @"\d+" }
+               url: "page/{PageID}",
+               defaults: new { controller = "Page", action = "Index", PageID = UrlParameter.Optional },
+               constraints: new { PageID = @"\d+" }
            );
 
             routes.MapRoute(

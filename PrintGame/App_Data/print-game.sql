@@ -84,7 +84,44 @@ DELETE FROM GameImage WHERE GameID=@ID
 DELETE FROM Game WHERE GameID=@ID
 GO
 
-EXEC DeleteGameByID 
+--DROP FUNCTION GamePerPageQuantity
+--возвращает кол-во игр на листе
+GO
+CREATE FUNCTION GamePerPageQuantity()
+RETURNS int
+AS
+BEGIN
+DECLARE @tmp int =7;
+RETURN @tmp;
+END
+GO
+
+--возвращает страницу с играми
+CREATE PROCEDURE GetGamePage
+	@PageNum int = 0	--номер страницы
+AS
+	--извлекаем количество игр на странице
+	DECLARE @PageSize int =	dbo.GamePerPageQuantity();
+				
+	SELECT * FROM Game
+	ORDER BY GameID DESC
+	OFFSET @PageNum*@PageSize ROWS FETCH NEXT @PageSize ROWS ONLY
+GO
+
+--вернуть титульную картинку от игры
+CREATE PROCEDURE GetGameBoxImage
+	@GameID int		--Id игры
+AS
+	--берем самую первую картинку это и есть коробка с игрой
+	SELECT TOP 1 * FROM GameImage WHERE GameID=@GameID
+	ORDER By GameImageID 
+GO
+
+
+
+
+
+--EXEC DeleteGameByID 
 
 --DELETE FROM Game;
 SELECT * FROM Game

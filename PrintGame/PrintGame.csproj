@@ -185,6 +185,12 @@
     <Compile Include="GameTag.cs">
       <DependentUpon>PrintGameModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetGameBoxImage_Result.cs">
+      <DependentUpon>PrintGameModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetGamePage_Result.cs">
+      <DependentUpon>PrintGameModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -224,6 +230,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\print-game.sql" />
+    <Content Include="Content\bg-header.jpg" />
     <Content Include="Content\bg-main.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

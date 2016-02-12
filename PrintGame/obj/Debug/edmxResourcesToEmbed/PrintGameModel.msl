@@ -65,5 +65,37 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetGameBoxImage" FunctionName="Хранилище PrintGameDataModel.GetGameBoxImage">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrintGameDataModel.GetGameBoxImage_Result">
+          <ScalarProperty Name="GameImageID" ColumnName="GameImageID" />
+          <ScalarProperty Name="GameID" ColumnName="GameID" />
+          <ScalarProperty Name="DescriptImage" ColumnName="DescriptImage" />
+          <ScalarProperty Name="SmallImagePath" ColumnName="SmallImagePath" />
+          <ScalarProperty Name="FulllImagePath" ColumnName="FulllImagePath" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetGamePage" FunctionName="Хранилище PrintGameDataModel.GetGamePage">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PrintGameDataModel.GetGamePage_Result">
+          <ScalarProperty Name="GameID" ColumnName="GameID" />
+          <ScalarProperty Name="TitleRu" ColumnName="TitleRu" />
+          <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+          <ScalarProperty Name="CatalogName" ColumnName="CatalogName" />
+          <ScalarProperty Name="YearPublishing" ColumnName="YearPublishing" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Lang" ColumnName="Lang" />
+          <ScalarProperty Name="Descript" ColumnName="Descript" />
+          <ScalarProperty Name="NumOfPlayers" ColumnName="NumOfPlayers" />
+          <ScalarProperty Name="NumOfSuggested" ColumnName="NumOfSuggested" />
+          <ScalarProperty Name="SuggestedAges" ColumnName="SuggestedAges" />
+          <ScalarProperty Name="Acquaintance" ColumnName="Acquaintance" />
+          <ScalarProperty Name="PlayingTime" ColumnName="PlayingTime" />
+          <ScalarProperty Name="Components" ColumnName="Components" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

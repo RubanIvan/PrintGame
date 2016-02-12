@@ -107,6 +107,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="GetGameBoxImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GameID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetGamePage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PageNum" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="Хранилище PrintGameDataModelContainer">
     <EntitySet Name="FileShare" EntityType="Self.FileShare" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />

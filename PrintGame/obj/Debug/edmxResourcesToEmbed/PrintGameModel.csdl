@@ -137,5 +137,35 @@
       <End Role="Tag" EntitySet="Tag" />
       <End Role="GameTag" EntitySet="GameTag" />
     </AssociationSet>
+    <FunctionImport Name="GetGameBoxImage" ReturnType="Collection(PrintGameDataModel.GetGameBoxImage_Result)">
+      <Parameter Name="GameID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetGamePage" ReturnType="Collection(PrintGameDataModel.GetGamePage_Result)">
+      <Parameter Name="PageNum" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="GetGameBoxImage_Result">
+    <Property Type="Int32" Name="GameImageID" Nullable="false" />
+    <Property Type="Int32" Name="GameID" Nullable="true" />
+    <Property Type="String" Name="DescriptImage" Nullable="false" />
+    <Property Type="String" Name="SmallImagePath" Nullable="true" MaxLength="1024" />
+    <Property Type="String" Name="FulllImagePath" Nullable="true" MaxLength="1024" />
+  </ComplexType>
+  <ComplexType Name="GetGamePage_Result">
+    <Property Type="Int32" Name="GameID" Nullable="false" />
+    <Property Type="String" Name="TitleRu" Nullable="false" MaxLength="1024" />
+    <Property Type="String" Name="TitleEn" Nullable="false" MaxLength="1024" />
+    <Property Type="String" Name="CatalogName" Nullable="false" MaxLength="1024" />
+    <Property Type="Int32" Name="YearPublishing" Nullable="false" />
+    <Property Type="Single" Name="Rating" Nullable="false" />
+    <Property Type="String" Name="Lang" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Descript" Nullable="false" />
+    <Property Type="String" Name="NumOfPlayers" Nullable="true" MaxLength="512" />
+    <Property Type="String" Name="NumOfSuggested" Nullable="true" MaxLength="512" />
+    <Property Type="String" Name="SuggestedAges" Nullable="true" MaxLength="512" />
+    <Property Type="String" Name="Acquaintance" Nullable="true" MaxLength="512" />
+    <Property Type="String" Name="PlayingTime" Nullable="true" MaxLength="512" />
+    <Property Type="String" Name="Components" Nullable="false" />
+    <Property Type="DateTime" Name="CreateTime" Nullable="false" Precision="16" />
+  </ComplexType>
 </Schema>

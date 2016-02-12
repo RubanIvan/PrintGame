@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище PrintGameDataModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище PrintGameDataModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="FileShare">
           <Key>
             <PropertyRef Name="FileShareID" />
@@ -112,6 +112,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetGameBoxImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GameID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetGamePage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PageNum" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="Хранилище PrintGameDataModelContainer">
           <EntitySet Name="FileShare" EntityType="Self.FileShare" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
@@ -135,8 +141,7 @@
             <End Role="GameTag" EntitySet="GameTag" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PrintGameDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -277,7 +282,37 @@
             <End Role="Tag" EntitySet="Tag" />
             <End Role="GameTag" EntitySet="GameTag" />
           </AssociationSet>
+          <FunctionImport Name="GetGameBoxImage" ReturnType="Collection(PrintGameDataModel.GetGameBoxImage_Result)">
+            <Parameter Name="GameID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetGamePage" ReturnType="Collection(PrintGameDataModel.GetGamePage_Result)">
+            <Parameter Name="PageNum" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="GetGameBoxImage_Result">
+          <Property Type="Int32" Name="GameImageID" Nullable="false" />
+          <Property Type="Int32" Name="GameID" Nullable="true" />
+          <Property Type="String" Name="DescriptImage" Nullable="false" />
+          <Property Type="String" Name="SmallImagePath" Nullable="true" MaxLength="1024" />
+          <Property Type="String" Name="FulllImagePath" Nullable="true" MaxLength="1024" />
+        </ComplexType>
+        <ComplexType Name="GetGamePage_Result">
+          <Property Type="Int32" Name="GameID" Nullable="false" />
+          <Property Type="String" Name="TitleRu" Nullable="false" MaxLength="1024" />
+          <Property Type="String" Name="TitleEn" Nullable="false" MaxLength="1024" />
+          <Property Type="String" Name="CatalogName" Nullable="false" MaxLength="1024" />
+          <Property Type="Int32" Name="YearPublishing" Nullable="false" />
+          <Property Type="Single" Name="Rating" Nullable="false" />
+          <Property Type="String" Name="Lang" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Descript" Nullable="false" />
+          <Property Type="String" Name="NumOfPlayers" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="NumOfSuggested" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="SuggestedAges" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="Acquaintance" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="PlayingTime" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="Components" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" Precision="16" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -348,6 +383,38 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetGameBoxImage" FunctionName="Хранилище PrintGameDataModel.GetGameBoxImage">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrintGameDataModel.GetGameBoxImage_Result">
+                <ScalarProperty Name="GameImageID" ColumnName="GameImageID" />
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="DescriptImage" ColumnName="DescriptImage" />
+                <ScalarProperty Name="SmallImagePath" ColumnName="SmallImagePath" />
+                <ScalarProperty Name="FulllImagePath" ColumnName="FulllImagePath" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetGamePage" FunctionName="Хранилище PrintGameDataModel.GetGamePage">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PrintGameDataModel.GetGamePage_Result">
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="TitleRu" ColumnName="TitleRu" />
+                <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+                <ScalarProperty Name="CatalogName" ColumnName="CatalogName" />
+                <ScalarProperty Name="YearPublishing" ColumnName="YearPublishing" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Lang" ColumnName="Lang" />
+                <ScalarProperty Name="Descript" ColumnName="Descript" />
+                <ScalarProperty Name="NumOfPlayers" ColumnName="NumOfPlayers" />
+                <ScalarProperty Name="NumOfSuggested" ColumnName="NumOfSuggested" />
+                <ScalarProperty Name="SuggestedAges" ColumnName="SuggestedAges" />
+                <ScalarProperty Name="Acquaintance" ColumnName="Acquaintance" />
+                <ScalarProperty Name="PlayingTime" ColumnName="PlayingTime" />
+                <ScalarProperty Name="Components" ColumnName="Components" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

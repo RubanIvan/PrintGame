@@ -1,8 +1,31 @@
-﻿@model System.Collections.Generic.List<PrintGame.Models.PageModel>
+﻿@using PrintGame.Models
+@model System.Collections.Generic.List<PrintGame.Models.PageModel>
 
 @{
     ViewBag.Title = "title";
    // Layout = "_Layout";
 }
 
-<h2>title</h2>
+
+
+
+@{
+    foreach (PageModel game in Model)
+    {
+        <article class="clearfix">
+            <h2 class="topic">
+                <a href="">@game.TitleRu (@game.TitleEn) </a>
+            </h2>
+            <div class="post">
+                <div class="post_image">
+                    <a href="#">
+                        <img src="~/Content/GameData/@game.BoxImage" alt="@game.TitleRu"/>
+                    </a>
+                </div>
+                <div class="post_data">
+                   <p>@game.SmallDescript</p>
+                </div>
+            </div>
+        </article>
+    }
+}
