@@ -143,6 +143,9 @@
     <FunctionImport Name="GetGamePage" ReturnType="Collection(PrintGameDataModel.GetGamePage_Result)">
       <Parameter Name="PageNum" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="DeleteGameByID">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="GetGameBoxImage_Result">
     <Property Type="Int32" Name="GameImageID" Nullable="false" />

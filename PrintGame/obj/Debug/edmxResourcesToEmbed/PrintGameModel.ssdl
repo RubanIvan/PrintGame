@@ -107,6 +107,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="DeleteGameByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GamePerPageQuantity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
   <Function Name="GetGameBoxImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="GameID" Type="int" Mode="In" />
   </Function>

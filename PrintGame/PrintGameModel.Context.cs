@@ -50,5 +50,14 @@ namespace PrintGame
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetGamePage_Result>("GetGamePage", pageNumParameter);
         }
+    
+        public virtual int DeleteGameByID(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteGameByID", iDParameter);
+        }
     }
 }

@@ -97,5 +97,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DeleteGameByID" FunctionName="Хранилище PrintGameDataModel.DeleteGameByID" />
   </EntityContainerMapping>
 </Mapping>

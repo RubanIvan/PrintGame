@@ -5,6 +5,8 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using PrintGame.Models;
+using PrintGame.Proc;
+
 // ReSharper disable All
 
 namespace PrintGame.Controllers
@@ -48,13 +50,15 @@ namespace PrintGame.Controllers
                 //если обзац слишком большой сокращаем еще
                 if (p.SmallDescript.Length > 500) p.SmallDescript=p.SmallDescript.Remove(500) + "...</p>";
 
-                var img = entities.GetGameBoxImage(p.GameID).First();
+                PrintGameDataEntities entities1 = new PrintGameDataEntities();
+                var img = entities1.GetGameBoxImage(p.GameID).First();
+
                 p.BoxImage = img.SmallImagePath;
 
                 Page.Add(p);
             }
 
-
+            ViewBag.Pangination=PagePangination.GetPangination((int)PageID, 50);
             return View(Page);
         }
     }

@@ -112,6 +112,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="DeleteGameByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GamePerPageQuantity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="GetGameBoxImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="GameID" Type="int" Mode="In" />
         </Function>
@@ -283,10 +287,13 @@
             <End Role="GameTag" EntitySet="GameTag" />
           </AssociationSet>
           <FunctionImport Name="GetGameBoxImage" ReturnType="Collection(PrintGameDataModel.GetGameBoxImage_Result)">
-            <Parameter Name="GameID" Mode="In" Type="Int32" />
+          <Parameter Name="GameID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetGamePage" ReturnType="Collection(PrintGameDataModel.GetGamePage_Result)">
-            <Parameter Name="PageNum" Mode="In" Type="Int32" />
+          <Parameter Name="PageNum" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteGameByID">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetGameBoxImage_Result">
@@ -415,6 +422,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DeleteGameByID" FunctionName="Хранилище PrintGameDataModel.DeleteGameByID" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

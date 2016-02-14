@@ -6,9 +6,6 @@
    // Layout = "_Layout";
 }
 
-
-
-
 @{
     foreach (PageModel game in Model)
     {
@@ -28,4 +25,10 @@
             </div>
         </article>
     }
+
+    <div class="pang">
+        <ul class="pagination">
+            @Html.Raw(ViewBag.Pangination);
+        </ul>
+    </div>
 }
