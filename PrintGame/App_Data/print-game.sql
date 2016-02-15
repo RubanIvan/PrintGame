@@ -33,15 +33,13 @@ REFERENCES Game(GameID)
 
 
 --DROP TABLE Tag
-
--- таблица содержит список кэгов
+-- таблица содержит список тэгов
 CREATE TABLE Tag(
 		TagID			int IDENTITY NOT NULL PRIMARY KEY,	--идентификатор  Тэга
 		TagName			nvarchar(512) NOT NULL UNIQUE,		--Тэг
 )
 
 --DROP TABLE GameTag
-
 -- таблица отношения многих ко многим
 CREATE TABLE GameTag(
 		GameTagID			int IDENTITY NOT NULL PRIMARY KEY,	--идентификатор  Тэга
@@ -78,7 +76,6 @@ GO
 CREATE PROC DeleteGameByID
 @ID int
 AS
-
 DELETE FROM GameTag WHERE GameID=@ID
 DELETE FROM GameImage WHERE GameID=@ID
 DELETE FROM Game WHERE GameID=@ID
@@ -86,7 +83,6 @@ GO
 
 --DROP FUNCTION GamePerPageQuantity
 --возвращает кол-во игр на листе
-GO
 CREATE FUNCTION GamePerPageQuantity()
 RETURNS int
 AS
@@ -108,13 +104,6 @@ AS
 	OFFSET @PageNum*@PageSize ROWS FETCH NEXT @PageSize ROWS ONLY
 GO
 
-EXEC GamePerPageQuantity;
-
-EXEC GetGamePage 0;
-EXEC GetGamePage 1;
-EXEC GetGamePage 2;
-
-
 
 --вернуть титульную картинку от игры
 CREATE PROCEDURE GetGameBoxImage
@@ -127,7 +116,7 @@ GO
 
 
 
-
+-------------------------------------------------------------------------
 
 --EXEC DeleteGameByID 
 
@@ -143,3 +132,7 @@ SELECT * FROM FileShare;
 
 --DELETE FROM Game WHERE GameID=7
 
+EXEC GamePerPageQuantity;
+EXEC GetGamePage 0;
+EXEC GetGamePage 1;
+EXEC GetGamePage 2;

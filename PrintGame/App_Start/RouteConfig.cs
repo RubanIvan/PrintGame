@@ -21,6 +21,13 @@ namespace PrintGame
            );
 
             routes.MapRoute(
+               name: "Licensing",
+               url: "licence",
+               defaults: new { controller = "Licence", action = "Index" }
+            );
+
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Page", action = "Index", id = UrlParameter.Optional }

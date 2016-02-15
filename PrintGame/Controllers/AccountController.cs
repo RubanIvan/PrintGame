@@ -391,7 +391,7 @@ namespace PrintGame.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Page");
         }
 
         //
@@ -448,7 +448,8 @@ namespace PrintGame.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            //return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index","Page");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

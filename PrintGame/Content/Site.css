@@ -16,7 +16,7 @@ h4 {
 }
 header {
   height: 150px;
-  background: url('bg-header8.jpg') 0 0 repeat;
+  background: url('bg-header.jpg') 0 0;
 }
 footer {
   border-top: 2px solid #dddddd;
@@ -27,6 +27,7 @@ footer a {
 }
 footer a:hover {
   color: #f00a0a;
+  text-decoration: underline;
 }
 .row {
   margin-top: 10px;
@@ -41,14 +42,17 @@ article {
   color: #fff;
   padding: 20px 20px 21px 37px;
   background: url('bg-topic.png') 0 0 repeat;
-  margin-bottom: 5px;
+  margin: 2px 2px 5px 2px;
 }
-.topic a {
+a {
   color: white;
 }
 .pang {
   text-align: center;
   margin-bottom: 20px;
+}
+.pagination a {
+  color: #428bca;
 }
 .pagination li > span {
   color: #b3b3b3;
@@ -58,22 +62,6 @@ article {
 }
 #main_wrapper {
   background: url('bg-main.gif') 0 0 repeat;
-}
-#column_left {
-  padding-left: 0;
-}
-#column_left ul {
-  list-style: none;
-  padding: 0;
-}
-#column_left li {
-  padding: 8px 20px;
-  font-size: 14px;
-  border-bottom: 1px solid #fff;
-  background-color: #d9d9d9;
-}
-#column_left a {
-  color: black;
 }
 #column_main {
   padding-right: 0;
@@ -96,4 +84,82 @@ article {
   line-height: 18px;
   text-align: justify;
   text-indent: 20px;
+}
+#licence {
+  border: 1px solid #c6d9ec;
+  background: url('groove_paper.png') 0 0 repeat;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 13px;
+}
+#licence h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+#licence ul {
+  list-style: none;
+  margin-bottom: 25px;
+}
+#licence ul li {
+  text-indent: 10px;
+}
+#licence p {
+  text-indent: 20px;
+}
+#column_left {
+  padding-left: 0;
+}
+#column_left .left_cell {
+  border: 1px solid #9e9c9c;
+  margin-bottom: 10px;
+}
+#column_left ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+#column_left li {
+  padding: 8px 20px;
+  font-size: 14px;
+  border-bottom: 1px solid #fff;
+  background-color: #d9d9d9;
+}
+#column_left li:last-child {
+  border-bottom: none;
+}
+#column_left a {
+  color: black;
+}
+#login_form {
+  background-color: #d9d9d9;
+}
+#login_form form {
+  margin: 0;
+  font-size: 14px;
+  color: black;
+  padding-bottom: 5px;
+}
+#login_form form p {
+  margin-top: 5px;
+  margin-bottom: 1px;
+  margin-left: 3px;
+}
+#login_form form input {
+  margin-left: 5px;
+}
+#login_form form input[type="submit"] {
+  margin-top: 3px;
+}
+#login_form form a {
+  color: #666;
+}
+#login_form form div {
+  margin-top: 10px;
+  margin-left: 5px;
+  padding-bottom: 5px;
+}
+#login_form p {
+  color: black;
+  font-size: 14px;
+  margin-left: 15px;
 }
