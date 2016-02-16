@@ -118,7 +118,7 @@ GO
 
 -------------------------------------------------------------------------
 
---EXEC DeleteGameByID 
+--EXEC DeleteGameByID 27
 
 --DELETE FROM Game;
 SELECT * FROM Game
@@ -127,6 +127,8 @@ SELECT * FROM GameTag
 SELECT * FROM FileShare;
 
 --DELETE FROM GameImage;
+
+--DELETE FROM FileShare WHERE GameID=22
 
 --DELETE FROM GameTag
 
