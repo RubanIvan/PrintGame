@@ -16,9 +16,14 @@ h4 {
 }
 header {
   height: 150px;
-  background: url('bg-header.jpg') 0 0;
+  background: url('bg-header.jpg') 0 0px;
+}
+header .logo_main {
+  padding-left: 20px;
+  padding-top: 30px;
 }
 footer {
+  background-color: black;
   border-top: 2px solid #dddddd;
   text-align: center;
 }
