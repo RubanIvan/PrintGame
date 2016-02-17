@@ -1,2 +1,8 @@
+git remote add origin git@bitbucket.org:vanurik/print-game.git
+git push -u origin --all # pushes up the repo and its refs for the first time
+git push -u origin --tags # pushes up any tags
+
+
+
 git remote add origin https://github.com/RubanIvan/PrintGame.git
 git push -u origin master
