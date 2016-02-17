@@ -26,7 +26,41 @@ namespace PrintGame.Controllers
 
             GameModel model =new GameModel();
 
+
+            PrintGameDataEntities entities = new PrintGameDataEntities();
+           
+            
+            var query = entities.Game.Where( gm => gm.GameID == GameId).Select(g => 
+                        new GameModel()
+                        {
+                            CatalogName = g.CatalogName,
+                            TitleEn = g.TitleEn,
+                            Tags = entities.GameTag.Where(t => g.GameID == t.GameID).ToList(),
+                            FileShares = entities.FileShare.Where(f => g.GameID == f.GameID).ToList()
+
+                        });
+
+            var result = query.FirstOrDefault();
+
             return View(model);
         }
+
+        //public ActionResult GetGame(int GameId)
+        //{
+        //    //PrintGameDataEntities entities = new PrintGameDataEntities();
+
+        //    //var query = from g in entities.Game
+        //    //    where g.GameID == GameId
+        //    //    select new GameModel()
+        //    //    {
+        //    //        CatalogName = g.CatalogName,
+        //    //        TitleEn = g.TitleEn,
+        //    //        Tags = entities.GameTag.Where(t => g.GameID == t.GameID).ToList(),
+        //    //        FileShares = entities.FileShare.Where(f => g.GameID == f.GameID).ToList()
+
+        //    //    };
+
+        //    //return view()
+        //}
     }
 }

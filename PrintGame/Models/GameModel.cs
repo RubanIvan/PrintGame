@@ -18,5 +18,13 @@ namespace PrintGame.Models
 
         /// <summary>Каталог с игрой</summary>
         public string CatalogName;
+
+        public List<GameImage> GameImages;
+
+        public List<FileShare> FileShares;
+
+        public List<GameTag> Tags;
+
+
     }
 }
