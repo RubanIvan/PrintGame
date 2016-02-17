@@ -22,8 +22,14 @@ namespace PrintGame.Models
         /// <summary>Урезаное описание игры</summary>
         public string SmallDescript;
 
+        /// <summary>Рейтинг игры</summary>
+        public float Rating;
+
         /// <summary>Путь до титульной картинки</summary>
         public string BoxImage;
+
+        //SEO ссылка на игру
+        public string SEOGameUrl;
 
         //    NumOfPlayers nvarchar(512),						--Количество игроков
         //    NumOfSuggested nvarchar(512),						--Рекомендуемое количество игроков

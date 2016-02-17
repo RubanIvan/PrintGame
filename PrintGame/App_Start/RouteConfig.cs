@@ -21,6 +21,13 @@ namespace PrintGame
            );
 
             routes.MapRoute(
+               name: "Game",
+               url: "game/{GameIdAndSlug}",
+               defaults: new { controller = "Game", action = "Index"}
+               //constraints: new { GameID = @"\d+" }
+            );
+
+            routes.MapRoute(
                name: "Licensing",
                url: "licence",
                defaults: new { controller = "Licence", action = "Index" }

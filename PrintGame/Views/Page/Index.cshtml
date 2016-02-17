@@ -2,8 +2,8 @@
 @model System.Collections.Generic.List<PrintGame.Models.PageModel>
 
 @{
-    //ViewBag.Title = "title";
-   // Layout = "_Layout";
+//ViewBag.Title = "title";
+// Layout = "_Layout";
 }
 
 @{
@@ -11,18 +11,25 @@
     {
         <article class="clearfix">
             <h2 class="topic">
-                <a href="">@game.TitleRu (@game.TitleEn) </a>
+                <a href=@game.SEOGameUrl>@game.TitleRu (@game.TitleEn) </a>
             </h2>
             <div class="post">
                 <div class="post_image">
-                    <a href="#">
-                        <img src="~/Content/GameData/@game.BoxImage" alt="@game.TitleRu"/>
+                    <a href=@game.SEOGameUrl>
+                        <img src="~/Content/GameData/@game.BoxImage" alt="@game.TitleRu" />
                     </a>
                 </div>
-                <div class="post_data">
-                   <p>@game.SmallDescript</p>
+                <div class="post_data clearfix">
+                    <p>@game.SmallDescript</p>
+                </div>
+                <div class="ratio ">
+                    <div style="width: @game.Rating.ToString("##")%"></div>
+                </div>
+                <div>
+                    <a  class="btn btn-default " href=@game.SEOGameUrl>Скачать</a>
                 </div>
             </div>
+
         </article>
     }
 

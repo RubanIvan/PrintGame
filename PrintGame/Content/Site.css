@@ -34,6 +34,17 @@ footer a:hover {
   color: #f00a0a;
   text-decoration: underline;
 }
+.ratio {
+  width: 108px;
+  height: 19px;
+  background-image: url('rating stars empty.png');
+  margin-left: 5px;
+}
+.ratio > div {
+  background-image: url('rating stars full.png');
+  height: 19px;
+  width: 22px;
+}
 .row {
   margin-top: 10px;
 }
@@ -74,6 +85,15 @@ a {
 #column_main article {
   margin-bottom: 15px;
   border: 1px solid #c6d9ec;
+}
+.post a {
+  color: #0D377C;
+  font-weight: 700;
+}
+.post > div:last-child {
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-bottom: 5px;
 }
 .post .post_image {
   height: 300px;

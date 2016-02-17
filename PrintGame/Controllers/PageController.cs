@@ -40,6 +40,7 @@ namespace PrintGame.Controllers
                 p.GameID = pageResult.GameID;
                 p.TitleRu = pageResult.TitleRu;
                 p.TitleEn = pageResult.TitleEn;
+                p.Rating = pageResult.Rating*10;
 
                 //сокращаем до 1 абзаца описание
                 int s_begin = pageResult.Descript.IndexOf("<p>")+3;
@@ -50,10 +51,12 @@ namespace PrintGame.Controllers
                 //если обзац слишком большой сокращаем еще
                 if (p.SmallDescript.Length > 500) p.SmallDescript=p.SmallDescript.Remove(500) + "...</p>";
 
+                //получаем ссылку на титульную картинку
                 PrintGameDataEntities entities1 = new PrintGameDataEntities();
                 var img = entities1.GetGameBoxImage(p.GameID).First();
-
                 p.BoxImage = img.SmallImagePath;
+
+                p.SEOGameUrl = $"/game/{p.GameID}-{Slug.Create(p.TitleEn)}";
 
                 Page.Add(p);
             }
