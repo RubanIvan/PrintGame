@@ -225,6 +225,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PrintGameModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Proc\Constants.cs" />
     <Compile Include="Proc\PagePangination.cs" />
     <Compile Include="Proc\Slug.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -240,6 +241,11 @@
     <Content Include="Content\bg-main.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\IconAcquaintance.png" />
+    <Content Include="Content\IconNumOfPlayers.png" />
+    <Content Include="Content\IconNumOfSuggested.png" />
+    <Content Include="Content\IconPlayingTime.png" />
+    <Content Include="Content\IconSuggestedAges.png" />
     <Content Include="Content\logo-main.png" />
     <Content Include="Content\rating stars empty.png" />
     <Content Include="Content\rating stars full.png" />
@@ -278,6 +284,7 @@
     </None>
     <Content Include="Content\licence.less" />
     <Content Include="Content\left_panel.less" />
+    <Content Include="Content\game.less" />
     <None Include="Properties\PublishProfiles\zeus server.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

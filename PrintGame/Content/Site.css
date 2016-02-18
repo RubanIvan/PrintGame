@@ -188,3 +188,20 @@ a {
   font-size: 14px;
   margin-left: 15px;
 }
+#game {
+  border: 1px solid #c6d9ec;
+  background: url('groove_paper.png') 0 0 repeat;
+}
+#game .post {
+  float: left;
+}
+#game .gameIcon {
+  font-size: 14px;
+  margin-left: 310px;
+}
+#game .gameIcon ul {
+  list-style: none;
+}
+#game .gameIcon ul li {
+  margin-bottom: 5px;
+}

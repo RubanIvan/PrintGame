@@ -32,9 +32,12 @@ namespace PrintGame.Controllers
             List<PageModel> Page =new List<PageModel>();
 
             PrintGameDataEntities entities= new PrintGameDataEntities();
-            var GamePage=entities.GetGamePage(PageID);
 
-            foreach (GetGamePage_Result pageResult in GamePage)
+            //var GamePage=entities.GetGamePage(PageID);
+            // foreach (GetGamePage_Result pageResult in GamePage)
+            var GamePage = entities.Game.OrderByDescending(g => g.GameID).Skip((int)(PageID-1)*Constants.GamePerPage).Take(Constants.GamePerPage);
+            
+            foreach (Game pageResult in GamePage)
             {
                 PageModel p=new PageModel();
                 p.GameID = pageResult.GameID;

@@ -22,45 +22,58 @@ namespace PrintGame.Controllers
             {
                 return HttpNotFound();
             }
-            if(GameId <0) return HttpNotFound();
+            if (GameId < 0) return HttpNotFound();
 
-            GameModel model =new GameModel();
+            GameModel model = new GameModel();
 
 
             PrintGameDataEntities entities = new PrintGameDataEntities();
-           
-            
-            var query = entities.Game.Where( gm => gm.GameID == GameId).Select(g => 
-                        new GameModel()
+
+
+            //var query = entities.Game.Where( gm => gm.GameID == GameId).Select(g => 
+            //            new GameModel()
+            //            {
+            //                CatalogName = g.CatalogName,
+            //                TitleEn = g.TitleEn,
+            //                Tags = entities.GameTag.Where(t => g.GameID == t.GameID).ToList(),
+            //                FileShares = entities.FileShare.Where(f => g.GameID == f.GameID).ToList()
+
+            //            });
+
+            var query = from g in entities.Game 
+                        where g.GameID == GameId
+                        select new GameModel()
                         {
-                            CatalogName = g.CatalogName,
+                            GameID = g.GameID,
+                            TitleRu = g.TitleRu,
                             TitleEn = g.TitleEn,
-                            Tags = entities.GameTag.Where(t => g.GameID == t.GameID).ToList(),
-                            FileShares = entities.FileShare.Where(f => g.GameID == f.GameID).ToList()
+                            CatalogName = g.CatalogName,
+                            YearPublishing = g.YearPublishing,
+                            Rating = g.Rating,
+                            Lang = g.Lang,
+                            Descript = g.Descript,
+                            NumOfPlayers = g.NumOfPlayers,
+                            NumOfSuggested = g.NumOfSuggested,
+                            SuggestedAges = g.SuggestedAges,
+                            Acquaintance = g.Acquaintance,
+                            PlayingTime = g.PlayingTime,
+                            Components = g.Components,
+                            CreateTime = g.CreateTime,
 
-                        });
+                            GameImages=entities.GameImage.Where(i=>g.GameID==i.GameID).OrderBy(i=>i.GameImageID).ToList(),
+                            FileShares =entities.FileShare.Where(f=>g.GameID==f.GameID).OrderBy(f=>f.FileShareID).ToList(),
 
-            var result = query.FirstOrDefault();
+                            //Tags = (entities.GameTag.Where(gt => g.GameID == gt.GameID)).Where(tt=>tt.)
+                            //Tags = entities.Tag.Where (t=>t.TagID==entities.GameTag.=>g.GameID==gt.GameID)))
+                            //Tags = entities.GameTag.Where(gt=>g.GameID==gt.GameID)
+                        };
+
+            
+            model = query.FirstOrDefault();
 
             return View(model);
         }
 
-        //public ActionResult GetGame(int GameId)
-        //{
-        //    //PrintGameDataEntities entities = new PrintGameDataEntities();
 
-        //    //var query = from g in entities.Game
-        //    //    where g.GameID == GameId
-        //    //    select new GameModel()
-        //    //    {
-        //    //        CatalogName = g.CatalogName,
-        //    //        TitleEn = g.TitleEn,
-        //    //        Tags = entities.GameTag.Where(t => g.GameID == t.GameID).ToList(),
-        //    //        FileShares = entities.FileShare.Where(f => g.GameID == f.GameID).ToList()
-
-        //    //    };
-
-        //    //return view()
-        //}
     }
 }

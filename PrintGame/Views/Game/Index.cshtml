@@ -1,8 +1,58 @@
 ﻿@model PrintGame.Models.GameModel
 
 @{
-    //ViewBag.Title = "title";
-    
+//ViewBag.Title = "title";
+
 }
 
-<h2>title</h2>
+<div id="game" class="clearfix">
+
+    <h2 class="topic">
+        @Model.TitleRu (@Model.TitleEn)
+    </h2>
+
+    <div class="post">
+        <div class="post_image">
+            <img src="~/Content/GameData/@Model.GameImages.First().SmallImagePath" alt="@Model.TitleRu" />
+        </div>
+    </div>
+
+    <div class="gameIcon">
+
+        <div class="container">
+            <div class="row col-xs-6">
+                <h4>Параметры:</h4>
+                <ul>
+                    <li>
+                        <img src="~/Content/IconNumOfPlayers.png" title="Количество игроков" />
+                        <span>: @Model.NumOfPlayers игроков</span>
+                    </li>
+                    <li>
+                        <img src="~/Content/IconNumOfSuggested.png" title="Рекомендуемое количество игроков" />
+                        <span>: @Model.NumOfSuggested игроков</span>
+                    </li>
+                    <li>
+                        <img src="~/Content/IconSuggestedAges.png" title="Рекомендуемый возраст игроков" />
+                        <span>: @Model.SuggestedAges лет</span>
+                    </li>
+                    <li>
+                        <img src="~/Content/IconAcquaintance.png" title="Время освоения игры" />
+                        <span>: @Model.Acquaintance минут</span>
+                    </li>
+                    <li>
+                        <img src="~/Content/IconPlayingTime.png" title="Время партии" />
+                        <span>: @Model.PlayingTime минут</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="row col-xs-6">
+                <h4>Состав коробки:</h4>
+                <ul>
+                    @Html.Raw(Model.Components)
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -19,12 +19,49 @@ namespace PrintGame.Models
         /// <summary>Каталог с игрой</summary>
         public string CatalogName;
 
+        /// <summary>Год издания</summary>
+        public int YearPublishing;
+
+        /// <summary> Средний рейтинг </summary>
+        public float Rating;
+
+        /// <summary>Язык игры</summary>
+        public string Lang;
+
+        /// <summary>Описание игры</summary>
+        public string Descript;
+
+        /// <summary>Количество игроков</summary>
+        public string NumOfPlayers;
+
+        /// <summary>Рекомендуемое количество игроков</summary>
+        public string NumOfSuggested;
+
+        /// <summary>Рекомендуемый возраст игроков</summary>
+        public string SuggestedAges;
+
+        /// <summary>Время освоения игры</summary>
+        public string Acquaintance;
+
+        /// <summary>Время партии </summary>
+        public string PlayingTime;
+
+        /// <summary>Состав коробки</summary>
+        public string Components;
+
+        /// <summary>Время добавления в базу</summary>
+        public DateTime CreateTime;
+        
+        /// <summary>Список картинок</summary>
         public List<GameImage> GameImages;
 
+        /// <summary>Список внешних ссылок на файлы</summary>
         public List<FileShare> FileShares;
 
-        public List<GameTag> Tags;
-
+        /// <summary>Список тэгов</summary>
+        public List<Tag> Tags;
 
     }
+
+    
 }
