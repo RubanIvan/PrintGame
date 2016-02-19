@@ -3,26 +3,94 @@
     border: 1px solid #c6d9ec;
     background: url('groove_paper.png') 0 0 repeat;
 
-    .post {
+    #GameImage {
         float: left;
+        margin-right: 10px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+
+        #Main_image {
+            margin-bottom: 5px;
+        }
+
+        #ImageList {
+            width: 300px;
+            position: relative;
+
+            #view_scroll_left, #view_scroll_right {
+                width: 10px;
+                height: 0;
+                display: block;
+                padding: 80px 0 0 0;
+                overflow: hidden;
+                background: url('arrow.png') 0 0 no-repeat;
+                position: absolute;
+                top: 0;
+            }
+
+            #view_scroll_right {
+                background-position: 0 -80px;
+                right: 0;
+            }
+
+            #Thumb_List {
+                width: 266px;
+                height: 82px;
+                //margin: 0 0 0 20px;
+                overflow: hidden;
+            }
+
+            img {
+                height: 80px;
+                width: 80px;
+            }
+
+            ul {
+                list-style: none;
+                width: 3000px;
+                padding-left: 17px;
+
+                li {
+                    display: list-item;
+                    float: left;
+                    margin-right: 10px;
+                }
+                /*li:nth-child(1), li:nth-child(2), li:nth-child(3) {
+                    display: inline-block;
+                }*/
+            }
+        }
     }
 
     .gameIcon {
         font-size: 14px;
-        margin-left:310px;
+        margin-left: 310px;
+
         ul {
             list-style: none;
+            margin-left: 10px;
+            padding-left: 0;
 
             li {
-                margin-bottom:5px;
+                margin-bottom: 5px;
             }
         }
 
+        #col_param {
+            float: left;
+            height: 280px;
+            width: 150px;
 
-        li > img {
+            li:last-child {
+                margin-top: 20px;
+            }
         }
 
-        li:nth-child(1) {
+        #col_consist {
+            margin-left: 150px;
+        }
+
+        li > img {
         }
     }
 }

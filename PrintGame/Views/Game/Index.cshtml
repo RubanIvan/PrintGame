@@ -11,42 +11,65 @@
         @Model.TitleRu (@Model.TitleEn)
     </h2>
 
-    <div class="post">
-        <div class="post_image">
-            <img src="~/Content/GameData/@Model.GameImages.First().SmallImagePath" alt="@Model.TitleRu" />
+    <div id="GameImage">
+        <div Id="Main_image">
+            <img src="@Html.Raw("/Content/GameData" + @Model.GameImages.First().SmallImagePath)" alt="@Model.TitleRu" />
+            </div>
+        <div id="ImageList">
+            <a href="javascript:{}" id="view_scroll_left" title="Другие изображения" style="cursor: pointer; opacity: 1; display: none;">Предыдущая</a>
+            <div id="Thumb_List" >
+                <ul>
+                    @for (int i = 0; i < Model.GameImages.Count; i++)
+                    {
+                        <li>
+                            <img src="@Html.Raw("/Content/GameData" + @Model.GameImages[i].SmallImagePath)" alt="@Model.GameImages[i].DescriptImage" />
+                        </li>
+                    }
+                </ul>
+            </div>
+            <a href="javascript:{}" id="view_scroll_right" title="Другие изображения" style="cursor: pointer; opacity: 1; display: block;">Следующая</a>
         </div>
     </div>
 
     <div class="gameIcon">
 
-        <div class="container">
-            <div class="row col-xs-6">
+        @* <div class="container-fluid clearfix">*@
+        <div class="clearfix">
+            <div id="col_param">
                 <h4>Параметры:</h4>
                 <ul>
                     <li>
-                        <img src="~/Content/IconNumOfPlayers.png" title="Количество игроков" />
-                        <span>: @Model.NumOfPlayers игроков</span>
+                        <img src="/Content/IconNumOfPlayers.png" title="Количество игроков" />
+                        <span>@Model.NumOfPlayers игроков</span>
                     </li>
                     <li>
-                        <img src="~/Content/IconNumOfSuggested.png" title="Рекомендуемое количество игроков" />
-                        <span>: @Model.NumOfSuggested игроков</span>
+                        <img src="/Content/IconNumOfSuggested.png" title="Рекомендуемое количество игроков" />
+                        <span>@Model.NumOfSuggested игроков</span>
                     </li>
                     <li>
-                        <img src="~/Content/IconSuggestedAges.png" title="Рекомендуемый возраст игроков" />
-                        <span>: @Model.SuggestedAges лет</span>
+                        <img src="/Content/IconSuggestedAges.png" title="Рекомендуемый возраст игроков от" />
+                        <span>@Model.SuggestedAges лет</span>
                     </li>
                     <li>
-                        <img src="~/Content/IconAcquaintance.png" title="Время освоения игры" />
-                        <span>: @Model.Acquaintance минут</span>
+                        <img src="/Content/IconAcquaintance.png" title="Время освоения игры" />
+                        <span>@Model.Acquaintance минут</span>
                     </li>
                     <li>
                         <img src="~/Content/IconPlayingTime.png" title="Время партии" />
-                        <span>: @Model.PlayingTime минут</span>
+                        <span>@Model.PlayingTime минут</span>
+                    </li>
+                    <li>
+                        <img src="~/Content/IconYearPublishing.png" title="Год издания" />
+                        <span>@Model.YearPublishing год</span>
+                    </li>
+                    <li>
+                        <img src="~/Content/IconRating.png" title="Средний рейтинг" />
+                        <span>@Model.Rating бала</span>
                     </li>
                 </ul>
             </div>
-            <div class="row col-xs-6">
-                <h4>Состав коробки:</h4>
+            <div id="col_consist">
+                <h4>Состав&nbsp;коробки:</h4>
                 <ul>
                     @Html.Raw(Model.Components)
                 </ul>
@@ -56,3 +79,55 @@
 
 
 </div>
+
+@section scripts
+{
+    <script>
+        var ImageList = new Array();
+        var ImageIndex = new Object();
+        ImageIndex = 0;
+
+        @foreach (GameImage gameImage in Model.GameImages)
+        {
+           @Html.Raw("ImageList.push({" + $" \"GameImageID \": {gameImage.GameImageID}, " +
+                     $"\"FulllImagePath\": \"/Content/GameData{gameImage.FulllImagePath}\" , " +
+                     $"\"SmallImagePath\": \"/Content/GameData{gameImage.SmallImagePath}\" , " +
+                     $"\"DescriptImage\": \"{gameImage.DescriptImage}\" " +"});\n");
+            
+        }
+
+        function ShowImage() {
+            $("#ImageList ul>li:nth-child(1)>img")
+                .attr({ src: ImageList[ImageIndex].SmallImagePath });
+            $("#ImageList ul>li:nth-child(2)>img")
+                .attr({ src: ImageList[ImageIndex + 1].SmallImagePath });
+            $("#ImageList ul>li:nth-child(3)>img")
+                .attr({ src: ImageList[ImageIndex + 2].SmallImagePath });
+        }
+ 
+        $("#view_scroll_right").click(function() {
+            ImageIndex++;
+
+            if (ImageIndex == ImageList.length-3) {
+                $("#view_scroll_right").hide();
+            }
+            $("#view_scroll_left").show();
+
+            ShowImage();
+
+        });
+
+        $("#view_scroll_left").click(function () {
+            ImageIndex--;
+            
+            if (ImageIndex == 0) {
+                $("#view_scroll_left").hide();
+
+            }
+            $("#view_scroll_right").show();
+            ShowImage();
+
+        });
+
+    </script>
+}    

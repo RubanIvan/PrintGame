@@ -1,0 +1,12 @@
+D:\Projects\PrintGame\Kostil1\bin\Debug\Kostil1.exe.config
+D:\Projects\PrintGame\Kostil1\bin\Debug\Kostil1.exe
+D:\Projects\PrintGame\Kostil1\bin\Debug\Kostil1.pdb
+D:\Projects\PrintGame\Kostil1\bin\Debug\EntityFramework.dll
+D:\Projects\PrintGame\Kostil1\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\PrintGame\Kostil1\bin\Debug\EntityFramework.xml
+D:\Projects\PrintGame\Kostil1\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projects\PrintGame\Kostil1\bin\Debug\ru\EntityFramework.resources.dll
+D:\Projects\PrintGame\Kostil1\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+D:\Projects\PrintGame\Kostil1\obj\Debug\Kostil1.csprojResolveAssemblyReference.cache
+D:\Projects\PrintGame\Kostil1\obj\Debug\Kostil1.exe
+D:\Projects\PrintGame\Kostil1\obj\Debug\Kostil1.pdb

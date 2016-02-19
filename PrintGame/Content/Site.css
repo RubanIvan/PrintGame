@@ -7,6 +7,7 @@ body {
   font: normal 12px "Arial", Arial, Helvetica, sans-serif;
   color: #666;
   line-height: 1.2;
+  min-width: 970px;
 }
 h1,
 h2,
@@ -81,6 +82,7 @@ a {
 }
 #column_main {
   padding-right: 0;
+  padding-left: 0;
 }
 #column_main article {
   margin-bottom: 15px;
@@ -192,8 +194,55 @@ a {
   border: 1px solid #c6d9ec;
   background: url('groove_paper.png') 0 0 repeat;
 }
-#game .post {
+#game #GameImage {
   float: left;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+#game #GameImage #Main_image {
+  margin-bottom: 5px;
+}
+#game #GameImage #ImageList {
+  width: 300px;
+  position: relative;
+}
+#game #GameImage #ImageList #view_scroll_left,
+#game #GameImage #ImageList #view_scroll_right {
+  width: 10px;
+  height: 0;
+  display: block;
+  padding: 80px 0 0 0;
+  overflow: hidden;
+  background: url('arrow.png') 0 0 no-repeat;
+  position: absolute;
+  top: 0;
+}
+#game #GameImage #ImageList #view_scroll_right {
+  background-position: 0 -80px;
+  right: 0;
+}
+#game #GameImage #ImageList #Thumb_List {
+  width: 266px;
+  height: 82px;
+  overflow: hidden;
+}
+#game #GameImage #ImageList img {
+  height: 80px;
+  width: 80px;
+}
+#game #GameImage #ImageList ul {
+  list-style: none;
+  width: 3000px;
+  padding-left: 17px;
+  /*li:nth-child(1), li:nth-child(2), li:nth-child(3) {
+                    display: inline-block;
+                }*/
+}
+#game #GameImage #ImageList ul li {
+  display: list-item;
+  float: left;
+  margin-right: 10px;
 }
 #game .gameIcon {
   font-size: 14px;
@@ -201,7 +250,20 @@ a {
 }
 #game .gameIcon ul {
   list-style: none;
+  margin-left: 10px;
+  padding-left: 0;
 }
 #game .gameIcon ul li {
   margin-bottom: 5px;
+}
+#game .gameIcon #col_param {
+  float: left;
+  height: 280px;
+  width: 150px;
+}
+#game .gameIcon #col_param li:last-child {
+  margin-top: 20px;
+}
+#game .gameIcon #col_consist {
+  margin-left: 150px;
 }
