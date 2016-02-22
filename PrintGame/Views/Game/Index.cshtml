@@ -5,7 +5,11 @@
 
 }
 
+
+
 <div id="game" class="clearfix">
+
+    
 
     <h2 class="topic">
         @Model.TitleRu (@Model.TitleEn)
@@ -14,10 +18,13 @@
     <div id="GameImage">
         <div Id="Main_image">
             <img src="@Html.Raw("/Content/GameData" + @Model.GameImages.First().SmallImagePath)" alt="@Model.TitleRu" />
-            </div>
+        </div>
         <div id="ImageList">
-            <a href="javascript:{}" id="view_scroll_left" title="Другие изображения" style="cursor: pointer; opacity: 1; display: none;">Предыдущая</a>
-            <div id="Thumb_List" >
+
+            <div class="nav_btn">
+                <a href="javascript:{}" id="view_scroll_left" title="Другие изображения" style="cursor: pointer; opacity: 1; display: none;">Предыдущая</a>
+            </div>
+            <div id="Clip_panel">
                 <ul>
                     @for (int i = 0; i < Model.GameImages.Count; i++)
                     {
@@ -27,7 +34,9 @@
                     }
                 </ul>
             </div>
-            <a href="javascript:{}" id="view_scroll_right" title="Другие изображения" style="cursor: pointer; opacity: 1; display: block;">Следующая</a>
+            <div class="nav_btn">
+                <a href="javascript:{}" id="view_scroll_right" title="Другие изображения" style="cursor: pointer; opacity: 1;">Следующая</a>
+            </div>
         </div>
     </div>
 
@@ -77,6 +86,13 @@
         </div>
     </div>
 
+    <div id="ImgGall" style="display: block">
+
+        <div id="Gall_MainImg">
+            
+        </div>
+
+    </div>
 
 </div>
 
@@ -87,47 +103,75 @@
         var ImageIndex = new Object();
         ImageIndex = 0;
 
+        //Создаем массив с картинками
         @foreach (GameImage gameImage in Model.GameImages)
         {
-           @Html.Raw("ImageList.push({" + $" \"GameImageID \": {gameImage.GameImageID}, " +
-                     $"\"FulllImagePath\": \"/Content/GameData{gameImage.FulllImagePath}\" , " +
-                     $"\"SmallImagePath\": \"/Content/GameData{gameImage.SmallImagePath}\" , " +
-                     $"\"DescriptImage\": \"{gameImage.DescriptImage}\" " +"});\n");
-            
+            @Html.Raw("ImageList.push({" + $" \"GameImageID \": {gameImage.GameImageID}, " +
+                      $"\"FulllImagePath\": \"/Content/GameData{gameImage.FulllImagePath}\" , " +
+                      $"\"SmallImagePath\": \"/Content/GameData{gameImage.SmallImagePath}\" , " +
+                      $"\"DescriptImage\": \"{gameImage.DescriptImage}\" " + "});\n")
+            ;
+
         }
 
-        function ShowImage() {
-            $("#ImageList ul>li:nth-child(1)>img")
-                .attr({ src: ImageList[ImageIndex].SmallImagePath });
-            $("#ImageList ul>li:nth-child(2)>img")
-                .attr({ src: ImageList[ImageIndex + 1].SmallImagePath });
-            $("#ImageList ul>li:nth-child(3)>img")
-                .attr({ src: ImageList[ImageIndex + 2].SmallImagePath });
-        }
- 
+        //Прокрутка в право (обработчик нажатия)
         $("#view_scroll_right").click(function() {
             ImageIndex++;
 
-            if (ImageIndex == ImageList.length-3) {
+            if (ImageIndex == ImageList.length - 3) {
                 $("#view_scroll_right").hide();
             }
             $("#view_scroll_left").show();
 
-            ShowImage();
+            $("#ImageList ul").animate({ marginLeft: "-=90px" }, 700, "swing");
 
         });
 
-        $("#view_scroll_left").click(function () {
+        //Прокрутка в лево
+        $("#view_scroll_left").click(function() {
             ImageIndex--;
-            
+
             if (ImageIndex == 0) {
                 $("#view_scroll_left").hide();
 
             }
             $("#view_scroll_right").show();
-            ShowImage();
+
+            $("#ImageList ul").animate({ marginLeft: "+=90px" }, 700, "swing");
+
 
         });
+
+        //Наведение на картинку
+        $("#ImageList ul img").hover(function() {
+
+            for (var i = 0; i < ImageList.length; i++) {
+                if (ImageList[i].SmallImagePath == $(this).attr("src")) {
+                    $("#Main_image img").attr({ src: ImageList[i].SmallImagePath });
+                }
+            }
+        });
+
+//------------------------- Просмотр галереи -----------------------------------
+
+        var url = ImageList[0].FulllImagePath;
+
+        var image = $("<img />");
+
+        $(image).load(function() { alert("complite") });
+
+        $.ajax({
+            url: url,
+            cache: false,
+            processData: false
+        }).always(function() {
+
+            image.attr("src", url);
+            $("#Gall_MainImg").append(image).fadeIn();
+
+        });
+
+        //$.when(img).done(function () { alert("complite") });
 
     </script>
 }    

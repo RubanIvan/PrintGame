@@ -17,10 +17,18 @@
             width: 300px;
             position: relative;
 
+            .nav_btn{
+                width:10px;
+                height:80px;
+                float:left;
+                
+                
+            }
+
             #view_scroll_left, #view_scroll_right {
                 width: 10px;
                 height: 0;
-                display: block;
+                
                 padding: 80px 0 0 0;
                 overflow: hidden;
                 background: url('arrow.png') 0 0 no-repeat;
@@ -30,14 +38,19 @@
 
             #view_scroll_right {
                 background-position: 0 -80px;
-                right: 0;
+                
             }
 
-            #Thumb_List {
-                width: 266px;
+            #Clip_panel {
+                width: 260px;
                 height: 82px;
+                float:left;
                 //margin: 0 0 0 20px;
                 overflow: hidden;
+                //dding-left:50px;
+                margin:0 10px;
+                
+
             }
 
             img {
@@ -46,10 +59,11 @@
             }
 
             ul {
+                
                 list-style: none;
                 width: 3000px;
-                padding-left: 17px;
-
+                padding-left: 0px;
+                
                 li {
                     display: list-item;
                     float: left;
@@ -93,4 +107,19 @@
         li > img {
         }
     }
+}
+
+
+//-------------------------- галерея ---------------------------
+
+#ImgGall{
+
+    background-color:rgba(0,0,0,0.8);
+    height:100%;
+    position:fixed;
+    width:100%;
+    //opacity:0.1;
+    top:0;
+    left:0;
+
 }
