@@ -9,7 +9,7 @@
 
 <div id="game" class="clearfix">
 
-    
+
 
     <h2 class="topic">
         @Model.TitleRu (@Model.TitleEn)
@@ -29,7 +29,9 @@
                     @for (int i = 0; i < Model.GameImages.Count; i++)
                     {
                         <li>
-                            <img src="@Html.Raw("/Content/GameData" + @Model.GameImages[i].SmallImagePath)" alt="@Model.GameImages[i].DescriptImage" />
+                            <a href="@Html.Raw("/Content/GameData" + @Model.GameImages[i].FulllImagePath)">
+                                <img src="@Html.Raw("/Content/GameData" + @Model.GameImages[i].SmallImagePath)" alt="@Model.GameImages[i].DescriptImage" />
+                            </a>
                         </li>
                     }
                 </ul>
@@ -86,10 +88,10 @@
         </div>
     </div>
 
-    <div id="ImgGall" style="display: block">
+    <div id="ImgSlaid" style="display: none">
 
         <div id="Gall_MainImg">
-            
+
         </div>
 
     </div>
@@ -101,7 +103,8 @@
     <script>
         var ImageList = new Array();
         var ImageIndex = new Object();
-        ImageIndex = 0;
+        ImageIndex = 0; //
+        ImgSlideIndex = 0; //текущая картинка в слайдере
 
         //Создаем массив с картинками
         @foreach (GameImage gameImage in Model.GameImages)
@@ -115,7 +118,7 @@
         }
 
         //Прокрутка в право (обработчик нажатия)
-        $("#view_scroll_right").click(function() {
+        $("#view_scroll_right").click(function () {
             ImageIndex++;
 
             if (ImageIndex == ImageList.length - 3) {
@@ -128,7 +131,7 @@
         });
 
         //Прокрутка в лево
-        $("#view_scroll_left").click(function() {
+        $("#view_scroll_left").click(function () {
             ImageIndex--;
 
             if (ImageIndex == 0) {
@@ -143,7 +146,7 @@
         });
 
         //Наведение на картинку
-        $("#ImageList ul img").hover(function() {
+        $("#ImageList ul img").hover(function () {
 
             for (var i = 0; i < ImageList.length; i++) {
                 if (ImageList[i].SmallImagePath == $(this).attr("src")) {
@@ -152,26 +155,67 @@
             }
         });
 
-//------------------------- Просмотр галереи -----------------------------------
-
-        var url = ImageList[0].FulllImagePath;
-
-        var image = $("<img />");
-
-        $(image).load(function() { alert("complite") });
-
-        $.ajax({
-            url: url,
-            cache: false,
-            processData: false
-        }).always(function() {
-
-            image.attr("src", url);
-            $("#Gall_MainImg").append(image).fadeIn();
-
+        //------------------------- Просмотр галереи -----------------------------------
+        $("#GameImage img").click(function () {
+            $('#Clip_panel').jGallery({
+                mode: 'full-screen',
+                canChangeMode: false,
+                slideshow: false,
+                titleExpanded: true,
+                canClose: true,
+                tooltips: false
+        });
         });
 
-        //$.when(img).done(function () { alert("complite") });
+
+        //вешаем обработчик
+        //$("#GameImage img").click(function () {
+
+        //    $("#ImgSlaid").show();
+
+        //    var src = $(this).attr("src");
+        //    //находим картинку по которой кликнули
+        //    for (var i = 0; i < ImageList.length; i++) {
+        //        if (ImageList[i].SmallImagePath == src)ImgSlideIndex = i;
+        //    }
+
+        //    var image = $("<img />");
+        //    $(image).load(function () { alert(ImgSlideIndex) });
+
+        //    var url = ImageList[ImgSlideIndex].FulllImagePath;
+
+        //    $.ajax({
+        //        url: url,
+        //        cache: true,
+        //        processData: false
+        //    }).always(function () {
+
+        //        image.attr("src", url);
+        //        $("#ImgSlaid").append(image).fadeIn();
+
+        //    });
+
+        //});
+
+
+        //var url = ImageList[0].FulllImagePath;
+
+        //var image = $("<img />");
+
+        //$(image).load(function () { alert("complite") });
+
+        //$.ajax({
+        //    url: url,
+        //    cache: false,
+        //    processData: false
+        //}).always(function () {
+
+        //    image.attr("src", url);
+        //    $("#Gall_MainImg").append(image).fadeIn();
+
+        //});
+
+        ////$.when(img).done(function () { alert("complite") });
 
     </script>
 }    

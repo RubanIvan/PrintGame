@@ -44,7 +44,7 @@ namespace PrintGame.Controllers
                 p.TitleRu = pageResult.TitleRu;
                 p.TitleEn = pageResult.TitleEn;
                 p.Rating = pageResult.Rating*10;
-
+                p.YearPublishing = pageResult.YearPublishing;
                 //сокращаем до 1 абзаца описание
                 int s_begin = pageResult.Descript.IndexOf("<p>")+3;
                 if (s_begin != 0) pageResult.Descript = pageResult.Descript.Remove(0, s_begin);

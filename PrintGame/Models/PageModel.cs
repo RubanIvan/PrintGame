@@ -28,6 +28,8 @@ namespace PrintGame.Models
         /// <summary>Путь до титульной картинки</summary>
         public string BoxImage;
 
+        public int YearPublishing;
+
         //SEO ссылка на игру
         public string SEOGameUrl;
 

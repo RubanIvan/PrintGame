@@ -272,11 +272,10 @@ a {
 #game .gameIcon #col_consist {
   margin-left: 150px;
 }
-#ImgGall {
-  background-color: rgba(0, 0, 0, 0.8);
-  height: 100%;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
+.ratio_title {
+  float: left;
+  width: 60px;
+}
+.ratio {
+  margin-left: 410px;
 }

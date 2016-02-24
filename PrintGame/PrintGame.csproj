@@ -242,6 +242,7 @@
     <Content Include="Content\bg-main.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\IconAcquaintance.png" />
     <Content Include="Content\IconNumOfPlayers.png" />
     <Content Include="Content\IconNumOfSuggested.png" />
@@ -249,6 +250,7 @@
     <Content Include="Content\IconRating.png" />
     <Content Include="Content\IconSuggestedAges.png" />
     <Content Include="Content\IconYearPublishing.png" />
+    <Content Include="Content\jgallery.min.css" />
     <Content Include="Content\logo-main.png" />
     <Content Include="Content\rating stars empty.png" />
     <Content Include="Content\rating stars full.png" />
@@ -259,6 +261,7 @@
       <DependentUpon>site.css</DependentUpon>
     </Content>
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="PrintGameModel.Context.tt">
@@ -288,8 +291,13 @@
     <Content Include="Content\licence.less" />
     <Content Include="Content\left_panel.less" />
     <Content Include="Content\game.less" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\zeus server.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jgallery.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
