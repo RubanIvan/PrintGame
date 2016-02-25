@@ -243,13 +243,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.min.css" />
-    <Content Include="Content\IconAcquaintance.png" />
-    <Content Include="Content\IconNumOfPlayers.png" />
-    <Content Include="Content\IconNumOfSuggested.png" />
-    <Content Include="Content\IconPlayingTime.png" />
-    <Content Include="Content\IconRating.png" />
-    <Content Include="Content\IconSuggestedAges.png" />
-    <Content Include="Content\IconYearPublishing.png" />
+    <Content Include="Content\gameicon.png" />
     <Content Include="Content\jgallery.min.css" />
     <Content Include="Content\logo-main.png" />
     <Content Include="Content\rating stars empty.png" />

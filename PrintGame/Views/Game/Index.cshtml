@@ -50,31 +50,31 @@
                 <h4>Параметры:</h4>
                 <ul>
                     <li>
-                        <img src="/Content/IconNumOfPlayers.png" title="Количество игроков" />
+                        <div title="Количество игроков"></div>
                         <span>@Model.NumOfPlayers игроков</span>
                     </li>
                     <li>
-                        <img src="/Content/IconNumOfSuggested.png" title="Рекомендуемое количество игроков" />
+                        <div title="Рекомендуемое количество игроков"></div>
                         <span>@Model.NumOfSuggested игроков</span>
                     </li>
                     <li>
-                        <img src="/Content/IconSuggestedAges.png" title="Рекомендуемый возраст игроков от" />
+                        <div title="Рекомендуемый возраст игроков от"></div>
                         <span>@Model.SuggestedAges лет</span>
                     </li>
                     <li>
-                        <img src="/Content/IconAcquaintance.png" title="Время освоения игры" />
+                        <div title="Время освоения игры"></div>
                         <span>@Model.Acquaintance минут</span>
                     </li>
                     <li>
-                        <img src="~/Content/IconPlayingTime.png" title="Время партии" />
+                        <div title="Время партии" ></div>
                         <span>@Model.PlayingTime минут</span>
                     </li>
                     <li>
-                        <img src="~/Content/IconYearPublishing.png" title="Год издания" />
+                        <div title="Год издания"></div>
                         <span>@Model.YearPublishing год</span>
                     </li>
                     <li>
-                        <img src="~/Content/IconRating.png" title="Средний рейтинг" />
+                        <div title="Средний рейтинг"></div>
                         <span>@Model.Rating бала</span>
                     </li>
                 </ul>
@@ -155,67 +155,43 @@
             }
         });
 
-        //------------------------- Просмотр галереи -----------------------------------
-        $("#GameImage img").click(function () {
-            $('#Clip_panel').jGallery({
-                mode: 'full-screen',
-                canChangeMode: false,
-                slideshow: false,
-                titleExpanded: true,
-                canClose: true,
-                tooltips: false
-        });
-        });
+        //------------------------- Вешаем обработчик галереи -----------------------------------
 
+        
+            @for (int i = 1; i <= Model.GameImages.Count; i++)
+            {
+                @Html.Raw($"$(\"#GameImage li:nth-child({i}) img\").click(function () {{" +
+                         "$('#Clip_panel').jGallery({" +
+                         "mode: 'full-screen',"+
+                         "canChangeMode: false," +
+                         "slideshow: false," +
+                         "titleExpanded: true,"+
+                         "canClose: true," +
+                         "tooltips: false," +
+                         "autostart: true," +
+                         $"autostartAtImage: {i}"+
+                         "});"+
+                         "}); \n"
+                         );
+            }
 
-        //вешаем обработчик
+        
+
         //$("#GameImage img").click(function () {
-
-        //    $("#ImgSlaid").show();
-
-        //    var src = $(this).attr("src");
-        //    //находим картинку по которой кликнули
-        //    for (var i = 0; i < ImageList.length; i++) {
-        //        if (ImageList[i].SmallImagePath == src)ImgSlideIndex = i;
-        //    }
-
-        //    var image = $("<img />");
-        //    $(image).load(function () { alert(ImgSlideIndex) });
-
-        //    var url = ImageList[ImgSlideIndex].FulllImagePath;
-
-        //    $.ajax({
-        //        url: url,
-        //        cache: true,
-        //        processData: false
-        //    }).always(function () {
-
-        //        image.attr("src", url);
-        //        $("#ImgSlaid").append(image).fadeIn();
-
-        //    });
-
+        //    $('#Clip_panel').jGallery({
+        //        mode: 'full-screen',
+        //        canChangeMode: false,
+        //        slideshow: false,
+        //        titleExpanded: true,
+        //        canClose: true,
+        //        tooltips: false,
+        //        autostart: true,
+        //        autostartAtImage: 1
+        //});
         //});
 
 
-        //var url = ImageList[0].FulllImagePath;
 
-        //var image = $("<img />");
-
-        //$(image).load(function () { alert("complite") });
-
-        //$.ajax({
-        //    url: url,
-        //    cache: false,
-        //    processData: false
-        //}).always(function () {
-
-        //    image.attr("src", url);
-        //    $("#Gall_MainImg").append(image).fadeIn();
-
-        //});
-
-        ////$.when(img).done(function () { alert("complite") });
 
     </script>
 }    
