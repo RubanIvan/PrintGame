@@ -25,13 +25,22 @@ namespace CMS20
             InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            //TextBoxLogWindow.Select(TextBoxLogWindow.Text.Length, 0);
-            //TextBoxLogWindow.Focus();
-            
-        }
+        /// <summary>каталог КУДА будут скопированы файлы</summary>
+        public string DstGameDirPath = @"D:\Content\GameData\";
 
-        
+        /// <summary>каталог ОТ КУДА будут скопированы файлы</summary>
+        public string SrcGameDirPath = @"D:\Game_Base";
+
+        /// <summary>каталог с архивами</summary>
+        public string FileShareFolder = @"D:\Content\FileShare\";  
+
+        /// <summary>ID текущей игры</summary>
+        public int GameID;
+
+        /// <summary>список игр которые мы хотим добавить в базу</summary>
+        public List<string> GameList = new List<string>();
+        public int GameListIndex = 0;
+
+
     }
 }

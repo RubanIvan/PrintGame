@@ -64,9 +64,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\CommonUtil.cs" />
-    <Compile Include="Controllers\Game.cs" />
+    <Compile Include="Controllers\GameContent.cs" />
+    <Compile Include="Controllers\GameTitleDir.cs" />
     <Compile Include="Controllers\LogText.cs" />
     <Compile Include="Controllers\ParseUrl.cs" />
+    <Compile Include="Controllers\Test.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -12,3 +12,17 @@ D:\Projects\PrintGame\CMS20\obj\Debug\CMS20.Properties.Resources.resources
 D:\Projects\PrintGame\CMS20\obj\Debug\CMS20.csproj.GenerateResource.Cache
 D:\Projects\PrintGame\CMS20\obj\Debug\CMS20.exe
 D:\Projects\PrintGame\CMS20\obj\Debug\CMS20.pdb
+D:\project\PrintGame\CMS20\bin\Debug\CMS20.exe.config
+D:\project\PrintGame\CMS20\obj\Debug\CMS20.exe
+D:\project\PrintGame\CMS20\obj\Debug\CMS20.pdb
+D:\project\PrintGame\CMS20\bin\Debug\CMS20.exe
+D:\project\PrintGame\CMS20\bin\Debug\CMS20.pdb
+D:\project\PrintGame\CMS20\obj\Debug\CMS20.csprojResolveAssemblyReference.cache
+D:\project\PrintGame\CMS20\obj\Debug\MainWindow.g.cs
+D:\project\PrintGame\CMS20\obj\Debug\App.g.cs
+D:\project\PrintGame\CMS20\obj\Debug\CMS20_MarkupCompile.cache
+D:\project\PrintGame\CMS20\obj\Debug\CMS20_MarkupCompile.lref
+D:\project\PrintGame\CMS20\obj\Debug\MainWindow.baml
+D:\project\PrintGame\CMS20\obj\Debug\CMS20.g.resources
+D:\project\PrintGame\CMS20\obj\Debug\CMS20.Properties.Resources.resources
+D:\project\PrintGame\CMS20\obj\Debug\CMS20.csproj.GenerateResource.Cache

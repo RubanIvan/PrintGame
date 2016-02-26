@@ -11,7 +11,7 @@ namespace CMS20.Controllers
     {
         public static void Add(this TextBox box, string Msg)
         {
-            box.Text += Msg + "\n";
+            box.Text += Msg + "\n\n";
         }
     }
 }
