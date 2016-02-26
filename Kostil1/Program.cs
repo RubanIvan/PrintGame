@@ -12,11 +12,11 @@ namespace Kostil1
     {
         static void Main(string[] args)
         {
-            //PrintGameDataEntities enties =new PrintGameDataEntities();
+            //PrintGameDataEntities enties = new PrintGameDataEntities();
             //foreach (GameImage gameImage in enties.GameImage)
             //{
-            //    gameImage.FulllImagePath=gameImage.FulllImagePath.Replace('\\', '/');
-            //    gameImage.SmallImagePath= gameImage.SmallImagePath.Replace('\\', '/');
+            //    gameImage.FulllImagePath = gameImage.FulllImagePath.Replace('\\', '/');
+            //    gameImage.SmallImagePath = gameImage.SmallImagePath.Replace('\\', '/');
             //}
             //enties.SaveChanges();
 
