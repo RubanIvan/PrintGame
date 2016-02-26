@@ -923,10 +923,10 @@ pre code {
 .col-xs-12 {
   width: 100%;
 }
-
-@media (min-width: 768px) {
+/* 768 750 */
+@media (min-width: 268px) {
   .container {
-    max-width: 750px;
+    max-width: 930px;
   }
   .col-sm-1,
   .col-sm-2,
