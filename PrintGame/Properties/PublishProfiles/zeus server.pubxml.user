@@ -10,7 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Data/print-game.sql">
-      <publishTime>02/13/2016 15:18:18</publishTime>
+      <publishTime>02/16/2016 17:21:40</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>02/04/2016 09:53:23</publishTime>
@@ -73,10 +73,10 @@
       <publishTime>02/04/2016 09:53:24</publishTime>
     </File>
     <File Include="bin/PrintGame.dll">
-      <publishTime>02/13/2016 18:54:38</publishTime>
+      <publishTime>02/26/2016 11:23:47</publishTime>
     </File>
     <File Include="bin/PrintGame.pdb">
-      <publishTime>02/13/2016 18:54:38</publishTime>
+      <publishTime>02/26/2016 11:23:47</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>02/04/2016 09:53:23</publishTime>
@@ -195,32 +195,80 @@
     <File Include="bin/WebGrease.dll">
       <publishTime>02/04/2016 09:53:24</publishTime>
     </File>
+    <File Include="Content/arrow.png">
+      <publishTime>02/25/2016 12:03:17</publishTime>
+    </File>
+    <File Include="Content/bg-footer.png">
+      <publishTime>02/25/2016 12:03:17</publishTime>
+    </File>
     <File Include="Content/bg-header.jpg">
-      <publishTime>02/13/2016 13:34:35</publishTime>
+      <publishTime>02/16/2016 16:59:39</publishTime>
     </File>
     <File Include="Content/bg-main.gif">
       <publishTime>02/13/2016 13:34:35</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
-      <publishTime>02/04/2016 09:53:23</publishTime>
+      <publishTime>02/25/2016 12:03:17</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
+    <File Include="Content/font-awesome.min.css">
+      <publishTime>02/25/2016 12:03:17</publishTime>
+    </File>
+    <File Include="Content/game.less">
+      <publishTime>02/25/2016 12:03:17</publishTime>
+    </File>
+    <File Include="Content/gameicon.png">
+      <publishTime>02/25/2016 12:03:17</publishTime>
+    </File>
     <File Include="Content/init.less">
       <publishTime>02/13/2016 13:34:35</publishTime>
     </File>
+    <File Include="Content/jgallery.min.css">
+      <publishTime>02/26/2016 11:20:11</publishTime>
+    </File>
+    <File Include="Content/left_panel.less">
+      <publishTime>02/16/2016 16:59:39</publishTime>
+    </File>
+    <File Include="Content/licence.less">
+      <publishTime>02/16/2016 16:59:39</publishTime>
+    </File>
+    <File Include="Content/logo-main.png">
+      <publishTime>02/16/2016 16:59:39</publishTime>
+    </File>
+    <File Include="Content/rating stars empty.png">
+      <publishTime>02/17/2016 19:45:44</publishTime>
+    </File>
+    <File Include="Content/rating stars full.png">
+      <publishTime>02/17/2016 19:45:44</publishTime>
+    </File>
     <File Include="Content/site.css">
-      <publishTime>02/13/2016 19:38:20</publishTime>
+      <publishTime>02/25/2016 12:03:17</publishTime>
     </File>
     <File Include="Content/site.less">
-      <publishTime>02/13/2016 19:38:19</publishTime>
+      <publishTime>02/25/2016 12:03:17</publishTime>
     </File>
     <File Include="Content/site.min.css">
-      <publishTime>02/13/2016 19:38:20</publishTime>
+      <publishTime>02/25/2016 12:03:17</publishTime>
     </File>
     <File Include="favicon.ico">
-      <publishTime>02/04/2016 09:53:23</publishTime>
+      <publishTime>02/16/2016 16:59:39</publishTime>
+    </File>
+    <File Include="fonts/fontawesome-webfont.eot">
+      <publishTime>02/25/2016 12:03:17</publishTime>
+    </File>
+    <File Include="fonts/fontawesome-webfont.svg">
+      <publishTime>02/25/2016 12:03:17</publishTime>
+    </File>
+    <File Include="fonts/fontawesome-webfont.ttf">
+      <publishTime>02/25/2016 12:03:17</publishTime>
+    </File>
+    <File Include="fonts/fontawesome-webfont.woff">
+      <publishTime>02/25/2016 12:03:17</publishTime>
+    </File>
+    <File Include="fonts/FontAwesome.otf">
+      <publishTime>02/25/2016 12:03:17</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.eot">
       <publishTime>02/04/2016 09:53:23</publishTime>
@@ -241,13 +289,16 @@
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
     <File Include="PrintGameModel.edmx.diagram">
-      <publishTime>02/13/2016 13:48:56</publishTime>
+      <publishTime>02/17/2016 20:29:22</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js">
       <publishTime>02/04/2016 09:53:23</publishTime>
+    </File>
+    <File Include="Scripts/jgallery.min.js">
+      <publishTime>02/25/2016 12:03:17</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
       <publishTime>02/04/2016 09:53:23</publishTime>
@@ -280,7 +331,7 @@
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>02/04/2016 09:53:23</publishTime>
+      <publishTime>02/25/2016 12:03:17</publishTime>
     </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
       <publishTime>02/04/2016 09:53:23</publishTime>
@@ -330,6 +381,9 @@
     <File Include="Views/Home/Index.cshtml">
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
+    <File Include="Views/Licence/Index.cshtml">
+      <publishTime>02/16/2016 16:59:39</publishTime>
+    </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
@@ -355,10 +409,10 @@
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>02/13/2016 13:34:35</publishTime>
+      <publishTime>02/25/2016 12:03:17</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>02/04/2016 09:53:23</publishTime>
+      <publishTime>02/16/2016 16:59:39</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>02/04/2016 09:53:23</publishTime>
@@ -367,7 +421,7 @@
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/13/2016 14:26:56</publishTime>
+      <publishTime>02/26/2016 11:23:49</publishTime>
     </File>
   </ItemGroup>
 </Project>
