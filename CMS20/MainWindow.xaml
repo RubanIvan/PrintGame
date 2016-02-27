@@ -10,15 +10,15 @@
         <Grid Margin="0,500,0,0">
             <TextBox x:Name="Log" HorizontalAlignment="Left" Height="110" Margin="5,5,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="874" AllowDrop="False" IsHitTestVisible="True" IsReadOnly="True" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" />
         </Grid>
-        
+
         <Grid Margin="0,10,0,130" Name="GridCreateGame" Visibility="Visible"/>
-        
+
         <Button x:Name="ButtonSetDir" Content="Директория" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,10,0,0"/>
         <Label x:Name="LabelSetDir" Content="" HorizontalAlignment="Left" Margin="100,7,0,0" VerticalAlignment="Top" Width="381"/>
-        
-        <TextBox x:Name="TextBoxUrl" HorizontalAlignment="Left" Height="23" Margin="503,9,0,0" TextWrapping="Wrap" Text="Url" VerticalAlignment="Top" Width="313" TextAlignment="Right" />
+
+        <TextBox x:Name="TextBoxUrl" HorizontalAlignment="Left" Height="23" Margin="503,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="313" TextAlignment="Left" />
         <Button x:Name="ButtonParseUrl" Content="ParseUrl" HorizontalAlignment="Left" Margin="821,10,0,0" VerticalAlignment="Top" Width="63"/>
-        
+
         <Label x:Name="LabelCatName" Content="Label" HorizontalAlignment="Left" Margin="132,42,0,0" VerticalAlignment="Top" Width="289"/>
         <Label x:Name="LabelGameListIndex" Content=" " HorizontalAlignment="Left" Margin="37,42,0,0" VerticalAlignment="Top" Width="58"/>
         <Button x:Name="ButtonNext" Content="&gt;" HorizontalAlignment="Left" Margin="100,45,0,0" VerticalAlignment="Top" Width="22" />
@@ -35,8 +35,8 @@
 
         <Button x:Name="ButtonCopyGameName" Content="Сгенер. назв" HorizontalAlignment="Left" Margin="432,45,0,0" VerticalAlignment="Top" Width="89" Height="23" TabIndex="35" />
 
- <!--........................................................................................................................................................................................................-->
-        
+        <!--........................................................................................................................................................................................................-->
+
         <Label x:Name="LabelYearPublishing" Content="Год издания" HorizontalAlignment="Left" Margin="44,112,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextBoxYearPublishing" HorizontalAlignment="Left" Height="23" Margin="37,138,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="90" TextAlignment="Center" MaxLength="4" TabIndex="40"/>
 
@@ -63,8 +63,14 @@
 
         <Label x:Name="LabelPlayingTime" Content="Время партии" HorizontalAlignment="Left" Margin="780,112,0,0" VerticalAlignment="Top" />
         <TextBox x:Name="TextBoxPlayingTime" HorizontalAlignment="Left" Height="23" Margin="784,138,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" TextAlignment="Center" TabIndex="100"/>
-        
 
+        <TextBox x:Name="TextBoxDescript" HorizontalAlignment="Left" Height="159" Margin="24,198,0,0" Text="" VerticalAlignment="Top" Width="535" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" IsHitTestVisible="True" HorizontalScrollBarVisibility="Visible" TabIndex="110"/>
+        <Button x:Name="ButtonTagP" Content="p" HorizontalAlignment="Left" Margin="24,173,0,0" VerticalAlignment="Top" Width="23" RenderTransformOrigin="-1.048,0.5" TabIndex="120"/>
+
+        <TextBox x:Name="TextBoxComponents" HorizontalAlignment="Left" Height="291" Margin="566,198,0,0" Text="" VerticalAlignment="Top" Width="316" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" IsHitTestVisible="True" HorizontalScrollBarVisibility="Visible" TabIndex="130"/>
+        <Button x:Name="ButtonTagLi" Content="li" HorizontalAlignment="Left" Margin="567,173,0,0" VerticalAlignment="Top" Width="26" TabIndex="140"/>
+
+        <Button x:Name="ButtonCreateGame" Content="Создать запись >" HorizontalAlignment="Left" Margin="24,452,0,0" VerticalAlignment="Top" Width="119" TabIndex="150"/>
 
     </Grid>
 

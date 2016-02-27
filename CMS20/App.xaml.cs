@@ -19,6 +19,7 @@ namespace CMS20
         private GameContent content;
         private LogText log;
         private ParseUrl url;
+        private Test test;
 
 
         private void OnStartup(object sender, StartupEventArgs e)
@@ -28,7 +29,8 @@ namespace CMS20
             url=new ParseUrl(window);
             game=new GameTitleDir(window);
             content=new GameContent(window);
-
+            test=new Test(window);
+            window.Test = test;
             window.Show();
         }
 

@@ -26,3 +26,12 @@ D:\project\PrintGame\CMS20\obj\Debug\MainWindow.baml
 D:\project\PrintGame\CMS20\obj\Debug\CMS20.g.resources
 D:\project\PrintGame\CMS20\obj\Debug\CMS20.Properties.Resources.resources
 D:\project\PrintGame\CMS20\obj\Debug\CMS20.csproj.GenerateResource.Cache
+D:\project\PrintGame\CMS20\bin\Debug\EntityFramework.dll
+D:\project\PrintGame\CMS20\bin\Debug\EntityFramework.SqlServer.dll
+D:\project\PrintGame\CMS20\bin\Debug\EntityFramework.xml
+D:\project\PrintGame\CMS20\bin\Debug\EntityFramework.SqlServer.xml
+D:\project\PrintGame\CMS20\bin\Debug\ru\EntityFramework.resources.dll
+D:\project\PrintGame\CMS20\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+D:\project\PrintGame\CMS20\obj\Debug\CMS20_Content.g.cs
+D:\project\PrintGame\CMS20\bin\Debug\AngleSharp.dll
+D:\project\PrintGame\CMS20\bin\Debug\AngleSharp.xml

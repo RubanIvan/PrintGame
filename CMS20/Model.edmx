@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище PrintGameDataModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FileShare">
+          <Key>
+            <PropertyRef Name="FileShareID" />
+          </Key>
+          <Property Name="FileShareID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GameID" Type="int" Nullable="false" />
+          <Property Name="FileShareName" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="FileShareUrl1" Type="nvarchar" MaxLength="1024" />
+          <Property Name="FileShareUrl2" Type="nvarchar" MaxLength="1024" />
+          <Property Name="FileShareUrl3" Type="nvarchar" MaxLength="1024" />
+          <Property Name="FileShareUrl4" Type="nvarchar" MaxLength="1024" />
+          <Property Name="FileShareSize" Type="nvarchar" MaxLength="512" Nullable="false" />
+          <Property Name="FileShareDesc" Type="nvarchar" MaxLength="2048" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="GameID" />
+          </Key>
+          <Property Name="GameID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TitleRu" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="TitleEn" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="CatalogName" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="YearPublishing" Type="int" Nullable="false" />
+          <Property Name="Rating" Type="real" Nullable="false" />
+          <Property Name="Lang" Type="nvarchar" MaxLength="10" />
+          <Property Name="Descript" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NumOfPlayers" Type="nvarchar" MaxLength="512" />
+          <Property Name="NumOfSuggested" Type="nvarchar" MaxLength="512" />
+          <Property Name="SuggestedAges" Type="nvarchar" MaxLength="512" />
+          <Property Name="Acquaintance" Type="nvarchar" MaxLength="512" />
+          <Property Name="PlayingTime" Type="nvarchar" MaxLength="512" />
+          <Property Name="Components" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreateTime" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GameImage">
+          <Key>
+            <PropertyRef Name="GameImageID" />
+          </Key>
+          <Property Name="GameImageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GameID" Type="int" />
+          <Property Name="DescriptImage" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SmallImagePath" Type="nvarchar" MaxLength="1024" />
+          <Property Name="FulllImagePath" Type="nvarchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="GameTag">
+          <Key>
+            <PropertyRef Name="GameTagID" />
+          </Key>
+          <Property Name="GameTagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GameID" Type="int" Nullable="false" />
+          <Property Name="TagID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="TagID" />
+          </Key>
+          <Property Name="TagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TagName" Type="nvarchar" MaxLength="512" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_FileShare_GameID">
+          <End Role="Game" Type="Self.Game" Multiplicity="1" />
+          <End Role="FileShare" Type="Self.FileShare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="GameID" />
+            </Principal>
+            <Dependent Role="FileShare">
+              <PropertyRef Name="GameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameID_Game">
+          <End Role="Game" Type="Self.Game" Multiplicity="0..1" />
+          <End Role="GameImage" Type="Self.GameImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="GameID" />
+            </Principal>
+            <Dependent Role="GameImage">
+              <PropertyRef Name="GameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameTag_GameID">
+          <End Role="Game" Type="Self.Game" Multiplicity="1" />
+          <End Role="GameTag" Type="Self.GameTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="GameID" />
+            </Principal>
+            <Dependent Role="GameTag">
+              <PropertyRef Name="GameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameTag_TagID">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="GameTag" Type="Self.GameTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="TagID" />
+            </Principal>
+            <Dependent Role="GameTag">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище PrintGameDataModelContainer">
+          <EntitySet Name="FileShare" EntityType="Self.FileShare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GameImage" EntityType="Self.GameImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GameTag" EntityType="Self.GameTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_FileShare_GameID" Association="Self.FK_FileShare_GameID">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="FileShare" EntitySet="FileShare" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameID_Game" Association="Self.FK_GameID_Game">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="GameImage" EntitySet="GameImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameTag_GameID" Association="Self.FK_GameTag_GameID">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="GameTag" EntitySet="GameTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameTag_TagID" Association="Self.FK_GameTag_TagID">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="GameTag" EntitySet="GameTag" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PrintGameDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="FileShare">
+          <Key>
+            <PropertyRef Name="FileShareID" />
+          </Key>
+          <Property Name="FileShareID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GameID" Type="Int32" Nullable="false" />
+          <Property Name="FileShareName" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileShareUrl1" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="FileShareUrl2" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="FileShareUrl3" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="FileShareUrl4" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="FileShareSize" Type="String" MaxLength="512" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileShareDesc" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Game" Relationship="Self.FK_FileShare_GameID" FromRole="FileShare" ToRole="Game" />
+        </EntityType>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="GameID" />
+          </Key>
+          <Property Name="GameID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TitleRu" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TitleEn" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CatalogName" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="YearPublishing" Type="Int32" Nullable="false" />
+          <Property Name="Rating" Type="Single" Nullable="false" />
+          <Property Name="Lang" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Descript" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumOfPlayers" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="NumOfSuggested" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="SuggestedAges" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Acquaintance" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="PlayingTime" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Components" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="FileShare" Relationship="Self.FK_FileShare_GameID" FromRole="Game" ToRole="FileShare" />
+          <NavigationProperty Name="GameImage" Relationship="Self.FK_GameID_Game" FromRole="Game" ToRole="GameImage" />
+          <NavigationProperty Name="GameTag" Relationship="Self.FK_GameTag_GameID" FromRole="Game" ToRole="GameTag" />
+        </EntityType>
+        <EntityType Name="GameImage">
+          <Key>
+            <PropertyRef Name="GameImageID" />
+          </Key>
+          <Property Name="GameImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GameID" Type="Int32" />
+          <Property Name="DescriptImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SmallImagePath" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="FulllImagePath" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Game" Relationship="Self.FK_GameID_Game" FromRole="GameImage" ToRole="Game" />
+        </EntityType>
+        <EntityType Name="GameTag">
+          <Key>
+            <PropertyRef Name="GameTagID" />
+          </Key>
+          <Property Name="GameTagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GameID" Type="Int32" Nullable="false" />
+          <Property Name="TagID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Game" Relationship="Self.FK_GameTag_GameID" FromRole="GameTag" ToRole="Game" />
+          <NavigationProperty Name="Tag" Relationship="Self.FK_GameTag_TagID" FromRole="GameTag" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="TagID" />
+          </Key>
+          <Property Name="TagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TagName" Type="String" MaxLength="512" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="GameTag" Relationship="Self.FK_GameTag_TagID" FromRole="Tag" ToRole="GameTag" />
+        </EntityType>
+        <Association Name="FK_FileShare_GameID">
+          <End Role="Game" Type="Self.Game" Multiplicity="1" />
+          <End Role="FileShare" Type="Self.FileShare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="GameID" />
+            </Principal>
+            <Dependent Role="FileShare">
+              <PropertyRef Name="GameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameID_Game">
+          <End Role="Game" Type="Self.Game" Multiplicity="0..1" />
+          <End Role="GameImage" Type="Self.GameImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="GameID" />
+            </Principal>
+            <Dependent Role="GameImage">
+              <PropertyRef Name="GameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameTag_GameID">
+          <End Role="Game" Type="Self.Game" Multiplicity="1" />
+          <End Role="GameTag" Type="Self.GameTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="GameID" />
+            </Principal>
+            <Dependent Role="GameTag">
+              <PropertyRef Name="GameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameTag_TagID">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="GameTag" Type="Self.GameTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="TagID" />
+            </Principal>
+            <Dependent Role="GameTag">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PrintGameDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FileShare" EntityType="Self.FileShare" />
+          <EntitySet Name="Game" EntityType="Self.Game" />
+          <EntitySet Name="GameImage" EntityType="Self.GameImage" />
+          <EntitySet Name="GameTag" EntityType="Self.GameTag" />
+          <EntitySet Name="Tag" EntityType="Self.Tag" />
+          <AssociationSet Name="FK_FileShare_GameID" Association="Self.FK_FileShare_GameID">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="FileShare" EntitySet="FileShare" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameID_Game" Association="Self.FK_GameID_Game">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="GameImage" EntitySet="GameImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameTag_GameID" Association="Self.FK_GameTag_GameID">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="GameTag" EntitySet="GameTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameTag_TagID" Association="Self.FK_GameTag_TagID">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="GameTag" EntitySet="GameTag" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PrintGameDataModelContainer" CdmEntityContainer="PrintGameDataEntities">
+          <EntitySetMapping Name="FileShare">
+            <EntityTypeMapping TypeName="PrintGameDataModel.FileShare">
+              <MappingFragment StoreEntitySet="FileShare">
+                <ScalarProperty Name="FileShareID" ColumnName="FileShareID" />
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="FileShareName" ColumnName="FileShareName" />
+                <ScalarProperty Name="FileShareUrl1" ColumnName="FileShareUrl1" />
+                <ScalarProperty Name="FileShareUrl2" ColumnName="FileShareUrl2" />
+                <ScalarProperty Name="FileShareUrl3" ColumnName="FileShareUrl3" />
+                <ScalarProperty Name="FileShareUrl4" ColumnName="FileShareUrl4" />
+                <ScalarProperty Name="FileShareSize" ColumnName="FileShareSize" />
+                <ScalarProperty Name="FileShareDesc" ColumnName="FileShareDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Game">
+            <EntityTypeMapping TypeName="PrintGameDataModel.Game">
+              <MappingFragment StoreEntitySet="Game">
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="TitleRu" ColumnName="TitleRu" />
+                <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
+                <ScalarProperty Name="CatalogName" ColumnName="CatalogName" />
+                <ScalarProperty Name="YearPublishing" ColumnName="YearPublishing" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Lang" ColumnName="Lang" />
+                <ScalarProperty Name="Descript" ColumnName="Descript" />
+                <ScalarProperty Name="NumOfPlayers" ColumnName="NumOfPlayers" />
+                <ScalarProperty Name="NumOfSuggested" ColumnName="NumOfSuggested" />
+                <ScalarProperty Name="SuggestedAges" ColumnName="SuggestedAges" />
+                <ScalarProperty Name="Acquaintance" ColumnName="Acquaintance" />
+                <ScalarProperty Name="PlayingTime" ColumnName="PlayingTime" />
+                <ScalarProperty Name="Components" ColumnName="Components" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameImage">
+            <EntityTypeMapping TypeName="PrintGameDataModel.GameImage">
+              <MappingFragment StoreEntitySet="GameImage">
+                <ScalarProperty Name="GameImageID" ColumnName="GameImageID" />
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="DescriptImage" ColumnName="DescriptImage" />
+                <ScalarProperty Name="SmallImagePath" ColumnName="SmallImagePath" />
+                <ScalarProperty Name="FulllImagePath" ColumnName="FulllImagePath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameTag">
+            <EntityTypeMapping TypeName="PrintGameDataModel.GameTag">
+              <MappingFragment StoreEntitySet="GameTag">
+                <ScalarProperty Name="GameTagID" ColumnName="GameTagID" />
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="TagID" ColumnName="TagID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tag">
+            <EntityTypeMapping TypeName="PrintGameDataModel.Tag">
+              <MappingFragment StoreEntitySet="Tag">
+                <ScalarProperty Name="TagID" ColumnName="TagID" />
+                <ScalarProperty Name="TagName" ColumnName="TagName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

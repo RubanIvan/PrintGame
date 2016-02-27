@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище PrintGameDataModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="FileShare">
+    <Key>
+      <PropertyRef Name="FileShareID" />
+    </Key>
+    <Property Name="FileShareID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameID" Type="int" Nullable="false" />
+    <Property Name="FileShareName" Type="nvarchar" MaxLength="1024" Nullable="false" />
+    <Property Name="FileShareUrl1" Type="nvarchar" MaxLength="1024" />
+    <Property Name="FileShareUrl2" Type="nvarchar" MaxLength="1024" />
+    <Property Name="FileShareUrl3" Type="nvarchar" MaxLength="1024" />
+    <Property Name="FileShareUrl4" Type="nvarchar" MaxLength="1024" />
+    <Property Name="FileShareSize" Type="nvarchar" MaxLength="512" Nullable="false" />
+    <Property Name="FileShareDesc" Type="nvarchar" MaxLength="2048" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Game">
+    <Key>
+      <PropertyRef Name="GameID" />
+    </Key>
+    <Property Name="GameID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TitleRu" Type="nvarchar" MaxLength="1024" Nullable="false" />
+    <Property Name="TitleEn" Type="nvarchar" MaxLength="1024" Nullable="false" />
+    <Property Name="CatalogName" Type="nvarchar" MaxLength="1024" Nullable="false" />
+    <Property Name="YearPublishing" Type="int" Nullable="false" />
+    <Property Name="Rating" Type="real" Nullable="false" />
+    <Property Name="Lang" Type="nvarchar" MaxLength="10" />
+    <Property Name="Descript" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NumOfPlayers" Type="nvarchar" MaxLength="512" />
+    <Property Name="NumOfSuggested" Type="nvarchar" MaxLength="512" />
+    <Property Name="SuggestedAges" Type="nvarchar" MaxLength="512" />
+    <Property Name="Acquaintance" Type="nvarchar" MaxLength="512" />
+    <Property Name="PlayingTime" Type="nvarchar" MaxLength="512" />
+    <Property Name="Components" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreateTime" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GameImage">
+    <Key>
+      <PropertyRef Name="GameImageID" />
+    </Key>
+    <Property Name="GameImageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameID" Type="int" />
+    <Property Name="DescriptImage" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SmallImagePath" Type="nvarchar" MaxLength="1024" />
+    <Property Name="FulllImagePath" Type="nvarchar" MaxLength="1024" />
+  </EntityType>
+  <EntityType Name="GameTag">
+    <Key>
+      <PropertyRef Name="GameTagID" />
+    </Key>
+    <Property Name="GameTagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameID" Type="int" Nullable="false" />
+    <Property Name="TagID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="TagID" />
+    </Key>
+    <Property Name="TagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TagName" Type="nvarchar" MaxLength="512" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_FileShare_GameID">
+    <End Role="Game" Type="Self.Game" Multiplicity="1" />
+    <End Role="FileShare" Type="Self.FileShare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="GameID" />
+      </Principal>
+      <Dependent Role="FileShare">
+        <PropertyRef Name="GameID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameID_Game">
+    <End Role="Game" Type="Self.Game" Multiplicity="0..1" />
+    <End Role="GameImage" Type="Self.GameImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="GameID" />
+      </Principal>
+      <Dependent Role="GameImage">
+        <PropertyRef Name="GameID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameTag_GameID">
+    <End Role="Game" Type="Self.Game" Multiplicity="1" />
+    <End Role="GameTag" Type="Self.GameTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="GameID" />
+      </Principal>
+      <Dependent Role="GameTag">
+        <PropertyRef Name="GameID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameTag_TagID">
+    <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+    <End Role="GameTag" Type="Self.GameTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="TagID" />
+      </Principal>
+      <Dependent Role="GameTag">
+        <PropertyRef Name="TagID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище PrintGameDataModelContainer">
+    <EntitySet Name="FileShare" EntityType="Self.FileShare" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GameImage" EntityType="Self.GameImage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GameTag" EntityType="Self.GameTag" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_FileShare_GameID" Association="Self.FK_FileShare_GameID">
+      <End Role="Game" EntitySet="Game" />
+      <End Role="FileShare" EntitySet="FileShare" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameID_Game" Association="Self.FK_GameID_Game">
+      <End Role="Game" EntitySet="Game" />
+      <End Role="GameImage" EntitySet="GameImage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameTag_GameID" Association="Self.FK_GameTag_GameID">
+      <End Role="Game" EntitySet="Game" />
+      <End Role="GameTag" EntitySet="GameTag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameTag_TagID" Association="Self.FK_GameTag_TagID">
+      <End Role="Tag" EntitySet="Tag" />
+      <End Role="GameTag" EntitySet="GameTag" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

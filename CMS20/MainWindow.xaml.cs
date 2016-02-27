@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CMS20.Controllers;
 
 namespace CMS20
 {
@@ -20,6 +21,9 @@ namespace CMS20
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>ссылка на тесты</summary>
+        public Test Test;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -32,7 +36,10 @@ namespace CMS20
         public string SrcGameDirPath = @"D:\Game_Base";
 
         /// <summary>каталог с архивами</summary>
-        public string FileShareFolder = @"D:\Content\FileShare\";  
+        public string FileShareFolder = @"D:\Content\FileShare\";
+
+        /// <summary>Каталог с текущей игрой </summary>
+        public string GameCatalogName;
 
         /// <summary>ID текущей игры</summary>
         public int GameID;
