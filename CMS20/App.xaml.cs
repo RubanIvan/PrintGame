@@ -20,7 +20,9 @@ namespace CMS20
         private LogText log;
         private ParseUrl url;
         private Test test;
-
+        private ImageCreate image;
+        private TagManage tag;
+        private FileManage file;
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
@@ -31,6 +33,10 @@ namespace CMS20
             content=new GameContent(window);
             test=new Test(window);
             window.Test = test;
+            image=new ImageCreate(window);
+            tag=new TagManage(window);
+            file=new FileManage(window);
+
             window.Show();
         }
 

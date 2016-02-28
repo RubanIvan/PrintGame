@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CMS20.Controllers;
+using CMS20.Properties;
 
 namespace CMS20
 {
@@ -30,13 +31,13 @@ namespace CMS20
         }
 
         /// <summary>каталог КУДА будут скопированы файлы</summary>
-        public string DstGameDirPath = @"D:\Content\GameData\";
+        public string DstGameDirPath = Settings.Default.DstGameDirPath; //@"D:\Content\GameData\";
 
         /// <summary>каталог ОТ КУДА будут скопированы файлы</summary>
-        public string SrcGameDirPath = @"D:\Game_Base";
+        public string SrcGameDirPath = Settings.Default.SrcGameDirPath; //@"D:\Game_Base";
 
         /// <summary>каталог с архивами</summary>
-        public string FileShareFolder = @"D:\Content\FileShare\";
+        public string FileShareFolder = Settings.Default.FileShareFolder;// @"D:\Content\FileShare\";
 
         /// <summary>Каталог с текущей игрой </summary>
         public string GameCatalogName;
@@ -48,6 +49,10 @@ namespace CMS20
         public List<string> GameList = new List<string>();
         public int GameListIndex = 0;
 
+        //храним картинку по умолчанию (зеленый квадрат малевича)
+        public ImageSource DefImg = new BitmapImage();
+
+        
 
     }
 }

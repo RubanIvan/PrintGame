@@ -70,6 +70,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controllers\FileManage.cs" />
+    <Compile Include="Controllers\GameImage.cs" />
+    <Compile Include="Controllers\ImageMagik.cs" />
+    <Compile Include="Controllers\TagManage.cs" />
     <Compile Include="FileShare.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -155,6 +159,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="DefImg.jpg" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>

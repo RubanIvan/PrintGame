@@ -20,9 +20,10 @@ namespace CMS20.Controllers
             W.ButtonPrev.Click += ButtonPrev_Click;
             W.ButtonNext.Click += ButtonNext_Click;
             W.ButtonCopyGameName.Click += ButtonCopyGameName_Click;
+            
             SetDir();
-        }
 
+         }
 
         #region DirSetup
 
@@ -31,6 +32,12 @@ namespace CMS20.Controllers
         {
             W.LabelSetDir.Content = W.SrcGameDirPath;
             W.GameList = Directory.GetDirectories(W.SrcGameDirPath).ToList();
+            //Проверяем если каталог скрыт не отображаем его
+            for (int i = 0; i < W.GameList.Count; i++)
+            {
+                DirectoryInfo d=new DirectoryInfo(W.GameList[i]);
+                if((d.Attributes & FileAttributes.Hidden) != 0)W.GameList.RemoveAt(i);
+            }
             ShowGameListIndex();
         }
 

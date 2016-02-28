@@ -156,7 +156,7 @@ namespace CMS20.Controllers
 
             try
             {
-                GameEntities.SaveChanges();
+               GameEntities.SaveChanges();
 
             }
             catch (Exception Ent)
@@ -168,8 +168,11 @@ namespace CMS20.Controllers
             W.GameID = GameEntities.Game.SqlQuery($"SELECT * FROM Game WHERE TitleRu='{W.TextBoxTitleRu.Text}'").First().GameID;
             W.Log.Add($"Добавлена запись с ID {W.GameID}");
 
-            
+            //Переходим к экрану картинок
+            W.GridCreateGame.Visibility = Visibility.Hidden;
+            W.GridGameImage.Visibility = Visibility.Visible;
         }
+
 
     }
 }
