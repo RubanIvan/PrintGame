@@ -61,6 +61,9 @@ namespace CMS20.Controllers
         //Сканирование директории поиск всех файлов .jpg показ их на экране
         private void ButtonScanImage_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            ImageListJpg.Clear();
+
+
             string dstcat = W.DstGameDirPath + W.TextBoxCatalogName.Text;
 
             //получем имена файлов сортируем по алфавиту

@@ -90,12 +90,7 @@ namespace CMS20.Controllers
         {
             W.Log.Add("Парсим страницу");
 
-            //HtmlAgilityPack.HtmlDocument htmlDoc = new HtmlAgilityPack.HtmlDocument();
-            //htmlDoc.OptionFixNestedTags = true;
-            //htmlDoc.Load(new StringReader(data));
-            //W.TextBoxTitleRu.Text = htmlDoc.DocumentNode.QuerySelector("#game_title span").InnerText;
-
-
+            
             HtmlParser parser = new HtmlParser();
             IHtmlDocument doc = parser.Parse(data);
 

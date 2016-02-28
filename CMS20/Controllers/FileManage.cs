@@ -48,6 +48,8 @@ namespace CMS20.Controllers
             //очищаем списки
             foreach (Label label in LabelList) label.Content = "";
             foreach (TextBox textBox in TextBoxList) textBox.Text = "";
+            ListFileShare.Clear();
+            ArcName.Clear();
 
             //сканируем директорию ищем подкаталоги
             //каждый подкаталог надо зделать архивом

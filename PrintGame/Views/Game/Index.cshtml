@@ -17,7 +17,9 @@
 
     <div id="GameImage">
         <div Id="Main_image">
-            <img src="@Html.Raw("/Content/GameData" + @Model.GameImages.First().SmallImagePath)" alt="@Model.TitleRu" />
+            
+                <img src="@Html.Raw("/Content/GameData" + @Model.GameImages.First().SmallImagePath)" alt="@Model.TitleRu" />
+            
         </div>
         <div id="ImageList">
 
@@ -29,7 +31,7 @@
                     @for (int i = 0; i < Model.GameImages.Count; i++)
                     {
                         <li>
-                            <a href="@Html.Raw("/Content/GameData" + @Model.GameImages[i].FulllImagePath)">
+                            <a href="@Html.Raw("/Content/GameData" + @Model.GameImages[i].FulllImagePath)" data-lightbox="lightbox" data-title="@Model.GameImages[i].DescriptImage">
                                 <img src="@Html.Raw("/Content/GameData" + @Model.GameImages[i].SmallImagePath)" alt="@Model.GameImages[i].DescriptImage" />
                             </a>
                         </li>
@@ -66,7 +68,7 @@
                         <span>@Model.Acquaintance минут</span>
                     </li>
                     <li>
-                        <div title="Время партии" ></div>
+                        <div title="Время партии"></div>
                         <span>@Model.PlayingTime минут</span>
                     </li>
                     <li>
@@ -118,7 +120,7 @@
         }
 
         //Прокрутка в право (обработчик нажатия)
-        $("#view_scroll_right").click(function () {
+        $("#view_scroll_right").click(function() {
             ImageIndex++;
 
             if (ImageIndex == ImageList.length - 3) {
@@ -131,7 +133,7 @@
         });
 
         //Прокрутка в лево
-        $("#view_scroll_left").click(function () {
+        $("#view_scroll_left").click(function() {
             ImageIndex--;
 
             if (ImageIndex == 0) {
@@ -146,51 +148,19 @@
         });
 
         //Наведение на картинку
-        $("#ImageList ul img").hover(function () {
+        $("#ImageList ul img").hover(function() {
 
             for (var i = 0; i < ImageList.length; i++) {
                 if (ImageList[i].SmallImagePath == $(this).attr("src")) {
                     $("#Main_image img").attr({ src: ImageList[i].SmallImagePath });
+                    //$("#Main_image a").click(function() {
+                        //$("#ImageList li:nth-child(" + i + ") a").click();
+                    //});
                 }
             }
         });
 
         //------------------------- Вешаем обработчик галереи -----------------------------------
-
-        
-            @for (int i = 1; i <= Model.GameImages.Count; i++)
-            {
-                @Html.Raw($"$(\"#GameImage li:nth-child({i}) img\").click(function () {{" +
-                         "$('#Clip_panel').jGallery({" +
-                         "mode: 'full-screen',"+
-                         "canChangeMode: false," +
-                         "slideshow: false," +
-                         "titleExpanded: true,"+
-                         "canClose: true," +
-                         "tooltips: false," +
-                         "autostart: true," +
-                         $"autostartAtImage: {i}"+
-                         "});"+
-                         "}); \n"
-                         );
-            }
-
-        
-
-        //$("#GameImage img").click(function () {
-        //    $('#Clip_panel').jGallery({
-        //        mode: 'full-screen',
-        //        canChangeMode: false,
-        //        slideshow: false,
-        //        titleExpanded: true,
-        //        canClose: true,
-        //        tooltips: false,
-        //        autostart: true,
-        //        autostartAtImage: 1
-        //});
-        //});
-
-
 
 
     </script>

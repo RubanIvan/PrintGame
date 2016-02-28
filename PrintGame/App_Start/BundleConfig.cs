@@ -22,14 +22,14 @@ namespace PrintGame
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
-                      "~/Scripts/jgallery.min.js"));
+                      "~/Scripts/lightbox.js"));
 
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/font-awesome.min.css",
-                      "~/Content/jgallery.min.css",
+                      "~/Content/lightbox.css",
                       "~/Content/site.css"));
         }
     }

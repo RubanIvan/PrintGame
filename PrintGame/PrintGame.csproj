@@ -242,10 +242,14 @@
     <Content Include="Content\bg-main.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\close.png" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\gameicon.png" />
-    <Content Include="Content\jgallery.min.css" />
+    <Content Include="Content\lightbox.css" />
+    <Content Include="Content\loading.gif" />
     <Content Include="Content\logo-main.png" />
+    <Content Include="Content\next.png" />
+    <Content Include="Content\prev.png" />
     <Content Include="Content\rating stars empty.png" />
     <Content Include="Content\rating stars full.png" />
     <Content Include="Content\site.css">
@@ -291,7 +295,6 @@
     <Content Include="fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\zeus server.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jgallery.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -299,6 +302,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\lightbox.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
