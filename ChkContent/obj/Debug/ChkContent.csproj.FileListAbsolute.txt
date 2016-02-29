@@ -1,0 +1,12 @@
+D:\project\PrintGame\ChkContent\bin\Debug\ChkContent.exe.config
+D:\project\PrintGame\ChkContent\bin\Debug\ChkContent.exe
+D:\project\PrintGame\ChkContent\bin\Debug\ChkContent.pdb
+D:\project\PrintGame\ChkContent\bin\Debug\EntityFramework.dll
+D:\project\PrintGame\ChkContent\bin\Debug\EntityFramework.SqlServer.dll
+D:\project\PrintGame\ChkContent\bin\Debug\EntityFramework.xml
+D:\project\PrintGame\ChkContent\bin\Debug\EntityFramework.SqlServer.xml
+D:\project\PrintGame\ChkContent\bin\Debug\ru\EntityFramework.resources.dll
+D:\project\PrintGame\ChkContent\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+D:\project\PrintGame\ChkContent\obj\Debug\ChkContent.csprojResolveAssemblyReference.cache
+D:\project\PrintGame\ChkContent\obj\Debug\ChkContent.exe
+D:\project\PrintGame\ChkContent\obj\Debug\ChkContent.pdb
