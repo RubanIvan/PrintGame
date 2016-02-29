@@ -61,6 +61,14 @@ namespace PrintGame.Models
         /// <summary>Список тэгов</summary>
         public List<Tag> Tags;
 
+        //public List<GameTag> GameTags;
+
+    }
+
+    public class TagsModel
+    {
+        public int TagID;
+        public string TagName;
     }
 
     

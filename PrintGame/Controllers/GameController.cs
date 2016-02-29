@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using PrintGame.Models;
@@ -40,7 +41,7 @@ namespace PrintGame.Controllers
 
             //            });
 
-            var query = from g in entities.Game 
+            var query = from g in entities.Game
                         where g.GameID == GameId
                         select new GameModel()
                         {
@@ -60,17 +61,33 @@ namespace PrintGame.Controllers
                             Components = g.Components,
                             CreateTime = g.CreateTime,
 
-                            GameImages=entities.GameImage.Where(i=>g.GameID==i.GameID).OrderBy(i=>i.GameImageID).ToList(),
-                            FileShares =entities.FileShare.Where(f=>g.GameID==f.GameID).OrderBy(f=>f.FileShareID).ToList(),
+                            GameImages = entities.GameImage.Where(i => g.GameID == i.GameID).OrderBy(i => i.GameImageID).ToList(),
+                            FileShares = entities.FileShare.Where(f => g.GameID == f.GameID).OrderBy(f => f.FileShareID).ToList(),
 
-                            //Tags = (entities.GameTag.Where(gt => g.GameID == gt.GameID)).Where(tt=>tt.)
-                            //Tags = entities.Tag.Where (t=>t.TagID==entities.GameTag.=>g.GameID==gt.GameID)))
-                            //Tags = entities.GameTag.Where(gt=>g.GameID==gt.GameID)
+                            Tags = (from t in entities.Tag
+                                    join gt in entities.GameTag on t.TagID equals gt.TagID
+                                    where gt.GameID == GameId
+                                    orderby gt.GameTagID
+                                    select t).ToList()
+
+                            //GameTags = entities.GameTag.Where(ggt=>ggt.GameID==GameId).ToList(),
+
+
+
                         };
 
-            
-            model = query.FirstOrDefault();
+            //var q1 = from t in entities.Tag
+            //    from gt in entities.GameTag
+            //    where t.TagID == gt.GameID
+            //    select new TagsModel()
+            //    {
+            //        TagId = t.TagID,
+            //        TagName = t.TagName
+            //    };
 
+
+            model = query.FirstOrDefault();
+            
             return View(model);
         }
 
