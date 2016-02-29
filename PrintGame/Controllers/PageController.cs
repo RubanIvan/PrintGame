@@ -36,6 +36,7 @@ namespace PrintGame.Controllers
             //var GamePage=entities.GetGamePage(PageID);
             // foreach (GetGamePage_Result pageResult in GamePage)
             var GamePage = entities.Game.OrderByDescending(g => g.GameID).Skip((int)(PageID-1)*Constants.GamePerPage).Take(Constants.GamePerPage);
+
             
             foreach (Game pageResult in GamePage)
             {
@@ -64,8 +65,14 @@ namespace PrintGame.Controllers
                 Page.Add(p);
             }
 
-            ViewBag.Pangination=PagePangination.GetPangination((int)PageID, 50);
+            int MaxPage =(int)Math.Ceiling((entities.Game.Count()/((float) Constants.GamePerPage)));
+
+            ViewBag.Pangination=PagePangination.GetPangination((int)PageID, MaxPage, @"/page/");
             return View(Page);
         }
+
+
+        
+
     }
 }

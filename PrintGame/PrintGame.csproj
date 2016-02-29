@@ -170,11 +170,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CardController.cs" />
+    <Compile Include="Controllers\EconomicController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LicenceController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PageController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\StrategicController.cs" />
+    <Compile Include="Controllers\TailController.cs" />
     <Compile Include="FileShare.cs">
       <DependentUpon>PrintGameModel.tt</DependentUpon>
     </Compile>
@@ -345,6 +350,7 @@
     <Content Include="Views\Licence\Index.cshtml" />
     <None Include="Views\Game\Index.cshtml" />
     <None Include="Views\Page\Index.cshtml" />
+    <None Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -365,7 +371,14 @@
       <DependentUpon>201512250742436_DataMigration1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Card\" />
+    <Folder Include="Views\Children\" />
+    <Folder Include="Views\Default\" />
+    <Folder Include="Views\Economic\" />
+    <Folder Include="Views\Strategic\" />
+    <Folder Include="Views\Tail\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

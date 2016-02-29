@@ -10,7 +10,7 @@ namespace PrintGame.Proc
     public static class PagePangination
     {
 
-        public static string GetPangination(int CurPage, int MaxPage)
+        public static string GetPangination(int CurPage, int MaxPage, string Query,string Page1Url="")
         {
 
             StringBuilder PangLi = new StringBuilder();
@@ -19,9 +19,52 @@ namespace PrintGame.Proc
             const int JumpCel = 6;                          //кол-во страниц для перехода в крайнии положения
             const int IndentCel = (int)(MaxCel / 2.0) - 1;    //отступ с лева и справа
 
-            string Query = @"/page/";
+            //string Query = @"/page/";
 
-            string Page1Url = "/";
+            //string Page1Url = "";
+            //if(Query.Contains("&page")) Page1Url = "1";
+
+            if (MaxPage == 1)
+            {
+                PangLi.AppendLine(@"<li class=""PangCurPage""><span>1</span></li>");
+                return PangLi.ToString();
+            }
+
+            if (MaxPage <= 10)
+            {
+                if (CurPage == 1)
+                {
+                    PangLi.AppendLine(@"<li class=""PangCurPage""><span>1</span></li>");
+                    for (int i = 2; i <= MaxPage; i++)
+                        PangLi.AppendLine($@"<li><a href=""{Query}{i}"">{i}</a></li>");
+                }
+
+                if (CurPage > 1 && CurPage!=MaxPage)
+                {
+                    //создаем ссылки до текущай страницы
+                    PangLi.AppendLine($@"<li><a href=""{Query}{Page1Url}"">1</a></li>");
+                    for (int i = 2; i < CurPage; i++)
+                        PangLi.AppendLine($@"<li><a href=""{Query}{i}"">{i}</a></li>");
+
+                    //текущаая страница
+                    PangLi.AppendLine($@"<li class=""PangCurPage""><span>{CurPage}</span></li>");
+
+                    //добавляем остаток
+                    for (int i = CurPage + 1; i <= MaxPage; i++)
+                        PangLi.AppendLine($@"<li><a href=""{Query}{i}"">{i}</a></li>");
+                }
+                if (CurPage==MaxPage)
+                {
+                    //создаем ссылки до текущай страницы
+                    PangLi.AppendLine($@"<li><a href=""{Query}{Page1Url}"">1</a></li>");
+                    for (int i = 2; i < MaxPage; i++)
+                        PangLi.AppendLine($@"<li><a href=""{Query}{i}"">{i}</a></li>");
+
+                    //текущаая страница
+                    PangLi.AppendLine($@"<li class=""PangCurPage""><span>{CurPage}</span></li>");
+                }
+                return PangLi.ToString();
+            }
 
             //самое начало
             if (CurPage == 1)

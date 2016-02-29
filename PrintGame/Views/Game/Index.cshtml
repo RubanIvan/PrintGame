@@ -14,7 +14,13 @@
     <h2 class="topic">
         @Model.TitleRu (@Model.TitleEn)
     </h2>
-
+    @foreach (Tag tag in Model.Tags)
+    {
+        <div class="GameTag">
+            <a href="">@tag.TagName</a>
+        </div>
+    }
+    <div class="clearfix"></div>
     <div id="GameImage">
         <div Id="Main_image">
             

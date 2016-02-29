@@ -20,10 +20,49 @@ namespace PrintGame
                constraints: new { PageID = @"\d+" }
            );
 
+
+
+            routes.MapRoute(
+            name: "Strategic",
+            url: "strategic/{PageID}",
+            defaults: new { controller = "Strategic", action = "Index", PageID = UrlParameter.Optional },
+            constraints: new { PageID = @"\d+" }
+        );
+
+            routes.MapRoute(
+            name: "Economic",
+            url: "economic/{PageID}",
+            defaults: new { controller = "Economic", action = "Index", PageID = UrlParameter.Optional },
+            constraints: new { PageID = @"\d+" }
+            );
+
+            routes.MapRoute(
+            name: "Tail",
+            url: "tail/{PageID}",
+            defaults: new { controller = "Tail", action = "Index", PageID = UrlParameter.Optional },
+            constraints: new { PageID = @"\d+" }
+            );
+
+            routes.MapRoute(
+            name: "Card",
+            url: "card/{PageID}",
+            defaults: new { controller = "Card", action = "Index", PageID = UrlParameter.Optional },
+            constraints: new { PageID = @"\d+" }
+        );
+
+
+
             routes.MapRoute(
                name: "Game",
                url: "game/{GameIdAndSlug}",
-               defaults: new { controller = "Game", action = "Index"}
+               defaults: new { controller = "Game", action = "Index" }
+               //constraints: new { GameID = @"\d+" }
+            );
+
+            routes.MapRoute(
+               name: "Search",
+               url: "Search/",
+               defaults: new { controller = "Search", action = "Index" }
                //constraints: new { GameID = @"\d+" }
             );
 

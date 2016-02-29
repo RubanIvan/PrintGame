@@ -1,0 +1,46 @@
+﻿@using PrintGame.Models
+@model System.Collections.Generic.List<PrintGame.Models.PageModel>
+
+@{
+    foreach (PageModel game in Model)
+    {
+        <article class="clearfix">
+            <h2 class="topic">
+                <a href=@game.SEOGameUrl>@game.TitleRu (@game.TitleEn) </a>
+            </h2>
+            <div class="post">
+                <div class="post_image">
+                    <a href=@game.SEOGameUrl>
+                        <img src="@Html.Raw("/Content/GameData" + @game.BoxImage)" alt="@game.TitleRu" />
+                    </a>
+                </div>
+                <div class="post_data clearfix">
+                    <p>@game.SmallDescript</p>
+                    <br />
+                    <p>Год издания: @game.YearPublishing</p>
+
+                    <div class="ratio_title post_data"><span>Рейтинг:</span></div>
+                    <div class="ratio" title="@(game.Rating/10f)">
+                        <div style="width: @game.Rating.ToString("##")%"></div>
+                    </div>
+                </div>
+
+                @*<div class="ratio_title post_data"><span>Рэйтинг:</span></div>
+                    <div class="ratio">
+                        <div style="width: @game.Rating.ToString("##")%"></div>
+                    </div>*@
+
+                <div>
+                    <a class="btn btn-default " href=@game.SEOGameUrl>Скачать</a>
+                </div>
+            </div>
+
+        </article>
+    }
+
+    <div class="pang">
+        <ul class="pagination">
+            @Html.Raw(ViewBag.Pangination);
+        </ul>
+    </div>
+}
