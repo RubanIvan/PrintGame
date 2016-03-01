@@ -17,7 +17,8 @@ namespace PrintGame
                name: "Page",
                url: "page/{PageID}",
                defaults: new { controller = "Page", action = "Index", PageID = UrlParameter.Optional },
-               constraints: new { PageID = @"\d+" }
+               constraints: new { PageID = @"\d+" },
+               namespaces: new string[] { "PrintGame.Controllers" }
            );
 
 

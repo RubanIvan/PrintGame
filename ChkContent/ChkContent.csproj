@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChkFileShare.cs" />
     <Compile Include="FileShare.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

@@ -1,0 +1,25 @@
+﻿@using PrintGame.Areas.Admin.Controllers
+@model dynamic
+
+@{
+//ViewBag.Title = "title";
+//Layout = "_Layout";
+}
+
+<h2>Целостность изображений</h2>
+
+<h4>Отсутствуют на диске</h4>
+@foreach (ImageModel image in ViewBag.FileInDataBaseResault)
+{
+    <p>@image.GameID: @image.ImagePath</p>
+}
+
+<h4>Мусор на диске</h4>
+@foreach (string file in ViewBag.FileInDisk)
+{
+    <p>@file</p>
+}
+<br/>
+<br/>
+<p>Всего изображений в базе: @ViewBag.CountDataBaseImage</p>
+<p>Всего изображений на диске: @ViewBag.CountDiskImage</p>

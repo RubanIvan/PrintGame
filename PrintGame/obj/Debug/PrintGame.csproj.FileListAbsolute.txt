@@ -64,7 +64,6 @@ D:\Projects\PrintGame\PrintGame\bin\Microsoft.Owin.Security.OAuth.xml
 D:\Projects\PrintGame\PrintGame\bin\Microsoft.Owin.Security.Google.xml
 D:\Projects\PrintGame\PrintGame\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Projects\PrintGame\PrintGame\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\Projects\PrintGame\PrintGame\obj\Debug\PrintGame.csprojResolveAssemblyReference.cache
 D:\Projects\PrintGame\PrintGame\obj\Debug\PrintGame.dll
 D:\Projects\PrintGame\PrintGame\obj\Debug\PrintGame.pdb
 D:\Projects\PrintGame\PrintGame\obj\Debug\PrintGame.Migrations.DataMigration.resources
@@ -180,3 +179,4 @@ D:\Projects\PrintGame\PrintGame\bin\ru\Microsoft.Owin.Security.Facebook.resource
 D:\Projects\PrintGame\PrintGame\bin\ru\Microsoft.Owin.Security.Google.resources.dll
 D:\Projects\PrintGame\PrintGame\bin\ru\Microsoft.Owin.Security.Twitter.resources.dll
 D:\Projects\PrintGame\PrintGame\bin\ru\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+D:\Projects\PrintGame\PrintGame\obj\Debug\PrintGame.csprojResolveAssemblyReference.cache

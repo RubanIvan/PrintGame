@@ -11,8 +11,12 @@ namespace ChkContent
     {
         static void Main(string[] args)
         {
-            ChkImage image=new ChkImage();
-            image.Chk();
+            //ChkImage image=new ChkImage();
+            //image.Chk();
+
+            ChkFileShare file=new ChkFileShare();
+
+            file.Chk();
 
             Console.ReadLine();
 

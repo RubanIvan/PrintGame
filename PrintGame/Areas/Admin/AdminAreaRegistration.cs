@@ -17,7 +17,8 @@ namespace PrintGame.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new string[] { "PrintGame.Areas.Admin.Controllers" }
             );
         }
     }
