@@ -12,5 +12,24 @@
   </EntityType>
   <EntityContainer Name="PrintGameDataEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="GameImage" EntityType="Self.GameImage" />
+    <EntitySet Name="FileShare" EntityType="PrintGameDataModel.FileShare" />
   </EntityContainer>
+  <EntityType Name="FileShare">
+    <Key>
+      <PropertyRef Name="FileShareID" />
+    </Key>
+    <Property Name="FileShareID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GameID" Type="Int32" Nullable="false" />
+    <Property Name="FileShareName" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="FileShareUrl1" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="FileShareUrl2" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="FileShareUrl3" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="FileShareUrl4" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="FileShareDesc" Type="String" Nullable="false" MaxLength="2048" FixedLength="false" Unicode="true" />
+    <Property Name="FileShareSize" Type="Int64" />
+    <Property Name="FileShareExpire1" Type="DateTime" Precision="0" />
+    <Property Name="FileShareExpire2" Type="DateTime" Precision="0" />
+    <Property Name="FileShareExpire3" Type="DateTime" Precision="0" />
+    <Property Name="FileShareExpire4" Type="DateTime" Precision="0" />
+  </EntityType>
 </Schema>

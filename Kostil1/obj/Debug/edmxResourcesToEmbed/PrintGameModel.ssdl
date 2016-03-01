@@ -1,5 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Хранилище PrintGameDataModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="FileShare">
+    <Key>
+      <PropertyRef Name="FileShareID" />
+    </Key>
+    <Property Name="FileShareID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameID" Type="int" Nullable="false" />
+    <Property Name="FileShareName" Type="nvarchar" MaxLength="1024" Nullable="false" />
+    <Property Name="FileShareUrl1" Type="nvarchar" MaxLength="1024" />
+    <Property Name="FileShareUrl2" Type="nvarchar" MaxLength="1024" />
+    <Property Name="FileShareUrl3" Type="nvarchar" MaxLength="1024" />
+    <Property Name="FileShareUrl4" Type="nvarchar" MaxLength="1024" />
+    <Property Name="FileShareDesc" Type="nvarchar" MaxLength="2048" Nullable="false" />
+    <Property Name="FileShareSize" Type="bigint" />
+    <Property Name="FileShareExpire1" Type="smalldatetime" />
+    <Property Name="FileShareExpire2" Type="smalldatetime" />
+    <Property Name="FileShareExpire3" Type="smalldatetime" />
+    <Property Name="FileShareExpire4" Type="smalldatetime" />
+  </EntityType>
   <EntityType Name="GameImage">
     <Key>
       <PropertyRef Name="GameImageID" />
@@ -11,6 +29,7 @@
     <Property Name="FulllImagePath" Type="nvarchar" MaxLength="1024" />
   </EntityType>
   <EntityContainer Name="Хранилище PrintGameDataModelContainer">
+    <EntitySet Name="FileShare" EntityType="Self.FileShare" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GameImage" EntityType="Self.GameImage" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

@@ -54,6 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileShare.cs">
+      <DependentUpon>PrintGameModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GameImage.cs">
       <DependentUpon>PrintGameModel.tt</DependentUpon>
     </Compile>

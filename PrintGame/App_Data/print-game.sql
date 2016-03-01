@@ -64,7 +64,11 @@ CREATE TABLE FileShare(
 		FileShareUrl2		nvarchar(1024),						--URL файла на 2 файлообменнике
 		FileShareUrl3		nvarchar(1024),						--URL файла на 3 файлообменнике
 		FileShareUrl4		nvarchar(1024),						--URL файла на 4 файлообменнике
-		FileShareSize		nvarchar(512) NOT NULL,				--размер файла
+		FileShareExpire1	SmallDateTime,
+		FileShareExpire2	SmallDateTime,
+		FileShareExpire3	SmallDateTime,
+		FileShareExpire4	SmallDateTime,
+		FileShareSize		bigint,						--размер файла
 		FileShareDesc		nvarchar(2048) NOT NULL,			--описание файла
 )
 

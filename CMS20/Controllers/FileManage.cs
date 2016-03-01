@@ -90,10 +90,10 @@ namespace CMS20.Controllers
                 fs.FileShareDesc = TextBoxList[i].Text;
 
                 FileInfo file = new System.IO.FileInfo(ArcName[i]);
-                long size = file.Length;
+                //long size = file.Length;
                 //(Math.Floor(Math.Log(bytes, 1024)))
-                double f = size / (1024.0 * 1024.0);
-                fs.FileShareSize = f.ToString("F") + "MB";
+                //double f = size / (1024.0 * 1024.0);
+                fs.FileShareSize = file.Length;//.ToString("F") + "MB";
 
                 GameEntities.FileShare.Add(fs);
             }

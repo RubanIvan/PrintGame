@@ -26,5 +26,6 @@ namespace Kostil1
         }
     
         public virtual DbSet<GameImage> GameImage { get; set; }
+        public virtual DbSet<FileShare> FileShare { get; set; }
     }
 }

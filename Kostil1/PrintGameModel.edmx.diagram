@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="faf67b72bc7044aba3597a37af29e788" Name="Diagram1">
         <EntityTypeShape EntityType="PrintGameDataModel.GameImage" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrintGameDataModel.FileShare" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

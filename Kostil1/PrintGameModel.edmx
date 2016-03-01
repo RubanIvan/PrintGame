@@ -4,7 +4,25 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище PrintGameDataModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище PrintGameDataModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FileShare">
+          <Key>
+            <PropertyRef Name="FileShareID" />
+          </Key>
+          <Property Name="FileShareID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GameID" Type="int" Nullable="false" />
+          <Property Name="FileShareName" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="FileShareUrl1" Type="nvarchar" MaxLength="1024" />
+          <Property Name="FileShareUrl2" Type="nvarchar" MaxLength="1024" />
+          <Property Name="FileShareUrl3" Type="nvarchar" MaxLength="1024" />
+          <Property Name="FileShareUrl4" Type="nvarchar" MaxLength="1024" />
+          <Property Name="FileShareDesc" Type="nvarchar" MaxLength="2048" Nullable="false" />
+          <Property Name="FileShareSize" Type="bigint" />
+          <Property Name="FileShareExpire1" Type="smalldatetime" />
+          <Property Name="FileShareExpire2" Type="smalldatetime" />
+          <Property Name="FileShareExpire3" Type="smalldatetime" />
+          <Property Name="FileShareExpire4" Type="smalldatetime" />
+        </EntityType>
         <EntityType Name="GameImage">
           <Key>
             <PropertyRef Name="GameImageID" />
@@ -16,10 +34,10 @@
           <Property Name="FulllImagePath" Type="nvarchar" MaxLength="1024" />
         </EntityType>
         <EntityContainer Name="Хранилище PrintGameDataModelContainer">
+          <EntitySet Name="FileShare" EntityType="Self.FileShare" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GameImage" EntityType="Self.GameImage" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PrintGameDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -35,7 +53,26 @@
         </EntityType>
         <EntityContainer Name="PrintGameDataEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="GameImage" EntityType="Self.GameImage" />
+          <EntitySet Name="FileShare" EntityType="PrintGameDataModel.FileShare" />
         </EntityContainer>
+        <EntityType Name="FileShare">
+          <Key>
+            <PropertyRef Name="FileShareID" />
+          </Key>
+          <Property Name="FileShareID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GameID" Type="Int32" Nullable="false" />
+          <Property Name="FileShareName" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="FileShareUrl1" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="FileShareUrl2" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="FileShareUrl3" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="FileShareUrl4" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="FileShareDesc" Type="String" Nullable="false" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="FileShareSize" Type="Int64" />
+          <Property Name="FileShareExpire1" Type="DateTime" Precision="0" />
+          <Property Name="FileShareExpire2" Type="DateTime" Precision="0" />
+          <Property Name="FileShareExpire3" Type="DateTime" Precision="0" />
+          <Property Name="FileShareExpire4" Type="DateTime" Precision="0" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -50,6 +87,25 @@
                 <ScalarProperty Name="DescriptImage" ColumnName="DescriptImage" />
                 <ScalarProperty Name="SmallImagePath" ColumnName="SmallImagePath" />
                 <ScalarProperty Name="FulllImagePath" ColumnName="FulllImagePath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileShare">
+            <EntityTypeMapping TypeName="PrintGameDataModel.FileShare">
+              <MappingFragment StoreEntitySet="FileShare">
+                <ScalarProperty Name="FileShareExpire4" ColumnName="FileShareExpire4" />
+                <ScalarProperty Name="FileShareExpire3" ColumnName="FileShareExpire3" />
+                <ScalarProperty Name="FileShareExpire2" ColumnName="FileShareExpire2" />
+                <ScalarProperty Name="FileShareExpire1" ColumnName="FileShareExpire1" />
+                <ScalarProperty Name="FileShareSize" ColumnName="FileShareSize" />
+                <ScalarProperty Name="FileShareDesc" ColumnName="FileShareDesc" />
+                <ScalarProperty Name="FileShareUrl4" ColumnName="FileShareUrl4" />
+                <ScalarProperty Name="FileShareUrl3" ColumnName="FileShareUrl3" />
+                <ScalarProperty Name="FileShareUrl2" ColumnName="FileShareUrl2" />
+                <ScalarProperty Name="FileShareUrl1" ColumnName="FileShareUrl1" />
+                <ScalarProperty Name="FileShareName" ColumnName="FileShareName" />
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="FileShareID" ColumnName="FileShareID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

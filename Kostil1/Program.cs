@@ -12,6 +12,35 @@ namespace Kostil1
     {
         static void Main(string[] args)
         {
+
+            #region 
+            //FileShare fs = new FileShare();
+            //fs.GameID = 35;
+            //fs.FileShareDesc = "Dominant Species";
+            //fs.FileShareName = "Dominant Species0.zip";
+            //fs.FileShareSize = 13466336;
+
+            //FileShare fs1 = new FileShare();
+            //fs1.GameID = 35;
+            //fs1.FileShareDesc = "Dominant Species";
+            //fs1.FileShareName = "Dominant Species1.zip";
+            //fs1.FileShareSize = 56573319;
+
+            //FileShare fs2 = new FileShare();
+            //fs2.GameID = 35;
+            //fs2.FileShareDesc = "Dominant Species";
+            //fs2.FileShareName = "Dominant Species2.zip";
+            //fs2.FileShareSize = 54716272;
+
+            //PrintGameDataEntities enties = new PrintGameDataEntities();
+            //enties.FileShare.Add(fs);
+            //enties.FileShare.Add(fs1);
+            //enties.FileShare.Add(fs2);
+
+            //enties.SaveChanges();
+            #endregion
+
+            #region 
             //PrintGameDataEntities enties = new PrintGameDataEntities();
             //foreach (GameImage gameImage in enties.GameImage)
             //{
@@ -20,7 +49,22 @@ namespace Kostil1
             //}
             //enties.SaveChanges();
 
+            #endregion
+            #region 
+            //PrintGameDataEntities enties = new PrintGameDataEntities();
+            //List<string> files= Directory.GetFiles(@"D:\Content\FileShare\", "*.zip", SearchOption.AllDirectories).ToList();
 
+
+            //foreach (string file in files)
+            //{
+            //    Console.WriteLine(file);
+            //    string fname = Path.GetFileName(file);
+            //    FileInfo f = new FileInfo(file);
+            //    enties.FileShare.First(fs => fs.FileShareName == fname).FileShareSize =f.Length;
+            //}
+            //enties.SaveChanges();
+            #endregion
+            #region 
             //ImageMagik.JPGConvert(@"d:\temp\1.jpg", @"d:\temp\11.jpg");
             //ImageMagik.AddWatermark(@"d:\temp\1.jpg", @"d:\temp\11.jpg");
             //ImageMagik.CreatePNG(@"d:\temp\1.jpg", @"d:\temp\11.png");
@@ -39,8 +83,7 @@ namespace Kostil1
             //    ImageMagik.AddWatermark(file, file);
             //    Console.WriteLine("--WATEMARK--" + file);
             //}
-
-
+            #endregion
 
             Console.ReadLine();
         }
