@@ -1,0 +1,20 @@
+﻿@model System.Collections.Generic.List<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+
+@{
+    ViewBag.Title = "Список ролей";
+}
+
+<h2>Список ролей</h2>
+
+@Html.ActionLink("Создать новую роль", "Create") | @Html.ActionLink("Редактировать пользовательские роли", "ManageUserRoles")
+<hr />
+<div>
+    @foreach (var role in Model)
+    {
+        <p>
+            <strong>@role.Name | </strong>
+            <span onclick="return confirm('Вы уверены что хотите удалить?')"><a href="/Roles/Delete?RoleName=@role.Name" class="delLink" style="color:red;">Удалить</a></span> |
+            @Html.ActionLink("Редактировать", "Edit", new { roleName = @role.Name })
+        </p>
+    }
+</div>

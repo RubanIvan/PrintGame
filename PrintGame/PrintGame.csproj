@@ -169,6 +169,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\RolesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CardController.cs" />
     <Compile Include="Controllers\EconomicController.cs" />
@@ -287,6 +289,11 @@
       <DependentUpon>PrintGameModel.edmx</DependentUpon>
     </Content>
     <Content Include="Content\site.less" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <None Include="Areas\Admin\Views\Roles\Create.cshtml" />
+    <None Include="Areas\Admin\Views\Roles\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\Roles\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Roles\ManageUserRoles.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -372,6 +379,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Views\Card\" />
     <Folder Include="Views\Children\" />
     <Folder Include="Views\Default\" />
