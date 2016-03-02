@@ -252,6 +252,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\close.png" />
+    <Content Include="Content\dontexist.png" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\gameicon.png" />
     <Content Include="Content\lightbox.css" />
@@ -261,6 +262,7 @@
     <Content Include="Content\prev.png" />
     <Content Include="Content\rating stars empty.png" />
     <Content Include="Content\rating stars full.png" />
+    <Content Include="Content\search boxes.png" />
     <Content Include="Content\site.css">
       <DependentUpon>site.less</DependentUpon>
     </Content>
@@ -311,6 +313,7 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Content\search.less" />
     <None Include="Properties\PublishProfiles\zeus server.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

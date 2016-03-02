@@ -19,6 +19,14 @@
                     <div class="logo_main">
                         <a href="/"><img src="/Content/logo-main.png" alt="Print-Game.ru" /> </a>
                     </div>
+
+                    <div id="header_search">
+                        @using (Html.BeginForm("Index", "Search", FormMethod.Get))
+                        {
+                            <input type="text" name="text" value="Поиск" onblur="if(this.value=='') this.value='Поиск';" onfocus="if(this.value=='Поиск') this.value='';" />
+                            <input type="submit" value="" />
+                        }
+                    </div>
                 </header>
             </div>
             <div class="row">
@@ -45,7 +53,7 @@
                                 <li>
                                     <a href="/tail/">Тайлы</a>
                                 </li>
-                                
+
                             </ul>
                         </nav>
                     </div>
@@ -57,6 +65,15 @@
                             @Html.Partial("_LoginPartial")
                         </div>
                     </div>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div class="left_cell">
+                            <div class="topic">
+                                <a href="@Url.Action("Index", "Home", new {area = "Admin"})">Админ панель</a>
+                            </div>
+                        </div>
+                    }
 
                 </div>
                 <div id="column_main" class="col-md-9 col-lg-9 col-sm-8">

@@ -27,6 +27,7 @@ namespace PrintGame.Models
 
         /// <summary>Путь до титульной картинки</summary>
         public string BoxImage;
+        public string BoxImageFull;
 
         public int YearPublishing;
 

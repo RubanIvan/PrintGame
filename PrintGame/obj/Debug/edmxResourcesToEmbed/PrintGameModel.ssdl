@@ -11,8 +11,12 @@
     <Property Name="FileShareUrl2" Type="nvarchar" MaxLength="1024" />
     <Property Name="FileShareUrl3" Type="nvarchar" MaxLength="1024" />
     <Property Name="FileShareUrl4" Type="nvarchar" MaxLength="1024" />
-    <Property Name="FileShareSize" Type="nvarchar" MaxLength="512" Nullable="false" />
     <Property Name="FileShareDesc" Type="nvarchar" MaxLength="2048" Nullable="false" />
+    <Property Name="FileShareSize" Type="bigint" />
+    <Property Name="FileShareExpire1" Type="smalldatetime" />
+    <Property Name="FileShareExpire2" Type="smalldatetime" />
+    <Property Name="FileShareExpire3" Type="smalldatetime" />
+    <Property Name="FileShareExpire4" Type="smalldatetime" />
   </EntityType>
   <EntityType Name="Game">
     <Key>

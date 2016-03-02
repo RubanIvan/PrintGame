@@ -1,21 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище PrintGameDataModelContainer" CdmEntityContainer="PrintGameDataEntities">
-    <EntitySetMapping Name="FileShare">
-      <EntityTypeMapping TypeName="PrintGameDataModel.FileShare">
-        <MappingFragment StoreEntitySet="FileShare">
-          <ScalarProperty Name="FileShareID" ColumnName="FileShareID" />
-          <ScalarProperty Name="GameID" ColumnName="GameID" />
-          <ScalarProperty Name="FileShareName" ColumnName="FileShareName" />
-          <ScalarProperty Name="FileShareUrl1" ColumnName="FileShareUrl1" />
-          <ScalarProperty Name="FileShareUrl2" ColumnName="FileShareUrl2" />
-          <ScalarProperty Name="FileShareUrl3" ColumnName="FileShareUrl3" />
-          <ScalarProperty Name="FileShareUrl4" ColumnName="FileShareUrl4" />
-          <ScalarProperty Name="FileShareSize" ColumnName="FileShareSize" />
-          <ScalarProperty Name="FileShareDesc" ColumnName="FileShareDesc" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Game">
       <EntityTypeMapping TypeName="PrintGameDataModel.Game">
         <MappingFragment StoreEntitySet="Game">
@@ -98,5 +83,24 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="DeleteGameByID" FunctionName="Хранилище PrintGameDataModel.DeleteGameByID" />
+    <EntitySetMapping Name="FileShare">
+      <EntityTypeMapping TypeName="PrintGameDataModel.FileShare">
+        <MappingFragment StoreEntitySet="FileShare">
+          <ScalarProperty Name="FileShareExpire4" ColumnName="FileShareExpire4" />
+          <ScalarProperty Name="FileShareExpire3" ColumnName="FileShareExpire3" />
+          <ScalarProperty Name="FileShareExpire2" ColumnName="FileShareExpire2" />
+          <ScalarProperty Name="FileShareExpire1" ColumnName="FileShareExpire1" />
+          <ScalarProperty Name="FileShareSize" ColumnName="FileShareSize" />
+          <ScalarProperty Name="FileShareDesc" ColumnName="FileShareDesc" />
+          <ScalarProperty Name="FileShareUrl4" ColumnName="FileShareUrl4" />
+          <ScalarProperty Name="FileShareUrl3" ColumnName="FileShareUrl3" />
+          <ScalarProperty Name="FileShareUrl2" ColumnName="FileShareUrl2" />
+          <ScalarProperty Name="FileShareUrl1" ColumnName="FileShareUrl1" />
+          <ScalarProperty Name="FileShareName" ColumnName="FileShareName" />
+          <ScalarProperty Name="GameID" ColumnName="GameID" />
+          <ScalarProperty Name="FileShareID" ColumnName="FileShareID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

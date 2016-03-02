@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace ChkContent
 {
@@ -70,11 +71,71 @@ namespace ChkContent
                 return;
             }
 
-            
+            CookieCollection CookiesAuth = new CookieCollection();
+            CookiesAuth = response.Cookies;
 
+            //запрашиваем данные
+
+            HttpWebRequest requestJSON = (HttpWebRequest)HttpWebRequest.Create("http://dfiles.ru/gold/files_list.php?format=json&s[id_file_folder]=_root&page=1&res_type=array");
+            requestJSON.Method = WebRequestMethods.Http.Get;
+            requestJSON.CookieContainer = new CookieContainer();
+            requestJSON.CookieContainer.Add(CookiesAuth);
+            //requestJSON.CookieContainer.Add(new Cookie())
+            requestJSON.Accept = "application/json, text/javascript, */*; q=0.01";
+            requestJSON.Referer = "http://dfiles.ru/gold/files_list.php";
+
+            response = (HttpWebResponse)requestJSON.GetResponse();
             
-            Console.WriteLine(response.Cookies.Count);
+            StringBuilder Json=new StringBuilder();
+            using (StreamReader stream = new StreamReader(response.GetResponseStream()))
+            {
+                // Выводим исходный код страницы
+                string line;
+                while ((line = stream.ReadLine()) != null)
+                    Json.Append(line);
+                //Console.WriteLine(line);
+            }
+
+            var  ff = JsonConvert.DeserializeObject<JsonFiles>(Json.ToString());
+
+            Console.WriteLine(Json);
 
         }
+    }
+
+    public class JsonFiles
+    {
+        [JsonProperty("Files")]
+        public JsonFile[] Files;
+    }
+
+    public class JsonFile
+    {
+        [JsonProperty("download_cnt")   ]
+        public long download_cnt;       //download_cnt=0
+
+        [JsonProperty("download_url")]
+        public string download_url;     //download_url=http://dfiles.ru/files/usp50xnu6
+
+        [JsonProperty("dt_added")]
+        public DateTime dt_added;       //dt_added=2016-02-28 19:57:53
+
+        [JsonProperty("dt_expires")]
+        public DateTime dt_expires;     //dt_expires=2016-05-28 19:57:53
+
+        [JsonProperty("file_password")]
+        public string file_password;    //  
+
+        [JsonProperty("filename_source")]
+        public string filename_source;  //filename_source=Dungeon Lords1.zip
+
+        [JsonProperty("id")]
+        public long id;                 //id=166145650
+
+        [JsonProperty("id_str")]
+        public string id_str;           //id_str=usp50xnu6
+
+        [JsonProperty("size")]
+        public long size;               //size=261597700
     }
 }

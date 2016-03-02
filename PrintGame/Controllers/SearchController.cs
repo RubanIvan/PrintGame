@@ -11,7 +11,7 @@ namespace PrintGame.Controllers
     public class SearchController : Controller
     {
         // GET: Search
-        public ActionResult Index(string text, int? page)
+        public ActionResult Index(string text,string tag, int? page)
         {
             ViewBag.Title = "Распечатай и играй. Сканы настольных игр";
 
@@ -24,7 +24,9 @@ namespace PrintGame.Controllers
             //если id ошибочный возвращаем 404 
             if (PageID < 1) return HttpNotFound();
 
-
+            #region разбиваем на теги
+            List<string> tagList=new List<string>();
+            #endregion
 
 
             List<PageModel> Page = new List<PageModel>();
@@ -36,6 +38,15 @@ namespace PrintGame.Controllers
                          join t in entities.Tag on gt.TagID equals t.TagID
                          where g.TitleRu.Contains(text)
                          select  g).Distinct();
+
+            if (tagList.Count ==1)
+            {
+                query = (from g in entities.Game
+                         join gt in entities.GameTag on g.GameID equals gt.GameID
+                         join t in entities.Tag on gt.TagID equals t.TagID
+                         where g.TitleRu.Contains(text) && t.TagName == tagList[0]
+                         select g).Distinct();
+            }
 
 
             foreach (Game pageResult in query.OrderByDescending(g => g.GameID).Skip((int)(PageID - 1) * Constants.GamePerPage).Take(Constants.GamePerPage))
@@ -59,6 +70,7 @@ namespace PrintGame.Controllers
                 PrintGameDataEntities entities1 = new PrintGameDataEntities();
                 var img = entities1.GetGameBoxImage(p.GameID).First();
                 p.BoxImage = img.SmallImagePath;
+                p.BoxImageFull = img.FulllImagePath;
 
                 p.SEOGameUrl = $"/game/{p.GameID}-{Slug.Create(p.TitleEn)}";
 
@@ -69,7 +81,8 @@ namespace PrintGame.Controllers
 
             ViewBag.Pangination = PagePangination.GetPangination((int)PageID, MaxPage, $@"/Search/?text={text}&page=","1");
             
-            return View("~/Views/Page/Index.cshtml", Page);
+            //return View("~/Views/Page/Index.cshtml", Page);
+            return View(Page);
 
         }
     }

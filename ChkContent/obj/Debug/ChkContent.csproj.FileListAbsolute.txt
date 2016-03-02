@@ -22,3 +22,5 @@ D:\Projects\PrintGame\ChkContent\bin\Debug\ru\EntityFramework.SqlServer.resource
 D:\Projects\PrintGame\ChkContent\obj\Debug\ChkContent.csprojResolveAssemblyReference.cache
 D:\Projects\PrintGame\ChkContent\obj\Debug\ChkContent.exe
 D:\Projects\PrintGame\ChkContent\obj\Debug\ChkContent.pdb
+D:\Projects\PrintGame\ChkContent\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\PrintGame\ChkContent\bin\Debug\Newtonsoft.Json.xml
