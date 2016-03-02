@@ -25,10 +25,10 @@ namespace CMS20
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<FileShare> FileShare { get; set; }
         public virtual DbSet<Game> Game { get; set; }
         public virtual DbSet<GameImage> GameImage { get; set; }
         public virtual DbSet<GameTag> GameTag { get; set; }
         public virtual DbSet<Tag> Tag { get; set; }
+        public virtual DbSet<FileShare> FileShare { get; set; }
     }
 }

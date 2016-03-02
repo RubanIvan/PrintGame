@@ -24,3 +24,5 @@ D:\Projects\PrintGame\ChkContent\obj\Debug\ChkContent.exe
 D:\Projects\PrintGame\ChkContent\obj\Debug\ChkContent.pdb
 D:\Projects\PrintGame\ChkContent\bin\Debug\Newtonsoft.Json.dll
 D:\Projects\PrintGame\ChkContent\bin\Debug\Newtonsoft.Json.xml
+D:\project\PrintGame\ChkContent\bin\Debug\Newtonsoft.Json.dll
+D:\project\PrintGame\ChkContent\bin\Debug\Newtonsoft.Json.xml

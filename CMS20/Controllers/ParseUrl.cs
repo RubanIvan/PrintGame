@@ -127,11 +127,11 @@ namespace CMS20.Controllers
 
             try
             {
-                W.TextBoxNumOfPlayers.Text = doc.QuerySelector(" div.leftcol > ul > li:nth-child(1)").TextContent;
-                W.TextBoxNumOfSuggested.Text = doc.QuerySelector(" div.leftcol > ul > li:nth-child(2)").TextContent;
-                W.TextBoxSuggestedAges.Text = doc.QuerySelector(" div.leftcol > ul > li:nth-child(3)").TextContent.Replace("от", "").Replace("лет", "").Trim();
-                W.TextBoxAcquaintance.Text = doc.QuerySelector(" div.leftcol > ul > li:nth-child(4)").TextContent.Replace("мин", "").Trim();
-                W.TextBoxPlayingTime.Text = doc.QuerySelector(" div.leftcol > ul > li:nth-child(5)").TextContent.Replace("мин", "").Trim();
+                W.TextBoxNumOfPlayers.Text = doc.QuerySelector(" #games_games > div.gameholder > div.leftcol > ul.classnav > li:nth-child(1)").TextContent;
+                W.TextBoxNumOfSuggested.Text = doc.QuerySelector(" #games_games > div.gameholder > div.leftcol > ul.classnav > li:nth-child(2)").TextContent;
+                W.TextBoxSuggestedAges.Text = doc.QuerySelector("#games_games > div.gameholder > div.leftcol > ul.classnav > li:nth-child(3)").TextContent.Replace("от", "").Replace("лет", "").Trim();
+                W.TextBoxAcquaintance.Text = doc.QuerySelector("#games_games > div.gameholder > div.leftcol > ul.classnav > li:nth-child(4)").TextContent.Replace("мин", "").Trim();
+                W.TextBoxPlayingTime.Text = doc.QuerySelector(" #games_games > div.gameholder > div.leftcol > ul.classnav > li:nth-child(5)").TextContent.Replace("мин", "").Trim();
             }
             catch (Exception)
             {
@@ -141,7 +141,7 @@ namespace CMS20.Controllers
 
             try
             {
-                W.TextBoxComponents.Text = doc.QuerySelector("#games_games > div.gameholder > div.leftcol > div.cols.op > div.colmid > table > tbody > tr:nth-child(3) > td > p").InnerHtml.Replace("<br>", "\n");
+                W.TextBoxComponents.Text = doc.QuerySelector("#games_games table > tbody > tr.bg > td > p").InnerHtml.Replace("<br>", "\n");
             }
             catch (Exception e)
             {

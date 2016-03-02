@@ -93,7 +93,7 @@ namespace CMS20.Controllers
                 //long size = file.Length;
                 //(Math.Floor(Math.Log(bytes, 1024)))
                 //double f = size / (1024.0 * 1024.0);
-                //fs.FileShareSize = file.Length;//.ToString("F") + "MB";
+                fs.FileShareSize = file.Length;//.ToString("F") + "MB";
 
                 GameEntities.FileShare.Add(fs);
             }

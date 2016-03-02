@@ -21,8 +21,12 @@ namespace CMS20
         public string FileShareUrl2 { get; set; }
         public string FileShareUrl3 { get; set; }
         public string FileShareUrl4 { get; set; }
-        public string FileShareSize { get; set; }
         public string FileShareDesc { get; set; }
+        public Nullable<long> FileShareSize { get; set; }
+        public Nullable<System.DateTime> FileShareExpire1 { get; set; }
+        public Nullable<System.DateTime> FileShareExpire2 { get; set; }
+        public Nullable<System.DateTime> FileShareExpire3 { get; set; }
+        public Nullable<System.DateTime> FileShareExpire4 { get; set; }
     
         public virtual Game Game { get; set; }
     }

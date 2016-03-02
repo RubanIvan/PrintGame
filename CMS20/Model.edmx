@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище PrintGameDataModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище PrintGameDataModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="FileShare">
           <Key>
             <PropertyRef Name="FileShareID" />
@@ -16,8 +16,12 @@
           <Property Name="FileShareUrl2" Type="nvarchar" MaxLength="1024" />
           <Property Name="FileShareUrl3" Type="nvarchar" MaxLength="1024" />
           <Property Name="FileShareUrl4" Type="nvarchar" MaxLength="1024" />
-          <Property Name="FileShareSize" Type="nvarchar" MaxLength="512" Nullable="false" />
           <Property Name="FileShareDesc" Type="nvarchar" MaxLength="2048" Nullable="false" />
+          <Property Name="FileShareSize" Type="bigint" />
+          <Property Name="FileShareExpire1" Type="smalldatetime" />
+          <Property Name="FileShareExpire2" Type="smalldatetime" />
+          <Property Name="FileShareExpire3" Type="smalldatetime" />
+          <Property Name="FileShareExpire4" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="Game">
           <Key>
@@ -135,26 +139,10 @@
             <End Role="GameTag" EntitySet="GameTag" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PrintGameDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="FileShare">
-          <Key>
-            <PropertyRef Name="FileShareID" />
-          </Key>
-          <Property Name="FileShareID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GameID" Type="Int32" Nullable="false" />
-          <Property Name="FileShareName" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FileShareUrl1" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
-          <Property Name="FileShareUrl2" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
-          <Property Name="FileShareUrl3" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
-          <Property Name="FileShareUrl4" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
-          <Property Name="FileShareSize" Type="String" MaxLength="512" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FileShareDesc" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Game" Relationship="Self.FK_FileShare_GameID" FromRole="FileShare" ToRole="Game" />
-        </EntityType>
         <EntityType Name="Game">
           <Key>
             <PropertyRef Name="GameID" />
@@ -174,9 +162,9 @@
           <Property Name="PlayingTime" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Name="Components" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="FileShare" Relationship="Self.FK_FileShare_GameID" FromRole="Game" ToRole="FileShare" />
           <NavigationProperty Name="GameImage" Relationship="Self.FK_GameID_Game" FromRole="Game" ToRole="GameImage" />
           <NavigationProperty Name="GameTag" Relationship="Self.FK_GameTag_GameID" FromRole="Game" ToRole="GameTag" />
+          <NavigationProperty Name="FileShare" Relationship="PrintGameDataModel.FK_FileShare_GameID" FromRole="Game" ToRole="FileShare" />
         </EntityType>
         <EntityType Name="GameImage">
           <Key>
@@ -207,18 +195,6 @@
           <Property Name="TagName" Type="String" MaxLength="512" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="GameTag" Relationship="Self.FK_GameTag_TagID" FromRole="Tag" ToRole="GameTag" />
         </EntityType>
-        <Association Name="FK_FileShare_GameID">
-          <End Role="Game" Type="Self.Game" Multiplicity="1" />
-          <End Role="FileShare" Type="Self.FileShare" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Game">
-              <PropertyRef Name="GameID" />
-            </Principal>
-            <Dependent Role="FileShare">
-              <PropertyRef Name="GameID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_GameID_Game">
           <End Role="Game" Type="Self.Game" Multiplicity="0..1" />
           <End Role="GameImage" Type="Self.GameImage" Multiplicity="*" />
@@ -256,15 +232,10 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="PrintGameDataEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="FileShare" EntityType="Self.FileShare" />
           <EntitySet Name="Game" EntityType="Self.Game" />
           <EntitySet Name="GameImage" EntityType="Self.GameImage" />
           <EntitySet Name="GameTag" EntityType="Self.GameTag" />
           <EntitySet Name="Tag" EntityType="Self.Tag" />
-          <AssociationSet Name="FK_FileShare_GameID" Association="Self.FK_FileShare_GameID">
-            <End Role="Game" EntitySet="Game" />
-            <End Role="FileShare" EntitySet="FileShare" />
-          </AssociationSet>
           <AssociationSet Name="FK_GameID_Game" Association="Self.FK_GameID_Game">
             <End Role="Game" EntitySet="Game" />
             <End Role="GameImage" EntitySet="GameImage" />
@@ -277,28 +248,49 @@
             <End Role="Tag" EntitySet="Tag" />
             <End Role="GameTag" EntitySet="GameTag" />
           </AssociationSet>
+          <EntitySet Name="FileShare" EntityType="PrintGameDataModel.FileShare" />
+          <AssociationSet Name="FK_FileShare_GameID" Association="PrintGameDataModel.FK_FileShare_GameID">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="FileShare" EntitySet="FileShare" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="FileShare">
+          <Key>
+            <PropertyRef Name="FileShareID" />
+          </Key>
+          <Property Name="FileShareID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GameID" Type="Int32" Nullable="false" />
+          <Property Name="FileShareName" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="FileShareUrl1" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="FileShareUrl2" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="FileShareUrl3" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="FileShareUrl4" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="FileShareDesc" Type="String" Nullable="false" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="FileShareSize" Type="Int64" />
+          <Property Name="FileShareExpire1" Type="DateTime" Precision="0" />
+          <Property Name="FileShareExpire2" Type="DateTime" Precision="0" />
+          <Property Name="FileShareExpire3" Type="DateTime" Precision="0" />
+          <Property Name="FileShareExpire4" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Game" Relationship="PrintGameDataModel.FK_FileShare_GameID" FromRole="FileShare" ToRole="Game" />
+        </EntityType>
+        <Association Name="FK_FileShare_GameID">
+          <End Type="PrintGameDataModel.Game" Role="Game" Multiplicity="1" />
+          <End Type="PrintGameDataModel.FileShare" Role="FileShare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="GameID" />
+            </Principal>
+            <Dependent Role="FileShare">
+              <PropertyRef Name="GameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище PrintGameDataModelContainer" CdmEntityContainer="PrintGameDataEntities">
-          <EntitySetMapping Name="FileShare">
-            <EntityTypeMapping TypeName="PrintGameDataModel.FileShare">
-              <MappingFragment StoreEntitySet="FileShare">
-                <ScalarProperty Name="FileShareID" ColumnName="FileShareID" />
-                <ScalarProperty Name="GameID" ColumnName="GameID" />
-                <ScalarProperty Name="FileShareName" ColumnName="FileShareName" />
-                <ScalarProperty Name="FileShareUrl1" ColumnName="FileShareUrl1" />
-                <ScalarProperty Name="FileShareUrl2" ColumnName="FileShareUrl2" />
-                <ScalarProperty Name="FileShareUrl3" ColumnName="FileShareUrl3" />
-                <ScalarProperty Name="FileShareUrl4" ColumnName="FileShareUrl4" />
-                <ScalarProperty Name="FileShareSize" ColumnName="FileShareSize" />
-                <ScalarProperty Name="FileShareDesc" ColumnName="FileShareDesc" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Game">
             <EntityTypeMapping TypeName="PrintGameDataModel.Game">
               <MappingFragment StoreEntitySet="Game">
@@ -345,6 +337,25 @@
               <MappingFragment StoreEntitySet="Tag">
                 <ScalarProperty Name="TagID" ColumnName="TagID" />
                 <ScalarProperty Name="TagName" ColumnName="TagName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileShare">
+            <EntityTypeMapping TypeName="PrintGameDataModel.FileShare">
+              <MappingFragment StoreEntitySet="FileShare">
+                <ScalarProperty Name="FileShareExpire4" ColumnName="FileShareExpire4" />
+                <ScalarProperty Name="FileShareExpire3" ColumnName="FileShareExpire3" />
+                <ScalarProperty Name="FileShareExpire2" ColumnName="FileShareExpire2" />
+                <ScalarProperty Name="FileShareExpire1" ColumnName="FileShareExpire1" />
+                <ScalarProperty Name="FileShareSize" ColumnName="FileShareSize" />
+                <ScalarProperty Name="FileShareDesc" ColumnName="FileShareDesc" />
+                <ScalarProperty Name="FileShareUrl4" ColumnName="FileShareUrl4" />
+                <ScalarProperty Name="FileShareUrl3" ColumnName="FileShareUrl3" />
+                <ScalarProperty Name="FileShareUrl2" ColumnName="FileShareUrl2" />
+                <ScalarProperty Name="FileShareUrl1" ColumnName="FileShareUrl1" />
+                <ScalarProperty Name="FileShareName" ColumnName="FileShareName" />
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="FileShareID" ColumnName="FileShareID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
