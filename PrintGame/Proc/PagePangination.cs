@@ -15,7 +15,7 @@ namespace PrintGame.Proc
 
             StringBuilder PangLi = new StringBuilder();
 
-            const int MaxCel = 10;                          //всего показано страниц
+            const int MaxCel = 8;                          //всего показано страниц
             const int JumpCel = 6;                          //кол-во страниц для перехода в крайнии положения
             const int IndentCel = (int)(MaxCel / 2.0) - 1;    //отступ с лева и справа
 
@@ -79,16 +79,19 @@ namespace PrintGame.Proc
                 PangLi.AppendLine(@"<li><span>...</span></li>");
                 PangLi.AppendLine($@"<li><a href=""{Query}{MaxPage}"">{MaxPage}</a></li>");
                 PangLi.AppendLine($@"<li><a href=""{Query}{CurPage + 1}"">Вперед &gt;&gt; </a></li>");
+
+                return PangLi.ToString();
             }
 
             //все еще в начале
-            if (CurPage > 1 && CurPage <= JumpCel)
+            if (CurPage > 1 && CurPage < JumpCel)
             {
                 //создаем кнопка назад
                 PangLi.AppendLine($@"<li><a href=""{Query}{CurPage - 1}"">&lt;&lt; Назад</a></li>");
 
                 //создаем ссылки до текущай страницы
-                for (int i = 1; i < CurPage; i++)
+                PangLi.AppendLine($@"<li><a href=""{Query}{Page1Url}"">1</a></li>");
+                for (int i = 2; i < CurPage; i++)
                     PangLi.AppendLine($@"<li><a href=""{Query}{i}"">{i}</a></li>");
 
                 //текущаая страница
@@ -103,14 +106,15 @@ namespace PrintGame.Proc
                 PangLi.AppendLine($@"<li><a href=""{Query}{MaxPage}"">{MaxPage}</a></li>");
                 PangLi.AppendLine($@"<li><a href=""{Query}{CurPage + 1}"">Вперед &gt;&gt; </a></li>");
 
+                return PangLi.ToString();
             }
 
             //серидина
-            if (CurPage > JumpCel && CurPage < (MaxPage - JumpCel))
+            if (CurPage >= JumpCel && CurPage < (MaxPage - JumpCel))
             {
                 //создаем кнопку назад
                 PangLi.AppendLine($@"<li><a href=""{Query}{CurPage - 1}"">&lt;&lt; Назад</a></li>");
-                PangLi.AppendLine($@"<li><a href=""{Query}{1}"">1</a></li>");
+                PangLi.AppendLine($@"<li><a href=""{Query}{Page1Url}"">1</a></li>");
                 PangLi.AppendLine(@"<li><span>...</span></li>");
 
                 //отступаем в лево от текущей страницы
@@ -128,6 +132,8 @@ namespace PrintGame.Proc
                 PangLi.AppendLine(@"<li><span>...</span></li>");
                 PangLi.AppendLine($@"<li><a href=""{Query}{MaxPage}"">{MaxPage}</a></li>");
                 PangLi.AppendLine($@"<li><a href=""{Query}{CurPage + 1}"">Вперед &gt;&gt; </a></li>");
+
+                return PangLi.ToString();
             }
 
             //почти в конце
@@ -135,7 +141,7 @@ namespace PrintGame.Proc
             {
                 //создаем кнопку назад
                 PangLi.AppendLine($@"<li><a href=""{Query}{CurPage - 1}"">&lt;&lt; Назад</a></li>");
-                PangLi.AppendLine($@"<li><a href=""{Query}{1}"">1</a></li>");
+                PangLi.AppendLine($@"<li><a href=""{Query}{Page1Url}"">1</a></li>");
                 PangLi.AppendLine(@"<li><span>...</span></li>");
 
 
@@ -153,6 +159,7 @@ namespace PrintGame.Proc
                 //+ кнопка Вперед
                 PangLi.AppendLine($@"<li><a href=""{Query}{CurPage + 1}"">Вперед &gt;&gt; </a></li>");
 
+                return PangLi.ToString();
             }
 
             //в самом конце
@@ -160,7 +167,7 @@ namespace PrintGame.Proc
             {
                 //создаем кнопку назад
                 PangLi.AppendLine($@"<li><a href=""{Query}{CurPage - 1}"">&lt;&lt; Назад</a></li>");
-                PangLi.AppendLine($@"<li><a href=""{Query}{1}"">1</a></li>");
+                PangLi.AppendLine($@"<li><a href=""{Query}{Page1Url}"">1</a></li>");
                 PangLi.AppendLine(@"<li><span>...</span></li>");
 
 
@@ -174,6 +181,7 @@ namespace PrintGame.Proc
                 //+ кнопка Вперед
                 PangLi.AppendLine($@"<li><span>Вперед &gt;&gt; </span></li>");
 
+                return PangLi.ToString();
             }
             return PangLi.ToString();
         }

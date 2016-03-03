@@ -3,17 +3,21 @@
     ViewBag.Title = "Редактировать роль";
 }
 
-<h2>Редактировать роль</h2>
+<h2 class="text-center">Редактировать роль</h2>
 
-@Html.ActionLink("Список ролей", "Index") | @Html.ActionLink("Редактировать пользовательские роли", "ManageUserRoles")
-<hr />
+<a href="@Url.Action("Create")" class="ButtonGrey">Создать новую роль</a>
+<br />
+<br />
+<a href="@Url.Action("ManageUserRoles")" class="ButtonGrey">Редактировать пользовательские роли</a>
+<hr/>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     @Html.HiddenFor(model => model.Id)
     <div>
-        Имя роли
+        Новое имя роли
     </div>
     <p>
         @Html.TextBoxFor(model => model.Name)

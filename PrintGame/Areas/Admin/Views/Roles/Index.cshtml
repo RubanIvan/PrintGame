@@ -4,17 +4,33 @@
     ViewBag.Title = "Список ролей";
 }
 
-<h2>Список ролей</h2>
-
-@Html.ActionLink("Создать новую роль", "Create") | @Html.ActionLink("Редактировать пользовательские роли", "ManageUserRoles")
+<h2 class="text-center">Список ролей</h2>
+<a href="@Url.Action("Create")" class="ButtonGrey">Создать новую роль</a>
+<br/>
+<br/>
+<a href="@Url.Action("ManageUserRoles")" class="ButtonGrey" >Редактировать пользовательские роли</a>
 <hr />
-<div>
-    @foreach (var role in Model)
-    {
-        <p>
-            <strong>@role.Name | </strong>
-            <span onclick="return confirm('Вы уверены что хотите удалить?')"><a href="/Roles/Delete?RoleName=@role.Name" class="delLink" style="color:red;">Удалить</a></span> |
-            @Html.ActionLink("Редактировать", "Edit", new { roleName = @role.Name })
-        </p>
-    }
+<div id="AdminPanel">
+
+    <table class="table table-bordered">
+        <tbody class=".table-hover">
+            @foreach (var role in Model)
+            {
+                <tr>
+                    <td>
+                        <strong>@role.Name</strong>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit","Roles",new {roleName = @role.Name})" class="ButtonGrey">Редактировать</a>
+                     </td>
+                    <td>
+                        <span onclick="return confirm('Вы уверены что хотите удалить?')"><a href="@Url.Action("Delete","Roles", new {RoleName=@role.Name})" class="ButtonRed" style="color: whitesmoke;">Удалить</a></span>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+
 </div>

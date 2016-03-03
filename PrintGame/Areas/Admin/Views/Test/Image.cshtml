@@ -6,20 +6,28 @@
 //Layout = "_Layout";
 }
 
-<h2>Целостность изображений</h2>
+<h2 class="text-center">Целостность изображений</h2>
 
-<h4>Отсутствуют на диске</h4>
-@foreach (ImageModel image in ViewBag.FileInDataBaseResault)
+@if (ViewBag.FileInDataBaseResault.Count > 0)
 {
-    <p>@image.GameID: @image.ImagePath</p>
+    <h4>Отсутствуют на диске</h4>
+    <hr />
+    foreach (ImageModel image in ViewBag.FileInDataBaseResault)
+    {
+        <p>@image.GameID: @image.ImagePath</p>
+    }
 }
 
-<h4>Мусор на диске</h4>
-@foreach (string file in ViewBag.FileInDisk)
+@if (ViewBag.FileInDisk.Count > 0)
 {
-    <p>@file</p>
+    <h4>Мусор на диске</h4>
+    foreach (string file in ViewBag.FileInDisk)
+    {
+        <p>@file</p>
+    }
 }
+<br />
 <br/>
-<br/>
+
 <p>Всего изображений в базе: @ViewBag.CountDataBaseImage</p>
 <p>Всего изображений на диске: @ViewBag.CountDiskImage</p>

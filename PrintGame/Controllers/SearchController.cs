@@ -39,14 +39,14 @@ namespace PrintGame.Controllers
                          where g.TitleRu.Contains(text)
                          select  g).Distinct();
 
-            if (tagList.Count ==1)
-            {
-                query = (from g in entities.Game
-                         join gt in entities.GameTag on g.GameID equals gt.GameID
-                         join t in entities.Tag on gt.TagID equals t.TagID
-                         where g.TitleRu.Contains(text) && t.TagName == tagList[0]
-                         select g).Distinct();
-            }
+            //if (tagList.Count ==1)
+            //{
+            //    query = (from g in entities.Game
+            //             join gt in entities.GameTag on g.GameID equals gt.GameID
+            //             join t in entities.Tag on gt.TagID equals t.TagID
+            //             where g.TitleRu.Contains(text) && t.TagName == tagList[0]
+            //             select g).Distinct();
+            //}
 
 
             foreach (Game pageResult in query.OrderByDescending(g => g.GameID).Skip((int)(PageID - 1) * Constants.GamePerPage).Take(Constants.GamePerPage))

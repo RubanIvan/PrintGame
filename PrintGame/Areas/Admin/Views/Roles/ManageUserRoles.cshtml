@@ -3,11 +3,9 @@
     ViewBag.Title = "ManageUserRoles";
 }
 
-<h2>Manage User Roles</h2>
-@Html.ActionLink("Create New Role", "Create") | @Html.ActionLink("Manage User Role", "ManageUserRoles")
-<hr />
+<h2 class="text-center">Управление ролями</h2>
 
-<h2>Role Add to User</h2>
+<h3>Добавить роль пользователю</h3>
 
 @using (Html.BeginForm("RoleAddToUser", "Roles"))
 {
@@ -15,28 +13,28 @@
     @Html.ValidationSummary(true)
 
     <p>
-        Username : @Html.TextBox("UserName")
-        Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
+        Имя пользователя : @Html.TextBox("UserName")
+        Роль: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Выбрать ...")
 
     </p>
 
-    <input type="submit" value="Save" />
+    <input type="submit" value="Сохранить" />
 }
 <hr />
-<h3>Get Roles for a User</h3>
+<h3>Вывести список ролей у пользователя</h3>
 @using (Html.BeginForm("GetRoles", "Roles"))
 {
     @Html.AntiForgeryToken()
     <p>
-        Username : @Html.TextBox("UserName")
-        <input type="submit" value="Get Roles for this User" />
+        Пользователь : @Html.TextBox("UserName")
+        <input type="submit" value="Список ролей" />
     </p>
 }
 
 @if (ViewBag.RolesForThisUser != null)
 {
-    <div style="background-color:yellow;">
-        <h3>Roles for this user </h3>
+    <div style="background-color:darkgrey;">
+        <h3>Роли данного пользователя </h3>
         <ol>
             @foreach (string s in ViewBag.RolesForThisUser)
             {
@@ -47,7 +45,7 @@
 }
 
 <hr />
-<h3>Delete A User from a Role</h3>
+<h3>Удалить роль у пользователя</h3>
 
 @using (Html.BeginForm("DeleteRoleForUser", "Roles"))
 {
@@ -55,11 +53,11 @@
     @Html.ValidationSummary(true)
 
     <p>
-        Username : @Html.TextBox("UserName")
-        Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
+        Пользователь : @Html.TextBox("UserName")
+        Роль: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
 
     </p>
 
-    <input type="submit" value="Delete this user from Role" />
+    <input type="submit" value="Удалить роль" />
 }
 
