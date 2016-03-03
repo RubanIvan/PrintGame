@@ -1,0 +1,22 @@
+﻿@{
+	ViewBag.Title = "Home Page";
+}
+<h2>@ViewBag.Message</h2>
+<p>
+	Here you can see the widgets for managing user accounts and roles.
+	@MyHtml.UserTableArea()
+	<div style="float: left; margin-right: 1em;">
+		@MyHtml.AddUserForm()
+	</div>
+	<div style="float: left">
+		@MyHtml.ManageRolesForm()
+	</div>
+	<br style="clear: both" />
+</p>
+
+@*css code should be in head section normally?!*@
+@MyHtml.TableCss() @*optional - basic tablesorter styling*@
+@MyHtml.StyleCss() @*recommended - info message and layout styles*@
+
+@MyHtml.UiJavascript() @*required - user interface script*@
+

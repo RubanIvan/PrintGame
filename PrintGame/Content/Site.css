@@ -475,4 +475,14 @@ hr {
   /* ���� ����� ��� �������� Firefox � Opera */
   height: 1px;
   /* ������� ����� */
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+#alert {
+  text-align: center;
+  color: white;
+  background-color: red;
+  height: 30px;
+  margin-bottom: 5px;
+  display: none;
 }

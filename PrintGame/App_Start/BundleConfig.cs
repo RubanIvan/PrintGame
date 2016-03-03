@@ -24,12 +24,16 @@ namespace PrintGame
                       "~/Scripts/respond.js",
                       "~/Scripts/lightbox.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/tablesorter").Include(
+                        "~/Scripts/jquery.tablesorter.min.js",
+                        "~/Scripts/tablesorter-pager.js"));
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/font-awesome.min.css",
                       "~/Content/lightbox.css",
+                      "~/Content/tablesorter-style.css",
                       "~/Content/site.css"));
         }
     }

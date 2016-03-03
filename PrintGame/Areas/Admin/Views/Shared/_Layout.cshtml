@@ -30,7 +30,10 @@
                         </div>
                         <ul>
                             <li>
-                                @Html.ActionLink("Управление ролями", "Index", "Roles", new { area = "Admin" }, null)
+                                @Html.ActionLink("Управление ролями", "Index", "Roles", new {area = "Admin"}, null)
+                            </li>
+                            <li>
+                                @Html.ActionLink("Управление пользователями", "Index", "User", new { area = "Admin" }, null)
                             </li>
                         </ul>
                         
@@ -72,6 +75,8 @@
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/tablesorter")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

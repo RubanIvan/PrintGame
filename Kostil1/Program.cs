@@ -15,24 +15,24 @@ namespace Kostil1
 
             #region file convert 2
 
-            foreach (string directory in Directory.GetDirectories("D:\\npr\\npr\\"))
-            {
-                foreach (string NumDir in Directory.GetDirectories(directory))
-                {
-                    string src = NumDir;
+            //foreach (string directory in Directory.GetDirectories("D:\\npr\\npr\\"))
+            //{
+            //    foreach (string NumDir in Directory.GetDirectories(directory))
+            //    {
+            //        string src = NumDir;
                     
                     
-                    if (Directory.GetDirectories(NumDir).Length == 1 && Directory.GetFiles(NumDir).Length==0)
-                    {
-                        Console.WriteLine(NumDir);
-                        string deep = Directory.GetDirectories(NumDir)[0];
-                        MoveDirectory(deep, NumDir);
-                        //MoveDirectory(Directory.GetDirectories(NumDir)[0],
-                        //  Directory.GetParent(Directory.GetDirectories(NumDir)[0].ToString());
+            //        if (Directory.GetDirectories(NumDir).Length == 1 && Directory.GetFiles(NumDir).Length==0)
+            //        {
+            //            Console.WriteLine(NumDir);
+            //            string deep = Directory.GetDirectories(NumDir)[0];
+            //            MoveDirectory(deep, NumDir);
+            //            //MoveDirectory(Directory.GetDirectories(NumDir)[0],
+            //            //  Directory.GetParent(Directory.GetDirectories(NumDir)[0].ToString());
 
-                    }
-                }
-            }
+            //        }
+            //    }
+            //}
 
             #endregion
 

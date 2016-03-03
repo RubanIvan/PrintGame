@@ -1,0 +1,142 @@
+﻿@model dynamic
+
+@{
+//ViewBag.Title = "title";
+//Layout = "_Layout";
+}
+
+
+<div id="User_manage">
+
+    <h2>Пользователи сайта</h2>
+    <hr />
+    <table class='user-table tablesorter'>
+        <thead>
+            <tr>
+                <th class="user-id">
+                    ID
+                </th>
+                <th class="email">
+                    E-Mail
+                </th>
+                <th class="lock-state">
+                    Состояние блокировки
+                </th>
+                <th class="action">
+                    Action
+                </th>
+                @*<th class="edit-roles">
+                        Roles
+                    </th>*@
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <div id="pager" class="tablesorter pager">
+        <form>
+            <button class="first"> &lt;&lt; </button>
+            <button class="prev"> &lt; </button>
+            <input type="text" class="pagedisplay" />
+            <button class="next">&gt;</button>
+            <button class="last">&gt;&gt;</button>
+            <select class="pagesize">
+                <option selected="selected" value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+            </select>
+        </form>
+    </div>
+    <div class="adduser">
+        <h3>Создать рользователя</h3>
+        <hr />
+        <div id="alert"></div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <p>E-mail: @Html.TextBox("email")</p>
+
+            <p>Пароль: @Html.TextBox("password")</p>
+
+            <input type="submit" value="Создать" />
+        }
+
+    </div>
+
+
+
+</div>
+
+
+@section scripts
+{
+    <script>
+
+        $(function() {
+
+            InitTableArea();
+            $("#User_manage .adduser form").submit(CreateUser);
+
+            
+
+        });
+
+        function CreateUser() {
+            alert("Create");
+
+            var em = $("#User_manage .adduser form input[name='email']").val();
+            var pas = $("#User_manage .adduser form input[name='password']").val();
+            $.post("/admin/User/CreateUser", { email: em, password: pas }
+                , function (result) {
+                        if (result.Succeeded == false) {
+                            $("#alert").text(result.Errors[0]);
+                            $("#alert").show();
+                            $("#alert").fadeOut(5000);
+                        }
+                });
+
+            return false;
+        }
+
+        function InitTableArea() {
+            // get user table
+            var userTable = $(".user-table");
+
+            // fill the user table with all
+            $.post('/admin/User/GetAllUsers', {}, function(users) {
+                    userTable.children('tbody').empty();
+                    // add users to table
+                    for (var i in users) {
+                        //appendUser(users[i]);
+                        var row = $("<tr />");
+                        var cell = $("<td />");
+                        cell.text(users[i].Id);
+                        row.append(cell);
+
+                        var cell = $("<td />");
+                        cell.text(users[i].Email);
+                        row.append(cell);
+
+                        var cell = $("<td />");
+                        cell.text(users[i].LockoutEnabled);
+                        row.append(cell);
+
+                        var cell = $("<td />");
+                        cell.text("Удалить");
+                        row.append(cell);
+
+                        userTable.children('tbody').append(row);
+                    }
+
+                    //initialize table sorter and pager
+                    userTable.tablesorter({ widthFixed: true, widgets: ['zebra'] }).tablesorterPager({ container: $("#pager"), positionFixed: false, removeRows: false });
+
+                }
+            );
+        }
+
+
+    </script>
+}
+
