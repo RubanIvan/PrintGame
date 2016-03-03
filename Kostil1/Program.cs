@@ -13,6 +13,64 @@ namespace Kostil1
         static void Main(string[] args)
         {
 
+            #region file convert 2
+
+            foreach (string directory in Directory.GetDirectories("D:\\npr\\npr\\"))
+            {
+                foreach (string NumDir in Directory.GetDirectories(directory))
+                {
+                    string src = NumDir;
+                    
+                    
+                    if (Directory.GetDirectories(NumDir).Length == 1 && Directory.GetFiles(NumDir).Length==0)
+                    {
+                        Console.WriteLine(NumDir);
+                        string deep = Directory.GetDirectories(NumDir)[0];
+                        MoveDirectory(deep, NumDir);
+                        //MoveDirectory(Directory.GetDirectories(NumDir)[0],
+                        //  Directory.GetParent(Directory.GetDirectories(NumDir)[0].ToString());
+
+                    }
+                }
+            }
+
+            #endregion
+
+            #region file convert
+
+            //string SrcDir= @"D:\npr\npr\";
+            //string DstDir= @"D:\Game_Base_all\";
+
+            //List<string> DirList = new List<string>();
+            //DirList = Directory.GetDirectories(SrcDir).ToList();
+            //DirList.Sort();
+
+            //var game = (from d in DirList
+            //        select  d.Split('(').First().Trim()).Distinct();
+
+
+            //foreach (string g in game)
+            //{
+            //    var ga = from dl in DirList
+            //        where dl.Contains(g)
+            //        select dl;
+
+            //    Console.WriteLine(g+" : "+ga.Count());
+            //    string NewDirName = Path.Combine(DstDir, Path.GetFileName(g));
+            //    Directory.CreateDirectory(NewDirName);
+            //    int i = 0;
+            //    foreach (string oldgamedir in ga)
+            //    {
+            //        //Directory.CreateDirectory(Path.Combine(NewDirName, i.ToString()));
+            //        Directory.Move(oldgamedir+"\\", Path.Combine(NewDirName, i.ToString()));
+            //        i++;
+            //    }
+
+            //}
+
+
+            #endregion
+
             #region 
             //FileShare fs = new FileShare();
             //fs.GameID = 35;
@@ -39,7 +97,6 @@ namespace Kostil1
 
             //enties.SaveChanges();
             #endregion
-
             #region 
             //PrintGameDataEntities enties = new PrintGameDataEntities();
             //foreach (GameImage gameImage in enties.GameImage)
@@ -85,8 +142,47 @@ namespace Kostil1
             //}
             #endregion
 
+            Console.WriteLine("---------------------------!! End !!-----------------------------");
             Console.ReadLine();
         }
+
+
+        public static void MoveDirectory(string source, string target)
+        {
+            var stack = new Stack<Folders>();
+            stack.Push(new Folders(source, target));
+
+            while (stack.Count > 0)
+            {
+                var folders = stack.Pop();
+                Directory.CreateDirectory(folders.Target);
+                foreach (var file in Directory.GetFiles(folders.Source, "*.*"))
+                {
+                    string targetFile = Path.Combine(folders.Target, Path.GetFileName(file));
+                    if (File.Exists(targetFile)) File.Delete(targetFile);
+                    File.Move(file, targetFile);
+                }
+
+                foreach (var folder in Directory.GetDirectories(folders.Source))
+                {
+                    stack.Push(new Folders(folder, Path.Combine(folders.Target, Path.GetFileName(folder))));
+                }
+            }
+            Directory.Delete(source, true);
+        }
+
+        public class Folders
+        {
+            public string Source { get; private set; }
+            public string Target { get; private set; }
+
+            public Folders(string source, string target)
+            {
+                Source = source;
+                Target = target;
+            }
+        }
+
     }
 
 
