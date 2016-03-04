@@ -7,6 +7,14 @@ using Newtonsoft.Json;
 
 namespace CMS20.Model
 {
+
+    public class FtpModel
+    {
+        public string Name;
+        public string Pass;
+        public string Url;
+    }
+
     //получаемая колекция
     public class DepositFileArray
     {

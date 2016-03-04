@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -28,16 +29,17 @@ namespace CMS20.FileShareManage
         {
             W = w;
 
-            W.TextBoxDepLog.TextChanged += TextBoxDepLog_TextChanged;
+            W.TextBoxDepLog.TextChanged += (sender, args) => { W.TextBoxDepLog.ScrollToEnd(); };
             W.ButtonSyncFile.Click += ButtonSyncFile_Click;
-
+            W.ButtonFileUpload.Click += ButtonFileUpload_Click;
         }
 
 
-        public async void  ButtonSyncFile_Click(object sender, RoutedEventArgs e)
+
+        public async void ButtonSyncFile_Click(object sender, RoutedEventArgs e)
         {
             W.ButtonSyncFile.IsEnabled = false;
-            W.WaitControl.Visibility=Visibility.Visible;
+            W.WaitControl.Visibility = Visibility.Visible;
 
             W.TextBoxDepLog.Add(@"Подключение к серверу http://dfiles.ru/");
             try
@@ -77,14 +79,14 @@ namespace CMS20.FileShareManage
             //Общая статистика
             PrintGameDataEntities enties = new PrintGameDataEntities();
             W.TextBoxDepLog.Add($"Файлов в базе данных: {enties.FileShare.Count()} \n" +
-                               $"Файлов на DepositFiles: {DepositFileList.Count} \n"+
-                               $"Файлов без ссылок или просроченных{enties.FileShare.Where(f=>f.FileShareUrl1==null || f.FileShareExpire1<DateTime.Now).Count()}");
+                               $"Файлов на DepositFiles: {DepositFileList.Count} \n" +
+                               $"Файлов без ссылок или просроченных{enties.FileShare.Where(f => f.FileShareUrl1 == null || f.FileShareExpire1 < DateTime.Now).Count()}");
 
             FileLinkUpdate();
 
             W.WaitControl.Visibility = Visibility.Hidden;
             W.ButtonSyncFile.IsEnabled = true;
-            
+
 
         }
 
@@ -93,15 +95,15 @@ namespace CMS20.FileShareManage
         private void FileLinkUpdate()
         {
             PrintGameDataEntities enties = new PrintGameDataEntities();
-            
+
             foreach (var depFile in DepositFileList)
             {
                 var q1 = (from f in enties.FileShare
-                    where f.FileShareName == depFile.filename_source && f.FileShareSize==depFile.size && (f.FileShareUrl1 == null || f.FileShareExpire1 < depFile.dt_expires)
-                    select f);
+                          where f.FileShareName == depFile.filename_source && f.FileShareSize == depFile.size && (f.FileShareUrl1 == null || f.FileShareExpire1 < depFile.dt_expires)
+                          select f);
                 if (q1.Count() == 1)
                 {
-                    if(q1.First().FileShareExpire1.Value.Date >=  depFile.dt_expires.Date)continue;
+                    if (q1.First().FileShareExpire1.Value.Date >= depFile.dt_expires.Date) continue;
                     q1.First().FileShareUrl1 = depFile.download_url;
                     q1.First().FileShareExpire1 = depFile.dt_expires;
                 }
@@ -120,14 +122,34 @@ namespace CMS20.FileShareManage
             }
 
         }
-        
-        
-        
-        //автоматическая прокрутка в конец при добавлении текста
-        private void TextBoxDepLog_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+
+
+        //Загрузка файлов на сервер
+        private void ButtonFileUpload_Click(object sender, RoutedEventArgs e)
         {
-            W.TextBoxDepLog.ScrollToEnd();
+            //если нет списка файлов делаем синхронизацию
+            if (DepositFileList == null) ButtonSyncFile_Click(null, null);
+
+            W.ButtonFileUpload.IsEnabled = false;
+
+            PrintGameDataEntities enties = new PrintGameDataEntities();
+            DateTime dayTomorou = DateTime.Today.AddDays(+1);
+            var query = from f in enties.FileShare
+                        where f.FileShareUrl1 == null ||  f.FileShareExpire1 <= dayTomorou
+                        select f;
+
+            List<string> GameList = Directory.GetFiles(W.FileShareFolder).ToList();
+
+            foreach (FileShare fileShare in query)
+            {
+                string GameFile = GameList.First(g => Path.GetFileName(g) == fileShare.FileShareName);
+                W.TextBoxDepLog.Add(GameFile);
+            }
+
         }
+
+
+
 
 
     }

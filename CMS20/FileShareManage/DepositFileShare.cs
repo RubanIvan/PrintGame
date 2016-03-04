@@ -73,7 +73,7 @@ namespace CMS20.FileShareManage
             requestJSON.CookieContainer.Add(AuthCookie);
             requestJSON.Accept = "application/json, text/javascript, */*; q=0.01";
             requestJSON.Referer = "http://dfiles.ru/gold/files_list.php";
-            requestJSON.Timeout = 1000*60;
+            requestJSON.Timeout = 1000*30;
             //получаем ответ
 
             HttpWebResponse response;
@@ -114,6 +114,11 @@ namespace CMS20.FileShareManage
 
             return JsonConvert.DeserializeObject<DepositFileArray>(Json.ToString());
 
+        }
+
+        public FtpModel GetFtp(CookieCollection AuthCookie)
+        {
+            
         }
 
     }

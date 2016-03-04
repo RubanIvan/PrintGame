@@ -208,8 +208,10 @@
 
         <Grid Name="GridDepositFileManage" Visibility="Visible">
             <TextBox x:Name="TextBoxDepLog" HorizontalAlignment="Left" Height="320" Margin="39,274,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="824" IsReadOnly="True" VerticalScrollBarVisibility="Visible" AcceptsReturn="True"/>
-            <Button x:Name="ButtonSyncFile" Content="Синхронизация базы с DepositFile" Style="{StaticResource MetroButton}" HorizontalAlignment="Left" Margin="39,42,0,0" VerticalAlignment="Top" Width="239"/>
+            <Button x:Name="ButtonSyncFile" Content="Синхронизация базы с DepositFile" Style="{StaticResource MetroButton}" HorizontalAlignment="Left" Margin="37,42,0,0" VerticalAlignment="Top" Width="239"/>
             <wpfApplicationWaitSample:WaitControl Margin="300,31,490,549" x:Name="WaitControl" Visibility="Hidden"/>
+
+            <Button x:Name="ButtonFileUpload" Content="Загрузить файлы на DepositFile" Style="{StaticResource MetroButton}" HorizontalAlignment="Left" Margin="39,90,0,0" VerticalAlignment="Top" Width="239"/>
         </Grid>
 
     </Grid>
