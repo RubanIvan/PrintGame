@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using CMS20.Controllers;
+using CMS20.FileShareManage;
 
 namespace CMS20
 {
@@ -15,6 +16,7 @@ namespace CMS20
     public partial class App : Application
     {
         private MainWindow window;
+        private MainMenu menu;
         private GameTitleDir game;
         private GameContent content;
         private LogText log;
@@ -23,10 +25,12 @@ namespace CMS20
         private ImageCreate image;
         private TagManage tag;
         private FileManage file;
+        private FileManageGUI fileGui;
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
             window=new MainWindow();
+            menu=new MainMenu(window);
             log=new LogText(window);
             url=new ParseUrl(window);
             game=new GameTitleDir(window);
@@ -36,6 +40,7 @@ namespace CMS20
             image=new ImageCreate(window);
             tag=new TagManage(window);
             file=new FileManage(window);
+            fileGui=new FileManageGUI(window);
 
             window.Show();
         }

@@ -21,4 +21,3 @@ D:\project\PrintGame\Kostil1\bin\Debug\EntityFramework.xml
 D:\project\PrintGame\Kostil1\bin\Debug\EntityFramework.SqlServer.xml
 D:\project\PrintGame\Kostil1\bin\Debug\ru\EntityFramework.resources.dll
 D:\project\PrintGame\Kostil1\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
-D:\project\PrintGame\Kostil1\obj\Debug\Kostil1.csprojResolveAssemblyReference.cache

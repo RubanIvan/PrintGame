@@ -47,6 +47,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -70,13 +74,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controllers\FileManage.cs" />
-    <Compile Include="Controllers\GameImage.cs" />
-    <Compile Include="Controllers\ImageMagik.cs" />
-    <Compile Include="Controllers\TagManage.cs" />
+    <Compile Include="AddGame\FileManage.cs" />
+    <Compile Include="AddGame\GameImage.cs" />
+    <Compile Include="AddGame\ImageMagik.cs" />
+    <Compile Include="AddGame\MainMenu.cs" />
+    <Compile Include="AddGame\TagManage.cs" />
     <Compile Include="FileShare.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="FileShareManage\DepositFileShare.cs" />
+    <Compile Include="FileShareManage\FileManageGUI.cs" />
     <Compile Include="Game.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -91,6 +98,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DepositModel.cs" />
+    <Compile Include="MyControl\WaitControl.xaml.cs">
+      <DependentUpon>WaitControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tag.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -102,16 +113,24 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controllers\CommonUtil.cs" />
-    <Compile Include="Controllers\GameContent.cs" />
-    <Compile Include="Controllers\GameTitleDir.cs" />
-    <Compile Include="Controllers\LogText.cs" />
-    <Compile Include="Controllers\ParseUrl.cs" />
-    <Compile Include="Controllers\Test.cs" />
+    <Compile Include="AddGame\CommonUtil.cs" />
+    <Compile Include="AddGame\GameContent.cs" />
+    <Compile Include="AddGame\GameTitleDir.cs" />
+    <Compile Include="AddGame\LogText.cs" />
+    <Compile Include="AddGame\ParseUrl.cs" />
+    <Compile Include="AddGame\Test.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MyControl\WaitControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ResDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model.Context.cs">
@@ -159,7 +178,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="sea_background.jpg" />
     <Resource Include="DefImg.jpg" />
+    <Resource Include="gray_background.jpg" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -174,6 +195,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
