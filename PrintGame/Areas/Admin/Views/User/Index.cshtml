@@ -5,11 +5,18 @@
 //Layout = "_Layout";
 }
 
+<div id="alert"></div>
+<div id="succes"></div>
 
 <div id="User_manage">
 
     <h2>Пользователи сайта</h2>
-    <hr />
+    <hr/>
+
+    <div Id="Ajax" class="clearfix">
+        <img src="../../../../Content/loading.gif"/>
+    </div>
+
     <table class='user-table tablesorter'>
         <thead>
             <tr>
@@ -23,7 +30,7 @@
                     Состояние блокировки
                 </th>
                 <th class="action">
-                    Action
+                    Удаление пользователя
                 </th>
                 @*<th class="edit-roles">
                         Roles
@@ -31,6 +38,7 @@
             </tr>
         </thead>
         <tbody></tbody>
+        
     </table>
     <div id="pager" class="tablesorter pager">
         <form>
@@ -50,7 +58,7 @@
     <div class="adduser">
         <h3>Создать рользователя</h3>
         <hr />
-        <div id="alert"></div>
+       
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
@@ -64,7 +72,7 @@
 
     </div>
 
-
+    
 
 </div>
 
@@ -78,25 +86,56 @@
             InitTableArea();
             $("#User_manage .adduser form").submit(CreateUser);
 
-            
+            $(".user-table").on('click', '.delete-user', deleteUser);
+
 
         });
 
         function CreateUser() {
-            alert("Create");
+            //alert("Create");
 
-            var em = $("#User_manage .adduser form input[name='email']").val();
-            var pas = $("#User_manage .adduser form input[name='password']").val();
-            $.post("/admin/User/CreateUser", { email: em, password: pas }
-                , function (result) {
-                        if (result.Succeeded == false) {
-                            $("#alert").text(result.Errors[0]);
-                            $("#alert").show();
-                            $("#alert").fadeOut(5000);
-                        }
-                });
+            var em = $("#User_manage .adduser form input[name='email']");
+            var pas = $("#User_manage .adduser form input[name='password']");
+            $.post("/admin/User/CreateUser", { email: em.val(), password: pas.val() }, function(result) {
+                if (result.Succeeded == false) {
+                    $("#alert").text(result.Errors[0]);
+                    $("#alert").show();
+                    $("#alert").fadeOut(5000);
+                    InitTableArea();
+                } else {
+                    em.val("");
+                    pas.val("");
+                    $("#succes").text("Пользователь создан");
+                    $("#succes").show();
+                    $("#succes").fadeOut(5000);
+                    InitTableArea();
+                }
+            });
 
             return false;
+        }
+
+        function deleteUser(e) {
+
+            var user = $(this).closest("tr").children("td.email").text();
+
+            var result = confirm("Удалить пользователя " + user + " ?");
+            if (!result)
+                return;
+
+            $.post('/admin/User/DleteUser', { email: user }, function(result) {
+                if (result.Succeeded == false) {
+                    $("#alert").text(result.Errors[0]);
+                    $("#alert").show();
+                    $("#alert").fadeOut(5000);
+                    InitTableArea();
+                } else {
+                    $("#succes").text("Пользователь удален");
+                    $("#succes").show();
+                    $("#succes").fadeOut(5000);
+                    InitTableArea();
+                }
+            });
         }
 
         function InitTableArea() {
@@ -104,8 +143,11 @@
             var userTable = $(".user-table");
 
             // fill the user table with all
-            $.post('/admin/User/GetAllUsers', {}, function(users) {
-                    userTable.children('tbody').empty();
+            $("#Ajax").show();
+            $.post('/admin/User/GetAllUsers', {}, function (users) {
+                $("#Ajax").hide();
+                userTable.children('tbody').empty();
+
                     // add users to table
                     for (var i in users) {
                         //appendUser(users[i]);
@@ -114,7 +156,7 @@
                         cell.text(users[i].Id);
                         row.append(cell);
 
-                        var cell = $("<td />");
+                        var cell = $("<td class='email' />");
                         cell.text(users[i].Email);
                         row.append(cell);
 
@@ -123,14 +165,14 @@
                         row.append(cell);
 
                         var cell = $("<td />");
-                        cell.text("Удалить");
+                        cell.html("<a class='delete-user'>Удалить</a>");
                         row.append(cell);
 
                         userTable.children('tbody').append(row);
                     }
 
                     //initialize table sorter and pager
-                    userTable.tablesorter({ widthFixed: true, widgets: ['zebra'] }).tablesorterPager({ container: $("#pager"), positionFixed: false, removeRows: false });
+                    userTable.tablesorter({ widthFixed: true, widgets: ['zebra'] }).tablesorterPager({ container: $("#pager"), positionFixed: false, removeRows: true });
 
                 }
             );

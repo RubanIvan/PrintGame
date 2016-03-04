@@ -478,6 +478,9 @@ hr {
   margin-top: 5px;
   margin-bottom: 10px;
 }
+#User_manage a {
+  color: #428bca;
+}
 #alert {
   text-align: center;
   color: white;
@@ -485,4 +488,24 @@ hr {
   height: 30px;
   margin-bottom: 5px;
   display: none;
+}
+#succes {
+  text-align: center;
+  color: darkred;
+  background-color: lawngreen;
+  height: 30px;
+  margin-bottom: 5px;
+  display: none;
+}
+#Ajax {
+  display: none;
+  float: left;
+  position: absolute;
+  background-color: black;
+  height: 200px;
+  width: 100%;
+  opacity: 0.4;
+}
+#Ajax img {
+  margin: 10% 50%;
 }
