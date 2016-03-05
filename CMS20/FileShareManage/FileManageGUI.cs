@@ -103,7 +103,7 @@ namespace CMS20.FileShareManage
                           select f);
                 if (q1.Count() == 1)
                 {
-                    if (q1.First().FileShareExpire1.Value.Date >= depFile.dt_expires.Date) continue;
+                    if (q1.First().FileShareExpire1!=null && q1.First().FileShareExpire1.Value.Date >= depFile.dt_expires.Date) continue;
                     q1.First().FileShareUrl1 = depFile.download_url;
                     q1.First().FileShareExpire1 = depFile.dt_expires;
                 }
@@ -140,11 +140,23 @@ namespace CMS20.FileShareManage
 
             List<string> GameList = Directory.GetFiles(W.FileShareFolder).ToList();
 
-            foreach (FileShare fileShare in query)
-            {
-                string GameFile = GameList.First(g => Path.GetFileName(g) == fileShare.FileShareName);
-                W.TextBoxDepLog.Add(GameFile);
-            }
+            int i = 0;
+            W.LabelFileCount.Content = $"{i} / {query.Count()}";
+
+            
+                string GameFile = GameList.First(g => Path.GetFileName(g) == query.First().FileShareName);
+                W.TextBoxDepLog.Add($"Загрузка файла {GameFile} на сервер");
+                FTP ff = new FTP();
+                ff.Upload(Path.GetFileName(GameFile), p => { W.ProgressBarUpload.Value = p; });
+            
+
+            //foreach (FileShare fileShare in query)
+            //{
+            //    string GameFile = GameList.First(g => Path.GetFileName(g) == fileShare.FileShareName);
+            //    W.TextBoxDepLog.Add($"Загрузка файла {GameFile} на сервер");
+            //    FTP f = new FTP();
+            //    f.Upload(Path.GetFileName(GameFile) , p => { W.ProgressBarUpload.Value = p; });
+            //}
 
         }
 

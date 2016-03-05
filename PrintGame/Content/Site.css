@@ -423,6 +423,27 @@ a {
 #game .gameIcon #col_consist {
   margin-left: 150px;
 }
+#game .FileShare {
+  list-style: none;
+  margin-left: 10px;
+  padding-left: 0;
+}
+#game .FileShare a {
+  color: #428bca;
+}
+#game .FileShare li {
+  margin-bottom: 5px;
+}
+#game .GameDescr {
+  margin: 5px;
+}
+#game .GameDescr p {
+  margin-right: 10px;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: justify;
+  text-indent: 20px;
+}
 .ratio_title {
   float: left;
   width: 60px;

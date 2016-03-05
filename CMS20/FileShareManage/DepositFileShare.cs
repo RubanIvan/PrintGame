@@ -12,8 +12,7 @@ namespace CMS20.FileShareManage
 {
     class DepositFileShare
     {
-
-        //авторизация на сервере
+       //авторизация на сервере
         public async Task<CookieCollection> FirstLogin()
         {
             //---1 запрос на главную втраницу за куками
@@ -63,7 +62,7 @@ namespace CMS20.FileShareManage
         }
 
         //получение списка загруженных файлов
-        public DepositFileArray GetFile(CookieCollection AuthCookie)
+        public  DepositFileArray GetFile(CookieCollection AuthCookie)
         {
             //запрашиваем данные
 
@@ -71,37 +70,25 @@ namespace CMS20.FileShareManage
             requestJSON.Method = WebRequestMethods.Http.Get;
             requestJSON.CookieContainer = new CookieContainer();
             requestJSON.CookieContainer.Add(AuthCookie);
+            //requestJSON.CookieContainer.Add(new Cookie("cookie", "1","/", AuthCookie[0].Domain));
+            //requestJSON.CookieContainer.Add(new Cookie("lang_current", "ru", "/", AuthCookie[0].Domain));
+            //requestJSON.CookieContainer.Add(new Cookie("dfsharedfiles_ActiveFolder", "sharedfiles", "/", AuthCookie[0].Domain));
+            //requestJSON.CookieContainer.Add(new Cookie("order_param", "asc", "/", AuthCookie[0].Domain));
+            //requestJSON.CookieContainer.Add(new Cookie("sort_param", "name", "/", AuthCookie[0].Domain));
+            //requestJSON.CookieContainer.Add(new Cookie("Referer", @"http://dfiles.ru/gold/files_list.php", "/", AuthCookie[0].Domain));
+
             requestJSON.Accept = "application/json, text/javascript, */*; q=0.01";
+            requestJSON.UserAgent =@"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36";
+            requestJSON.Headers.Add("X-Requested-With", "XMLHttpRequest");
             requestJSON.Referer = "http://dfiles.ru/gold/files_list.php";
-            requestJSON.Timeout = 1000*30;
+            requestJSON.Timeout = 1000 * 30;
+            requestJSON.Proxy = null;
             //получаем ответ
 
-            HttpWebResponse response;
-            try
-            {
-                response = (HttpWebResponse)requestJSON.GetResponse();
-            }
-            catch (Exception)
-            {
-                try
-                {
-                    response = (HttpWebResponse) requestJSON.GetResponse();
-                }
-                catch (Exception)
-                {
-                    try
-                    {
-                        response = (HttpWebResponse)requestJSON.GetResponse();
-                    }
-                    catch (Exception)
-                    {
-                        throw new Exception("Ошибка полученния данных");
-                    }
-                }
 
-            }
-            //HttpWebResponse response = (HttpWebResponse) requestJSON.GetResponse();
-
+            HttpWebResponse response = (HttpWebResponse)requestJSON.GetResponse();
+           
+            
             StringBuilder Json = new StringBuilder();
             using (StreamReader stream = new StreamReader(response.GetResponseStream()))
             {
@@ -109,17 +96,14 @@ namespace CMS20.FileShareManage
                 string line;
                 while ((line = stream.ReadLine()) != null)
                     Json.Append(line);
-                
+
             }
 
             return JsonConvert.DeserializeObject<DepositFileArray>(Json.ToString());
 
         }
 
-        public FtpModel GetFtp(CookieCollection AuthCookie)
-        {
-            
-        }
+       
 
     }
 

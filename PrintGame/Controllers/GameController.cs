@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using PrintGame.Models;
+using PrintGame.Proc;
 
 namespace PrintGame.Controllers
 {
@@ -31,16 +32,7 @@ namespace PrintGame.Controllers
             PrintGameDataEntities entities = new PrintGameDataEntities();
 
 
-            //var query = entities.Game.Where( gm => gm.GameID == GameId).Select(g => 
-            //            new GameModel()
-            //            {
-            //                CatalogName = g.CatalogName,
-            //                TitleEn = g.TitleEn,
-            //                Tags = entities.GameTag.Where(t => g.GameID == t.GameID).ToList(),
-            //                FileShares = entities.FileShare.Where(f => g.GameID == f.GameID).ToList()
-
-            //            });
-
+            
             var query = from g in entities.Game
                         where g.GameID == GameId
                         select new GameModel()
@@ -76,18 +68,16 @@ namespace PrintGame.Controllers
 
                         };
 
-            //var q1 = from t in entities.Tag
-            //    from gt in entities.GameTag
-            //    where t.TagID == gt.GameID
-            //    select new TagsModel()
-            //    {
-            //        TagId = t.TagID,
-            //        TagName = t.TagName
-            //    };
+            
 
 
             model = query.FirstOrDefault();
-            
+
+            foreach (var f in model.FileShares)
+            {
+                f.FileShareUrl4 = FileSize.GetSizeString(f.FileShareSize.Value);
+            }
+
             return View(model);
         }
 

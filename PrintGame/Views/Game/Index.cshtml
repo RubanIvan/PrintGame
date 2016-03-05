@@ -23,9 +23,9 @@
     <div class="clearfix"></div>
     <div id="GameImage">
         <div Id="Main_image">
-            
-                <img src="@Html.Raw("/Content/GameData" + @Model.GameImages.First().SmallImagePath)" alt="@Model.TitleRu" />
-            
+
+            <img src="@Html.Raw("/Content/GameData" + @Model.GameImages.First().SmallImagePath)" alt="@Model.TitleRu" />
+
         </div>
         <div id="ImageList">
 
@@ -104,6 +104,23 @@
 
     </div>
 
+    <h4>Скачать бесплатно шаблоны и схемы для сборки</h4>
+    <ul class="FileShare">
+        @foreach (PrintGame.FileShare fileShare in Model.FileShares)
+        {
+            <li>
+                <a href="@fileShare.FileShareUrl1">@fileShare.FileShareName -- @fileShare.FileShareUrl4</a>
+            </li>
+        }
+    </ul>
+
+    <div class="GameDescr">
+        <h4>Описание:</h4>
+        @Html.Raw(Model.Descript)
+    </div>
+
+
+
 </div>
 
 @section scripts
@@ -126,7 +143,7 @@
         }
 
         //Прокрутка в право (обработчик нажатия)
-        $("#view_scroll_right").click(function() {
+        $("#view_scroll_right").click(function () {
             ImageIndex++;
 
             if (ImageIndex == ImageList.length - 3) {
@@ -139,7 +156,7 @@
         });
 
         //Прокрутка в лево
-        $("#view_scroll_left").click(function() {
+        $("#view_scroll_left").click(function () {
             ImageIndex--;
 
             if (ImageIndex == 0) {
@@ -154,13 +171,13 @@
         });
 
         //Наведение на картинку
-        $("#ImageList ul img").hover(function() {
+        $("#ImageList ul img").hover(function () {
 
             for (var i = 0; i < ImageList.length; i++) {
                 if (ImageList[i].SmallImagePath == $(this).attr("src")) {
                     $("#Main_image img").attr({ src: ImageList[i].SmallImagePath });
                     //$("#Main_image a").click(function() {
-                        //$("#ImageList li:nth-child(" + i + ") a").click();
+                    //$("#ImageList li:nth-child(" + i + ") a").click();
                     //});
                 }
             }

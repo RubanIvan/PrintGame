@@ -21,7 +21,7 @@
             <ImageBrush ImageSource="sea_background.jpg"/>
         </Grid.Background>
 
-        <Grid Name="GridMainMenu" Visibility="Hidden" >
+        <Grid Name="GridMainMenu" Visibility="Visible" >
             <Button x:Name="ButtonAddGame" Content="Добавить игру" Style="{StaticResource MetroButton}" HorizontalAlignment="Left" Margin="300,150,0,0" VerticalAlignment="Top" Width="300" Height="64"/>
             <Button x:Name="ButtonDeposit" Content="Управление файлами DepositFile" Style="{StaticResource MetroButton}" HorizontalAlignment="Left" Margin="300,234,0,0" VerticalAlignment="Top" Width="300" Height="64"/>
         </Grid>
@@ -206,12 +206,17 @@
             </Grid>
         </Grid>
 
-        <Grid Name="GridDepositFileManage" Visibility="Visible">
+        <Grid Name="GridDepositFileManage" Visibility="Hidden">
             <TextBox x:Name="TextBoxDepLog" HorizontalAlignment="Left" Height="320" Margin="39,274,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="824" IsReadOnly="True" VerticalScrollBarVisibility="Visible" AcceptsReturn="True"/>
             <Button x:Name="ButtonSyncFile" Content="Синхронизация базы с DepositFile" Style="{StaticResource MetroButton}" HorizontalAlignment="Left" Margin="37,42,0,0" VerticalAlignment="Top" Width="239"/>
             <wpfApplicationWaitSample:WaitControl Margin="300,31,490,549" x:Name="WaitControl" Visibility="Hidden"/>
 
             <Button x:Name="ButtonFileUpload" Content="Загрузить файлы на DepositFile" Style="{StaticResource MetroButton}" HorizontalAlignment="Left" Margin="39,90,0,0" VerticalAlignment="Top" Width="239"/>
+
+            <Label x:Name="LabelFileCount" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,144,0,0" Width="219"/>
+            <ProgressBar x:Name="ProgressBarUpload" HorizontalAlignment="Left" Height="16" VerticalAlignment="Top" Width="229" Margin="300,185,0,0" />
+            <Label x:Name="LabelUploadFileName" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,175,0,0" Width="219"/>
+
         </Grid>
 
     </Grid>

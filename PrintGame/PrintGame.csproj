@@ -236,6 +236,7 @@
       <DependentUpon>PrintGameModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Proc\Constants.cs" />
+    <Compile Include="Proc\FileSize.cs" />
     <Compile Include="Proc\PagePangination.cs" />
     <Compile Include="Proc\Slug.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

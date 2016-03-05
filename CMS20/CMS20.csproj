@@ -84,6 +84,7 @@
     </Compile>
     <Compile Include="FileShareManage\DepositFileShare.cs" />
     <Compile Include="FileShareManage\FileManageGUI.cs" />
+    <Compile Include="FileShareManage\FTP_ProgressBar.cs" />
     <Compile Include="Game.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
