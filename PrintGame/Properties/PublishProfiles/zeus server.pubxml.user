@@ -10,7 +10,19 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Data/print-game.sql">
-      <publishTime>02/16/2016 17:21:40</publishTime>
+      <publishTime>03/01/2016 19:36:06</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Home/Index.cshtml">
+      <publishTime>03/01/2016 19:34:22</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
+      <publishTime>03/03/2016 19:09:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/web.config">
+      <publishTime>03/01/2016 19:34:22</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/_ViewStart.cshtml">
+      <publishTime>03/01/2016 19:34:22</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>02/04/2016 09:53:23</publishTime>
@@ -73,10 +85,10 @@
       <publishTime>02/04/2016 09:53:24</publishTime>
     </File>
     <File Include="bin/PrintGame.dll">
-      <publishTime>02/26/2016 11:23:47</publishTime>
+      <publishTime>03/05/2016 13:43:52</publishTime>
     </File>
     <File Include="bin/PrintGame.pdb">
-      <publishTime>02/26/2016 11:23:47</publishTime>
+      <publishTime>03/05/2016 13:43:52</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>02/04/2016 09:53:23</publishTime>
@@ -195,6 +207,9 @@
     <File Include="bin/WebGrease.dll">
       <publishTime>02/04/2016 09:53:24</publishTime>
     </File>
+    <File Include="Content/admin.less">
+      <publishTime>03/04/2016 11:23:31</publishTime>
+    </File>
     <File Include="Content/arrow.png">
       <publishTime>02/25/2016 12:03:17</publishTime>
     </File>
@@ -213,11 +228,20 @@
     <File Include="Content/bootstrap.min.css">
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
+    <File Include="Content/button.less">
+      <publishTime>03/03/2016 11:20:46</publishTime>
+    </File>
+    <File Include="Content/close.png">
+      <publishTime>02/28/2016 18:42:29</publishTime>
+    </File>
+    <File Include="Content/dontexist.png">
+      <publishTime>03/02/2016 19:07:47</publishTime>
+    </File>
     <File Include="Content/font-awesome.min.css">
       <publishTime>02/25/2016 12:03:17</publishTime>
     </File>
     <File Include="Content/game.less">
-      <publishTime>02/25/2016 12:03:17</publishTime>
+      <publishTime>03/05/2016 13:31:06</publishTime>
     </File>
     <File Include="Content/gameicon.png">
       <publishTime>02/25/2016 12:03:17</publishTime>
@@ -234,8 +258,20 @@
     <File Include="Content/licence.less">
       <publishTime>02/16/2016 16:59:39</publishTime>
     </File>
+    <File Include="Content/lightbox.css">
+      <publishTime>02/28/2016 18:58:54</publishTime>
+    </File>
+    <File Include="Content/loading.gif">
+      <publishTime>02/28/2016 18:42:29</publishTime>
+    </File>
     <File Include="Content/logo-main.png">
       <publishTime>02/16/2016 16:59:39</publishTime>
+    </File>
+    <File Include="Content/next.png">
+      <publishTime>02/28/2016 18:42:29</publishTime>
+    </File>
+    <File Include="Content/prev.png">
+      <publishTime>02/28/2016 18:42:29</publishTime>
     </File>
     <File Include="Content/rating stars empty.png">
       <publishTime>02/17/2016 19:45:44</publishTime>
@@ -243,14 +279,23 @@
     <File Include="Content/rating stars full.png">
       <publishTime>02/17/2016 19:45:44</publishTime>
     </File>
+    <File Include="Content/search boxes.png">
+      <publishTime>03/02/2016 19:07:47</publishTime>
+    </File>
+    <File Include="Content/search.less">
+      <publishTime>03/02/2016 19:07:47</publishTime>
+    </File>
     <File Include="Content/site.css">
-      <publishTime>02/25/2016 12:03:17</publishTime>
+      <publishTime>03/05/2016 13:31:07</publishTime>
     </File>
     <File Include="Content/site.less">
-      <publishTime>02/25/2016 12:03:17</publishTime>
+      <publishTime>03/03/2016 11:20:46</publishTime>
     </File>
     <File Include="Content/site.min.css">
-      <publishTime>02/25/2016 12:03:17</publishTime>
+      <publishTime>03/05/2016 13:31:07</publishTime>
+    </File>
+    <File Include="Content/tablesorter-style.css">
+      <publishTime>03/03/2016 19:09:58</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>02/16/2016 16:59:39</publishTime>
@@ -289,7 +334,7 @@
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
     <File Include="PrintGameModel.edmx.diagram">
-      <publishTime>02/17/2016 20:29:22</publishTime>
+      <publishTime>03/02/2016 19:07:47</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>02/04/2016 09:53:23</publishTime>
@@ -309,6 +354,9 @@
     <File Include="Scripts/jquery-1.10.2.min.map">
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
+    <File Include="Scripts/jquery.tablesorter.min.js">
+      <publishTime>03/03/2016 19:09:59</publishTime>
+    </File>
     <File Include="Scripts/jquery.validate.js">
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
@@ -321,6 +369,9 @@
     <File Include="Scripts/jquery.validate.unobtrusive.min.js">
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
+    <File Include="Scripts/lightbox.js">
+      <publishTime>02/28/2016 18:42:00</publishTime>
+    </File>
     <File Include="Scripts/modernizr-2.6.2.js">
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
@@ -330,8 +381,11 @@
     <File Include="Scripts/respond.min.js">
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
+    <File Include="Scripts/tablesorter-pager.js">
+      <publishTime>03/03/2016 19:09:59</publishTime>
+    </File>
     <File Include="Scripts/_references.js">
-      <publishTime>02/25/2016 12:03:17</publishTime>
+      <publishTime>03/03/2016 19:09:59</publishTime>
     </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
       <publishTime>02/04/2016 09:53:23</publishTime>
@@ -352,7 +406,7 @@
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>02/04/2016 09:53:23</publishTime>
+      <publishTime>03/01/2016 19:34:22</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
       <publishTime>02/04/2016 09:53:23</publishTime>
@@ -409,10 +463,10 @@
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>02/25/2016 12:03:17</publishTime>
+      <publishTime>03/02/2016 19:07:47</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>02/16/2016 16:59:39</publishTime>
+      <publishTime>03/02/2016 19:07:47</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>02/04/2016 09:53:23</publishTime>
@@ -421,7 +475,7 @@
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/26/2016 11:23:49</publishTime>
+      <publishTime>03/05/2016 15:54:28</publishTime>
     </File>
   </ItemGroup>
 </Project>
