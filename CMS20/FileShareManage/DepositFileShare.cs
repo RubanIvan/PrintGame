@@ -57,6 +57,7 @@ namespace CMS20.FileShareManage
                 throw new Exception("Login error");
             }
 
+            response.Close();
             //возвращаем куки от сервера
             return response.Cookies;
         }
@@ -81,7 +82,7 @@ namespace CMS20.FileShareManage
             requestJSON.UserAgent =@"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36";
             requestJSON.Headers.Add("X-Requested-With", "XMLHttpRequest");
             requestJSON.Referer = "http://dfiles.ru/gold/files_list.php";
-            requestJSON.Timeout = 1000 * 30;
+            //requestJSON.Timeout = 1000 * 30;
             requestJSON.Proxy = null;
             //получаем ответ
 
@@ -99,6 +100,7 @@ namespace CMS20.FileShareManage
 
             }
 
+            response.Close();
             return JsonConvert.DeserializeObject<DepositFileArray>(Json.ToString());
 
         }

@@ -13,7 +13,7 @@ namespace PrintGame.Areas.Admin.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Image()
         {
-            string DstGameDirPath = @"D:\Projects\PrintGame\PrintGame\Content\GameData\";
+            string DstGameDirPath = @"D:\Project\PrintGame\PrintGame\Content\GameData\";
                 //Directory.GetCurrentDirectory();
 
 

@@ -23,6 +23,8 @@
                 <a href="@Html.Raw("/Content/GameData" + @game.BoxImageFull)" data-lightbox="@game.TitleRu">
                     <img src="@Html.Raw("/Content/GameData" + @game.BoxImage)" alt="@game.TitleRu"/>
                 </a>
+                @*<img src="@Html.Raw("/Content/GameData" + @game.BoxImage)" alt="@game.TitleRu" />*@
+
 
                 <a href=@game.SEOGameUrl>@game.TitleRu (@game.TitleEn), @game.YearPublishing</a>
                 @*<div class="clearfix"></div>*@

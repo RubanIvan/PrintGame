@@ -49,7 +49,7 @@ namespace PrintGame.Controllers
             //}
 
 
-            foreach (Game pageResult in query.OrderByDescending(g => g.GameID).Skip((int)(PageID - 1) * Constants.GamePerPage).Take(Constants.GamePerPage))
+            foreach (Game pageResult in query.OrderByDescending(g => g.GameID).Skip((int)(PageID - 1) * Constants.GamePerPageFind).Take(Constants.GamePerPageFind))
             {
                 PageModel p = new PageModel();
                 p.GameID = pageResult.GameID;
@@ -77,7 +77,7 @@ namespace PrintGame.Controllers
                 Page.Add(p);
             }
 
-            int MaxPage = (int)Math.Ceiling(query.Count() / ((float)Constants.GamePerPage));
+            int MaxPage = (int)Math.Ceiling(query.Count() / ((float)Constants.GamePerPageFind));
 
             ViewBag.Pangination = PagePangination.GetPangination((int)PageID, MaxPage, $@"/Search/?text={text}&page=","1");
             
