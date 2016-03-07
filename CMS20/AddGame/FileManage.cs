@@ -135,6 +135,7 @@ namespace CMS20.Controllers
             W.TextBoxPlayingTime.Clear();
             W.TextBoxDescript.Clear();
             W.TextBoxComponents.Clear();
+            W.TextBoxUrl.Clear();
 
             W.Image0.Source = W.DefImg;
             W.Image1.Source = W.DefImg;

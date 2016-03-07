@@ -133,11 +133,6 @@ namespace CMS20.FileShareManage
             string ftp_pass = "pug1cwp1";
             string ftp_url = "ftp://ftpupload1.dfiles.ru/";
 
-            //если нет списка файлов делаем синхронизацию
-            //if (DepositFileList == null) ButtonSyncFile_Click(null, null);
-
-            //W.ButtonFileUpload.IsEnabled = false;
-
             PrintGameDataEntities enties = new PrintGameDataEntities();
             DateTime dayTomorou = DateTime.Today.AddDays(+1);
             var query = from f in enties.FileShare
@@ -148,8 +143,12 @@ namespace CMS20.FileShareManage
 
             int i = 0;
 
-            //FileInfo FtpCmd=new FileInfo("FtpCmd.txt");
-            //FtpCmd.OpenWrite();
+            if (query.Count() == 0)
+            {
+                W.TextBoxDepLog.Add("Нет файлов для добавления на сервер");
+                return;
+            }
+
             using (FileStream FtpCmd = new FileStream("FtpCmd.txt", FileMode.Create))
             {
                 TextWriter TextFtpCmd = new StreamWriter(FtpCmd);
@@ -166,22 +165,7 @@ namespace CMS20.FileShareManage
             Process.Start("cmd.exe", " /K " + "D:\\tool\\ftp\\WinSCP.com /script=\"FtpCmd.txt\" ");
 
 
-            //W.LabelFileCount.Content = $"{i} / {query.Count()}";
-
-
-            //string GameFile = GameList.First(g => Path.GetFileName(g) == query.First().FileShareName);
-            //W.TextBoxDepLog.Add($"Загрузка файла {GameFile} на сервер");
-            //FTP ff = new FTP();
-            //ff.Upload(Path.GetFileName(GameFile), p => { W.ProgressBarUpload.Value = p; });
-
-
-            //foreach (FileShare fileShare in query)
-            //{
-            //    string GameFile = GameList.First(g => Path.GetFileName(g) == fileShare.FileShareName);
-            //    W.TextBoxDepLog.Add($"Загрузка файла {GameFile} на сервер");
-            //    FTP f = new FTP();
-            //    f.Upload(Path.GetFileName(GameFile) , p => { W.ProgressBarUpload.Value = p; });
-            //}
+            
 
         }
 

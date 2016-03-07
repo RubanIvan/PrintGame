@@ -55,6 +55,7 @@ namespace CMS20.Controllers
             {
                 GameEntities.SaveChanges();
                 W.Log.Add($"Тэг {W.TextBoxAddTag.Text} добавлен");
+                W.TextBoxAddTag.Text = "";
             }
             catch (Exception sql)
             {
