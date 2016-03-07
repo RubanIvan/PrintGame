@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -103,7 +104,7 @@ namespace CMS20.FileShareManage
                           select f);
                 if (q1.Count() == 1)
                 {
-                    if (q1.First().FileShareExpire1!=null && q1.First().FileShareExpire1.Value.Date >= depFile.dt_expires.Date) continue;
+                    if (q1.First().FileShareExpire1 != null && q1.First().FileShareExpire1.Value.Date >= depFile.dt_expires.Date) continue;
                     q1.First().FileShareUrl1 = depFile.download_url;
                     q1.First().FileShareExpire1 = depFile.dt_expires;
                 }
@@ -127,28 +128,52 @@ namespace CMS20.FileShareManage
         //Загрузка файлов на сервер
         private void ButtonFileUpload_Click(object sender, RoutedEventArgs e)
         {
-            //если нет списка файлов делаем синхронизацию
-            if (DepositFileList == null) ButtonSyncFile_Click(null, null);
 
-            W.ButtonFileUpload.IsEnabled = false;
+            string ftp_login = "print-game";
+            string ftp_pass = "pug1cwp1";
+            string ftp_url = "ftp://ftpupload1.dfiles.ru/";
+
+            //если нет списка файлов делаем синхронизацию
+            //if (DepositFileList == null) ButtonSyncFile_Click(null, null);
+
+            //W.ButtonFileUpload.IsEnabled = false;
 
             PrintGameDataEntities enties = new PrintGameDataEntities();
             DateTime dayTomorou = DateTime.Today.AddDays(+1);
             var query = from f in enties.FileShare
-                        where f.FileShareUrl1 == null ||  f.FileShareExpire1 <= dayTomorou
+                        where f.FileShareUrl1 == null || f.FileShareExpire1 <= dayTomorou
                         select f;
 
             List<string> GameList = Directory.GetFiles(W.FileShareFolder).ToList();
 
             int i = 0;
-            W.LabelFileCount.Content = $"{i} / {query.Count()}";
 
-            
-                string GameFile = GameList.First(g => Path.GetFileName(g) == query.First().FileShareName);
-                W.TextBoxDepLog.Add($"Загрузка файла {GameFile} на сервер");
-                FTP ff = new FTP();
-                ff.Upload(Path.GetFileName(GameFile), p => { W.ProgressBarUpload.Value = p; });
-            
+            //FileInfo FtpCmd=new FileInfo("FtpCmd.txt");
+            //FtpCmd.OpenWrite();
+            using (FileStream FtpCmd = new FileStream("FtpCmd.txt", FileMode.Create))
+            {
+                TextWriter TextFtpCmd = new StreamWriter(FtpCmd);
+                TextFtpCmd.WriteLine($"open ftp://{ftp_login}:{ftp_pass}@ftpupload1.dfiles.ru/"  );
+                TextFtpCmd.WriteLine("option transfer binary");
+
+                foreach (FileShare fileShare in query)
+                {
+                    TextFtpCmd.WriteLine($"put \"{GameList.First(g => Path.GetFileName(g) == fileShare.FileShareName)}\" ");
+                }
+                TextFtpCmd.Close();
+            }
+
+            Process.Start("cmd.exe", " /K " + "D:\\tool\\ftp\\WinSCP.com /script=\"FtpCmd.txt\" ");
+
+
+            //W.LabelFileCount.Content = $"{i} / {query.Count()}";
+
+
+            //string GameFile = GameList.First(g => Path.GetFileName(g) == query.First().FileShareName);
+            //W.TextBoxDepLog.Add($"Загрузка файла {GameFile} на сервер");
+            //FTP ff = new FTP();
+            //ff.Upload(Path.GetFileName(GameFile), p => { W.ProgressBarUpload.Value = p; });
+
 
             //foreach (FileShare fileShare in query)
             //{

@@ -213,9 +213,9 @@
 
             <Button x:Name="ButtonFileUpload" Content="Загрузить файлы на DepositFile" Style="{StaticResource MetroButton}" HorizontalAlignment="Left" Margin="39,90,0,0" VerticalAlignment="Top" Width="239"/>
 
-            <Label x:Name="LabelFileCount" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,144,0,0" Width="219"/>
+            <!--<Label x:Name="LabelFileCount" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,144,0,0" Width="219"/>
             <ProgressBar x:Name="ProgressBarUpload" HorizontalAlignment="Left" Height="16" VerticalAlignment="Top" Width="229" Margin="300,185,0,0" />
-            <Label x:Name="LabelUploadFileName" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,175,0,0" Width="219"/>
+            <Label x:Name="LabelUploadFileName" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,175,0,0" Width="219"/>-->
 
         </Grid>
 
