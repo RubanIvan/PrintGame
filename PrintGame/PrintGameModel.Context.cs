@@ -32,6 +32,7 @@ namespace PrintGame
         public virtual DbSet<GameTag> GameTag { get; set; }
         public virtual DbSet<Tag> Tag { get; set; }
         public virtual DbSet<FileShare> FileShare { get; set; }
+        public virtual DbSet<Subscribe> Subscribe { get; set; }
     
         public virtual ObjectResult<GetGameBoxImage_Result> GetGameBoxImage(Nullable<int> gameID)
         {

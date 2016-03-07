@@ -14,6 +14,7 @@
         <AssociationConnector Association="PrintGameDataModel.FK_GameTag_TagID" ManuallyRouted="false" />
         <EntityTypeShape EntityType="PrintGameDataModel.FileShare" Width="1.5" PointX="3" PointY="1.875" />
         <AssociationConnector Association="PrintGameDataModel.FK_FileShare_GameID" />
+        <EntityTypeShape EntityType="PrintGameDataModel.Subscribe" Width="1.5" PointX="5.375" PointY="4" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

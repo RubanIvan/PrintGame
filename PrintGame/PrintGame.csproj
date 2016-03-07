@@ -184,6 +184,7 @@
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\StrategicController.cs" />
+    <Compile Include="Controllers\SubscribeController.cs" />
     <Compile Include="Controllers\TailController.cs" />
     <Compile Include="FileShare.cs">
       <DependentUpon>PrintGameModel.tt</DependentUpon>
@@ -220,6 +221,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PageModel.cs" />
+    <Compile Include="Models\SubscribeModel.cs" />
     <Compile Include="PrintGameModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -241,6 +243,9 @@
     <Compile Include="Proc\Slug.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Subscribe.cs">
+      <DependentUpon>PrintGameModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tag.cs">
       <DependentUpon>PrintGameModel.tt</DependentUpon>
     </Compile>
@@ -320,6 +325,7 @@
     <Content Include="Content\search.less" />
     <Content Include="Content\button.less" />
     <Content Include="Content\admin.less" />
+    <Content Include="Content\subscribe.less" />
     <None Include="Properties\PublishProfiles\zeus server.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -375,6 +381,7 @@
     <None Include="Views\Game\Index.cshtml" />
     <None Include="Views\Page\Index.cshtml" />
     <None Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Subscribe\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

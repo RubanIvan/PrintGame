@@ -146,6 +146,7 @@ namespace CMS20.Controllers
             catch (Exception e)
             {
                 W.Log.Add("Комплектация не найдена");
+                W.Log.Add(e.Message);
             }
 
             try

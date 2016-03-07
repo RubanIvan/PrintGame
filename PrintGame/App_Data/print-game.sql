@@ -118,6 +118,14 @@ AS
 	ORDER By GameImageID 
 GO
 
+GO
+CREATE TABLE Subscribe (
+	SubscribeID		int IDENTITY NOT NULL PRIMARY KEY,	--идентификатор	
+	Email			NVARCHAR(256),						--почта пользователя
+	TagList			NVARCHAR(MAX)						--список тегов на которые подписан
+
+);
+
 
 
 -------------------------------------------------------------------------

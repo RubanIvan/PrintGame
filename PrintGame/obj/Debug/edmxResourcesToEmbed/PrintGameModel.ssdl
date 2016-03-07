@@ -56,6 +56,14 @@
     <Property Name="GameID" Type="int" Nullable="false" />
     <Property Name="TagID" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Subscribe">
+    <Key>
+      <PropertyRef Name="SubscribeID" />
+    </Key>
+    <Property Name="SubscribeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="TagList" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="Tag">
     <Key>
       <PropertyRef Name="TagID" />
@@ -126,6 +134,7 @@
     <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GameImage" EntityType="Self.GameImage" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GameTag" EntityType="Self.GameTag" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subscribe" EntityType="Self.Subscribe" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_FileShare_GameID" Association="Self.FK_FileShare_GameID">
       <End Role="Game" EntitySet="Game" />

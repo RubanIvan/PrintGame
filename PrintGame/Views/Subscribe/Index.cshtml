@@ -1,0 +1,54 @@
+﻿@model PrintGame.Models.SubscribeModel
+
+@{
+// ViewBag.Title = "title";
+// Layout = "_Layout";
+}
+
+<div class="subscribe container ">
+    <h2>Управление подпиской</h2>
+    <div class="row">
+        <div class="col-xs-5" id="FullTag">
+            <select size="20">
+                @foreach (Tag fullTag in Model.FullTags)
+                {
+                    <option name="@fullTag.TagName">@fullTag.TagName</option>
+                }
+            </select>
+        </div>
+        <div class="col-xs-2">
+            <button onclick="DelTag()">Удалить</button>
+            <button onclick="AddTag()">Добавить</button>
+            <br/>
+            <button onclick="SaveTag()">Сохранить</button>
+        </div>
+
+        <div class="col-xs-5" id="SubscribeTag">
+            <select size="20">
+                @if (Model.SubscribeTag != null)
+                {
+                    foreach (Tag fullTag in Model.SubscribeTag)
+                    {
+                        <option name="@fullTag.TagName">@fullTag.TagName</option>
+                    }
+                }
+            </select>
+        </div>
+
+    </div>
+</div>
+
+
+
+@section scripts
+{
+    <script>
+        function AddTag(parameters) {
+            var FullTagSelected = $("#FullTag select :selected").val();
+
+
+        }
+
+    
+    </script>
+}

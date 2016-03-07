@@ -11,20 +11,11 @@ namespace PrintGame
 {
     using System;
     using System.Collections.Generic;
-
-    [Serializable]
-    public partial class Tag
+    
+    public partial class Subscribe
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tag()
-        {
-            this.GameTag = new HashSet<GameTag>();
-        }
-    
-        public int TagID { get; set; }
-        public string TagName { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GameTag> GameTag { get; set; }
+        public int SubscribeID { get; set; }
+        public string Email { get; set; }
+        public string TagList { get; set; }
     }
 }

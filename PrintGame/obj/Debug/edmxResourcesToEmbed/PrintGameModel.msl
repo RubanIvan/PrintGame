@@ -102,5 +102,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Subscribe">
+      <EntityTypeMapping TypeName="PrintGameDataModel.Subscribe">
+        <MappingFragment StoreEntitySet="Subscribe">
+          <ScalarProperty Name="TagList" ColumnName="TagList" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SubscribeID" ColumnName="SubscribeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -119,6 +119,7 @@
       <End Role="Game" EntitySet="Game" />
       <End Role="FileShare" EntitySet="FileShare" />
     </AssociationSet>
+    <EntitySet Name="Subscribe" EntityType="PrintGameDataModel.Subscribe" />
   </EntityContainer>
   <ComplexType Name="GetGameBoxImage_Result">
     <Property Type="Int32" Name="GameImageID" Nullable="false" />
@@ -175,4 +176,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Subscribe">
+    <Key>
+      <PropertyRef Name="SubscribeID" />
+    </Key>
+    <Property Name="SubscribeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="TagList" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

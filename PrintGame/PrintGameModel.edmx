@@ -61,6 +61,14 @@
           <Property Name="GameID" Type="int" Nullable="false" />
           <Property Name="TagID" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Subscribe">
+          <Key>
+            <PropertyRef Name="SubscribeID" />
+          </Key>
+          <Property Name="SubscribeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="TagList" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Tag">
           <Key>
             <PropertyRef Name="TagID" />
@@ -131,6 +139,7 @@
           <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GameImage" EntityType="Self.GameImage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GameTag" EntityType="Self.GameTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subscribe" EntityType="Self.Subscribe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_FileShare_GameID" Association="Self.FK_FileShare_GameID">
             <End Role="Game" EntitySet="Game" />
@@ -272,6 +281,7 @@
             <End Role="Game" EntitySet="Game" />
             <End Role="FileShare" EntitySet="FileShare" />
           </AssociationSet>
+          <EntitySet Name="Subscribe" EntityType="PrintGameDataModel.Subscribe" />
         </EntityContainer>
         <ComplexType Name="GetGameBoxImage_Result">
           <Property Type="Int32" Name="GameImageID" Nullable="false" />
@@ -328,6 +338,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Subscribe">
+          <Key>
+            <PropertyRef Name="SubscribeID" />
+          </Key>
+          <Property Name="SubscribeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TagList" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -432,6 +450,15 @@
                 <ScalarProperty Name="FileShareName" ColumnName="FileShareName" />
                 <ScalarProperty Name="GameID" ColumnName="GameID" />
                 <ScalarProperty Name="FileShareID" ColumnName="FileShareID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subscribe">
+            <EntityTypeMapping TypeName="PrintGameDataModel.Subscribe">
+              <MappingFragment StoreEntitySet="Subscribe">
+                <ScalarProperty Name="TagList" ColumnName="TagList" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SubscribeID" ColumnName="SubscribeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
