@@ -1,0 +1,14 @@
+D:\project\PrintGame\Subscribe\bin\Debug\Subscribe.exe.config
+D:\project\PrintGame\Subscribe\bin\Debug\Subscribe.exe
+D:\project\PrintGame\Subscribe\bin\Debug\Subscribe.pdb
+D:\project\PrintGame\Subscribe\bin\Debug\EntityFramework.dll
+D:\project\PrintGame\Subscribe\bin\Debug\EntityFramework.SqlServer.dll
+D:\project\PrintGame\Subscribe\bin\Debug\Newtonsoft.Json.dll
+D:\project\PrintGame\Subscribe\bin\Debug\EntityFramework.xml
+D:\project\PrintGame\Subscribe\bin\Debug\EntityFramework.SqlServer.xml
+D:\project\PrintGame\Subscribe\bin\Debug\Newtonsoft.Json.xml
+D:\project\PrintGame\Subscribe\bin\Debug\ru\EntityFramework.resources.dll
+D:\project\PrintGame\Subscribe\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+D:\project\PrintGame\Subscribe\obj\Debug\Subscribe.exe
+D:\project\PrintGame\Subscribe\obj\Debug\Subscribe.pdb
+D:\project\PrintGame\Subscribe\obj\Debug\Subscribe.csprojResolveAssemblyReference.cache

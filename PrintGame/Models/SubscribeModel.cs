@@ -11,6 +11,6 @@ namespace PrintGame.Models
         public List<Tag> FullTags;
 
         /// <summary>Список тегов на которые подписан пользователь</summary>
-        public List<Tag> SubscribeTag;
+        public string[] SubscribeTag;
     }
 }

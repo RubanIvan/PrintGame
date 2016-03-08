@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS20", "CMS20\CMS20.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChkContent", "ChkContent\ChkContent.csproj", "{5E685871-E66D-47B0-AA4D-0C042EDA9FA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subscribe", "Subscribe\Subscribe.csproj", "{37BAD8F7-EC25-4F2B-9BEF-1404B921D3D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{5E685871-E66D-47B0-AA4D-0C042EDA9FA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E685871-E66D-47B0-AA4D-0C042EDA9FA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E685871-E66D-47B0-AA4D-0C042EDA9FA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37BAD8F7-EC25-4F2B-9BEF-1404B921D3D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37BAD8F7-EC25-4F2B-9BEF-1404B921D3D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37BAD8F7-EC25-4F2B-9BEF-1404B921D3D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37BAD8F7-EC25-4F2B-9BEF-1404B921D3D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

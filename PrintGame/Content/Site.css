@@ -530,3 +530,24 @@ hr {
 #Ajax img {
   margin: 10% 50%;
 }
+.subscribe select {
+  width: 250px;
+}
+.subscribe button {
+  margin-bottom: 30px;
+}
+.subscribe .buttons {
+  margin-top: 100px;
+}
+#SubscribeAjax {
+  display: none;
+  float: left;
+  position: absolute;
+  background-color: black;
+  height: 400px;
+  width: 100%;
+  opacity: 0.7;
+}
+#SubscribeAjax img {
+  margin: 20% 50%;
+}
