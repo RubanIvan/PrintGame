@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,7 +14,7 @@ namespace Subscribe
         {
             PrintGameDataEntities enties =new PrintGameDataEntities();
 
-            DateTime SubDate=DateTime.Now.AddDays(-7);
+            DateTime SubDate=DateTime.Now.AddDays(-14);
             StringBuilder EmailText=new StringBuilder();
 
             foreach (Subscribe subscribe in enties.Subscribe)
@@ -40,8 +41,51 @@ namespace Subscribe
                     
                 }
                 Console.WriteLine(EmailText.ToString());
+                SubscibeMessage msg=new SubscibeMessage();
+                msg.Destination = subscribe.Email;
+                msg.Body = EmailText.ToString();
+                msg.Subject = "Поступление новых игр";
+                SendAsync(msg);
             }
             Console.ReadLine();
         }
+
+
+        public async static void SendAsync(SubscibeMessage message)
+        {
+            // настройка логина, пароля отправителя
+            var from = "subscribe@print-game.ru";
+            var pass = "kmD487Zsaof9";
+
+            
+
+            // адрес и порт smtp-сервера, с которого мы и будем отправлять письмо
+            SmtpClient client = new SmtpClient("smtp.yandex.ru", 25);
+
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential(from, pass);
+            client.EnableSsl = true;
+
+            // создаем письмо: message.Destination - адрес получателя
+            var mail = new MailMessage(from, message.Destination);
+            mail.Subject = message.Subject;
+            mail.Body = message.Body;
+            mail.IsBodyHtml = true;
+
+            //client.Send(mail);
+            await client.SendMailAsync(mail);
+        }
+
+    }
+
+
+    public class SubscibeMessage
+    {
+        public string Destination;
+
+        public string Subject;
+
+        public string Body;
     }
 }

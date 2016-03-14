@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1dbb2deb9ecd40b69ead2db0581ff1c1" Name="Diagram1" ZoomLevel="62">
+        <EntityTypeShape EntityType="PrintGameDataModel.Game" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrintGameDataModel.GameImage" Width="1.5" PointX="4.875" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrintGameDataModel.GameTag" Width="1.5" PointX="7" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrintGameDataModel.Tag" Width="1.5" PointX="10.375" PointY="7.375" IsExpanded="true" />
+        <AssociationConnector Association="PrintGameDataModel.FK_GameID_Game" ManuallyRouted="false" />
+        <AssociationConnector Association="PrintGameDataModel.FK_GameTag_GameID" ManuallyRouted="false" />
+        <AssociationConnector Association="PrintGameDataModel.FK_GameTag_TagID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PrintGameDataModel.FileShare" Width="1.5" PointX="3" PointY="1.875" />
+        <AssociationConnector Association="PrintGameDataModel.FK_FileShare_GameID" />
+        <EntityTypeShape EntityType="PrintGameDataModel.Subscribe" Width="1.5" PointX="5.375" PointY="4" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

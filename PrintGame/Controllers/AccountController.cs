@@ -70,7 +70,7 @@ namespace PrintGame.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindAsync(model.Email, model.Password);
+                var user = await UserManager.FindAsync(model.Email.Replace('-','_'), model.Password);
                 if (user != null)
                 {
                     if (user.EmailConfirmed == true)

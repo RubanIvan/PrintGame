@@ -131,7 +131,7 @@ namespace PrintGame.Areas.Admin.Controllers
 
                 users = (from u in userManager.Users select u.UserName).ToList();
 
-                var user = userManager.FindByName(UserName);
+                var user = userManager.FindByEmail(UserName);
                 if (user == null)
                     throw new Exception("User not found!");
 
@@ -184,7 +184,7 @@ namespace PrintGame.Areas.Admin.Controllers
 
                     users = (from u in userManager.Users select u.UserName).ToList();
 
-                    var user = userManager.FindByName(userName);
+                    var user = userManager.FindByEmail(userName);
                     if (user == null)
                         throw new Exception("User not found!");
 
@@ -224,7 +224,7 @@ namespace PrintGame.Areas.Admin.Controllers
 
                 users = (from u in userManager.Users select u.UserName).ToList();
 
-                var user = userManager.FindByName(userName);
+                var user = userManager.FindByEmail(userName);
                 if (user == null)
                     throw new Exception("User not found!");
 

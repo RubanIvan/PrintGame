@@ -180,3 +180,4 @@ D:\Projects\PrintGame\PrintGame\bin\ru\Microsoft.Owin.Security.Google.resources.
 D:\Projects\PrintGame\PrintGame\bin\ru\Microsoft.Owin.Security.Twitter.resources.dll
 D:\Projects\PrintGame\PrintGame\bin\ru\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 D:\Projects\PrintGame\PrintGame\obj\Debug\PrintGame.csprojResolveAssemblyReference.cache
+D:\project\PrintGame\PrintGame\obj\Debug\PrintGame.Migrations.DataMigration2.resources

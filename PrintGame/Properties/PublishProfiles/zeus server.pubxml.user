@@ -10,7 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Data/print-game.sql">
-      <publishTime>03/01/2016 19:36:06</publishTime>
+      <publishTime>03/07/2016 20:20:30</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Home/Index.cshtml">
       <publishTime>03/01/2016 19:34:22</publishTime>
@@ -85,10 +85,10 @@
       <publishTime>02/04/2016 09:53:24</publishTime>
     </File>
     <File Include="bin/PrintGame.dll">
-      <publishTime>03/06/2016 16:01:59</publishTime>
+      <publishTime>03/14/2016 10:11:13</publishTime>
     </File>
     <File Include="bin/PrintGame.pdb">
-      <publishTime>03/06/2016 16:01:59</publishTime>
+      <publishTime>03/14/2016 10:11:13</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>02/04/2016 09:53:23</publishTime>
@@ -208,7 +208,7 @@
       <publishTime>02/04/2016 09:53:24</publishTime>
     </File>
     <File Include="Content/admin.less">
-      <publishTime>03/04/2016 11:23:31</publishTime>
+      <publishTime>03/08/2016 11:38:44</publishTime>
     </File>
     <File Include="Content/arrow.png">
       <publishTime>02/25/2016 12:03:17</publishTime>
@@ -286,13 +286,16 @@
       <publishTime>03/02/2016 19:07:47</publishTime>
     </File>
     <File Include="Content/site.css">
-      <publishTime>03/05/2016 13:31:07</publishTime>
+      <publishTime>03/08/2016 14:47:12</publishTime>
     </File>
     <File Include="Content/site.less">
-      <publishTime>03/03/2016 11:20:46</publishTime>
+      <publishTime>03/07/2016 21:10:44</publishTime>
     </File>
     <File Include="Content/site.min.css">
-      <publishTime>03/05/2016 13:31:07</publishTime>
+      <publishTime>03/08/2016 14:47:12</publishTime>
+    </File>
+    <File Include="Content/subscribe.less">
+      <publishTime>03/08/2016 14:47:12</publishTime>
     </File>
     <File Include="Content/tablesorter-style.css">
       <publishTime>03/03/2016 19:09:58</publishTime>
@@ -334,7 +337,7 @@
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
     <File Include="PrintGameModel.edmx.diagram">
-      <publishTime>03/02/2016 19:07:47</publishTime>
+      <publishTime>03/07/2016 20:31:37</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>02/04/2016 09:53:23</publishTime>
@@ -463,10 +466,13 @@
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>03/02/2016 19:07:47</publishTime>
+      <publishTime>03/07/2016 20:31:43</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>03/02/2016 19:07:47</publishTime>
+    </File>
+    <File Include="Views/Subscribe/Index.cshtml">
+      <publishTime>03/08/2016 14:50:50</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>02/04/2016 09:53:23</publishTime>
@@ -475,7 +481,7 @@
       <publishTime>02/04/2016 09:53:23</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/05/2016 15:54:28</publishTime>
+      <publishTime>03/13/2016 12:36:34</publishTime>
     </File>
   </ItemGroup>
 </Project>

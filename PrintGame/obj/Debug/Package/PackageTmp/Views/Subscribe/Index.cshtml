@@ -1,0 +1,87 @@
+﻿@model PrintGame.Models.SubscribeModel
+
+@{
+// ViewBag.Title = "title";
+// Layout = "_Layout";
+}
+
+<div class="subscribe container ">
+    <h2>Управление подпиской</h2>
+    <div class="row">
+        <div class="col-xs-5" id="FullTag">
+            <h4>Все тэги</h4>
+            <select size="20">
+                @foreach (Tag fullTag in Model.FullTags)
+                {
+                    <option name="@fullTag.TagName">@fullTag.TagName</option>
+                }
+            </select>
+        </div>
+        <div class="buttons col-xs-2">
+            <button onclick="AddTag()">Добавить</button>
+            <button onclick="DelTag()">Удалить</button>
+            <br/>
+            <button onclick="SaveTag()">Сохранить</button>
+        </div>
+
+        <div class="col-xs-5" id="SubscribeTag">
+            <h4>Подписатся на тэги</h4>
+            <select size="20">
+                @if (Model.SubscribeTag != null)
+                {
+                    foreach (string fullTag in Model.SubscribeTag)
+                    {
+                        <option name="@fullTag">@fullTag</option>
+                    }
+                }
+            </select>
+        </div>
+        <div Id="SubscribeAjax">
+            <img src="../../../../Content/loading.gif" />
+        </div>
+    </div>
+    
+</div>
+
+
+
+@section scripts
+{
+    <script>
+
+        //добавить тэг
+        function AddTag() {
+            var FullTagSelected = $("#FullTag select :selected").val();
+
+            //проверяем есть ли уже такой тэг в списке
+            if (($("#SubscribeTag select [value='" + FullTagSelected + "']").val()) != null) return;
+
+            //добавляем тэг
+            $("#SubscribeTag select").append($('<option value="' + FullTagSelected + '">' + FullTagSelected + '</option>'));
+        }
+
+
+        //удаляем выбранный элемент
+        function DelTag() {
+            $("#SubscribeTag select :selected").remove();
+        }
+
+        function SaveTag() {
+
+            $("#SubscribeAjax").show();
+
+            var tags = new Array();
+
+            $('#SubscribeTag select option').each(function() {
+                tags.push(this.text);
+            });
+
+            $.post("/subscribe/savetag", { Tags: tags }, function(result) {
+                $("#SubscribeAjax").hide() ;
+            });
+
+        }
+
+
+    </script>
+}

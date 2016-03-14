@@ -38,7 +38,7 @@ namespace PrintGame.Areas.Admin.Controllers
             var userStore = new UserStore<ApplicationUser>(context);
             var userManager = new UserManager<ApplicationUser>(userStore);
 
-            var user = new ApplicationUser { UserName = email, Email = email, TwoFactorEnabled = false,EmailConfirmed = true};
+            var user = new ApplicationUser { UserName = email.Replace('-', '_'), Email = email, TwoFactorEnabled = false,EmailConfirmed = true};
 
             IdentityResult result = userManager.Create(user, password);
 
@@ -54,7 +54,7 @@ namespace PrintGame.Areas.Admin.Controllers
             var userStore = new UserStore<ApplicationUser>(context);
             var userManager = new UserManager<ApplicationUser>(userStore);
 
-            ApplicationUser user = userManager.FindByName(email);
+            ApplicationUser user = userManager.FindByEmail(email);
 
             IdentityResult result;
             try
