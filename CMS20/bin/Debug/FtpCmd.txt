@@ -1,5 +1,15 @@
 open ftp://print-game:pug1cwp1@ftpupload1.dfiles.ru/
 option transfer binary
-put "D:\Content\FileShare\Dungeoneer Tomb of the Lich Lord1.zip" 
-put "D:\Content\FileShare\10 Days in Europe0.zip" 
-put "D:\Content\FileShare\51st State1.zip" 
+put "D:\Content\FileShare\Alcatraz The Scapegoat0.zip" 
+put "D:\Content\FileShare\Alhambra0.zip" 
+put "D:\Content\FileShare\Alias0.zip" 
+put "D:\Content\FileShare\Alias1.zip" 
+put "D:\Content\FileShare\Alien Frontiers0.zip" 
+put "D:\Content\FileShare\Alien Frontiers1.zip" 
+put "D:\Content\FileShare\Amun-Re0.zip" 
+put "D:\Content\FileShare\Animal Party0.zip" 
+put "D:\Content\FileShare\Animalia0.zip" 
+put "D:\Content\FileShare\Animalia1.zip" 
+put "D:\Content\FileShare\Core Worlds0.zip" 
+put "D:\Content\FileShare\Core Worlds1.zip" 
+put "D:\Content\FileShare\Core Worlds2.zip" 
