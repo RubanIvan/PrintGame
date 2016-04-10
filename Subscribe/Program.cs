@@ -14,7 +14,7 @@ namespace Subscribe
         {
             PrintGameDataEntities enties =new PrintGameDataEntities();
 
-            DateTime SubDate=DateTime.Now.AddDays(-14);
+            DateTime SubDate=DateTime.Now.AddDays(-14-14);
             StringBuilder EmailText=new StringBuilder();
 
             foreach (Subscribe subscribe in enties.Subscribe)
